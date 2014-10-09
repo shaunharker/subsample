@@ -1,0 +1,15 @@
+Instructions:
+
+To run a subsample computation:
+./SUBSAMPLE ./data/PersistenceDiagrams/Bottleneck 2.0
+
+To run a distance computation:
+./DISTANCE ./data/PersistenceDiagrams/Bottleneck ./subsampleB.txt
+
+For Wasserstein distances:
+./SUBSAMPLE ./data/PersistenceDiagrams/Wasserstein1 30.0
+./DISTANCE ./data/PersistenceDiagrams/Wasserstein1 ./subsampleW1.txt
+
+./SUBSAMPLE ./data/PersistenceDiagrams/Wasserstein2 10.0
+./DISTANCE ./data/PersistenceDiagrams/Wasserstein2 ./subsampleW2.txt
+
