@@ -1,0 +1,36 @@
+Subsample Documentation
+=======================
+Shaun Harker <sharker@math.rutgers.edu>
+v1.0, 2015-06-26
+:toc: right
+:stem: latexmath
+:source-highlighter: highlight.js
+:highlightjs-theme: railscasts
+
+== Overview ==
+
+== Instructions ==
+
+=== PersistenceTuples ===
+==== Subsample ====
+
+subsample will accept three command line arguments:
+```bash
+/path/to/sample.json delta p
+```
+where `sample.json` is a file containing paths to persistence diagrams
+```json
+{"path":"/base/folder","sample":[["...","...","..."],["...","...","..."],["...","...","..."],...]}
+```
+
+The sample.json file may contain additional fields which can be ignored.
+
+The output of the subsample program will be
+```json
+{"sample":"/path/to/sample.json","delta":delta, "p": p, "subsample":[...]}
+```
+
+==== Distance ====
+
+The input to the distance program can be the 
+
