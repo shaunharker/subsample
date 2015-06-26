@@ -32,5 +32,6 @@ The output of the subsample program will be
 
 ==== Distance ====
 
-The input to the distance program can be the 
+The input to the distance program is the output from the subsample program. Optionally the two parameters `delta` and `p` may be given, in which case they will override the values in the file.
+
 
