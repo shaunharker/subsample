@@ -4,7 +4,7 @@
 #ifndef SRH_JSON_H
 #define SRH_JSON_H
 
-#include "boost/any.hpp"
+#include "boost/variant.hpp"
 #include <vector>
 #include <string>
 #include <sstream>
@@ -14,6 +14,9 @@
 #include <cctype>
 #include <exception>
 #include <stdexcept>
+#include <typeinfo>
+
+using namespace std::string_literals;
 
 namespace JSON {
 
@@ -47,64 +50,70 @@ void
 save ( Value const& json, std::string const& filename );
 
 // Definitions
-class Value : public boost::any {
+class Value {
 public:
-  using boost::any::any;
-  /// Array methods
-  Value const& operator [] ( uint64_t i ) const {
-    if ( type () == typeid ( Array ) ) {
-      Array const& array = boost::any_cast<Array const&> ( *this );
-      return array [ i ];
+  //enum Type { Integer=0, Double=1, String=2, Array=3, Object=4 };
+  // Construction
+  Value () {}
+  Value ( Integer const& x ) { data_ = x; }
+  Value ( Double const& x ) { data_ = x; }
+  Value ( String const& x ) { data_ = x; }
+  Value ( Array const& x ) { data_ = x; }
+  Value ( Object const& x ) { data_ = x; }  
+  Value & operator = ( Integer const& x ) { data_ = x; return *this; }
+  Value & operator = ( Double const& x ) { data_ = x; return *this; }
+  Value & operator = ( String const& x ) { data_ = x; return *this; }
+  Value & operator = ( Array const& x ) { data_ = x; return *this; }
+  Value & operator = ( Object const& x ) { data_ = x; return *this; }
+  // Conversions. Note: due to problems I had to make "Double" explicit
+  operator Integer & () { return boost::get<Integer>(data_); }
+  explicit operator Double & () { return boost::get<Double>(data_); }
+  operator String & () { return boost::get<String>(data_); }
+  operator Array & () { return boost::get<Array>(data_); }
+  operator Object & () { return boost::get<Object>(data_); }
+  operator Integer const& () const { return boost::get<Integer>(data_); }
+  explicit operator Double const& () const { return boost::get<Double>(data_); }
+  operator String const& () const { return boost::get<String>(data_); }
+  operator Array const& () const { return boost::get<Array>(data_); }
+  operator Object const& () const { return boost::get<Object>(data_); }
+  // Accessors
+  Value & operator [] ( std::string const& key ) { return ((Object&)(*this))[key]; }
+  Value const& operator [] ( std::string const& key ) const { return ((Object const&)(*this)).find(key)->second; }
+  Value & operator [] ( int64_t i ) { return ((Array&)(*this))[i]; }
+  Value const& operator [] ( int64_t i ) const { return ((Array const&)(*this))[i]; }
+  // Creation from C++ types
+  template < class T >
+  Value & operator = ( std::vector<T> const& x ) {
+    *this = Array ();
+    uint64_t N = x . size ();
+    ((Array&)(*this)) . resize ( N );
+    for ( uint64_t i = 0; i < N; ++ i ) {
+      ((Array&)(*this))[i] = x[i];
     }
-    throw std::runtime_error ( "JSON: Cannot call numeric accessor on non-Array.");
+    return *this;
   }
-  Value & operator [] ( uint64_t i ) {
-    if ( type () == typeid ( Array ) ) {
-      Array & array = boost::any_cast<Array &> ( *this );
-      return array [ i ];
+  template < class T >
+  Value & operator = ( std::unordered_map<std::string,T> const& x ) {
+    *this = Object ();
+    for ( auto const& pair : x ) {
+      ((Object&)(*this))[pair.first] = pair.second;
     }
-    throw std::runtime_error ( "JSON: Cannot call numeric accessor on non-Array.");
+    return *this;
+  }  
+  // delegate visitors
+  template <typename Visitor>
+  BOOST_VARIANT_AUX_GENERIC_RESULT_TYPE(typename Visitor::result_type)
+  apply_visitor(Visitor& visitor) { 
+    return data_ . apply_visitor ( visitor );
   }
-
-  /// Object methods
-  Value const& operator [] ( std::string const& name ) const {
-    if ( type () == typeid ( Object ) ) {
-      Object const& object = boost::any_cast<Object const&> ( *this );
-      return object . find ( name ) -> second;
-    }
-    throw std::runtime_error ( "JSON: Cannot call string accessor on non-Object.");
+  template <typename Visitor>
+  BOOST_VARIANT_AUX_GENERIC_RESULT_TYPE(typename Visitor::result_type)
+  apply_visitor(Visitor& visitor) const { 
+    return data_ . apply_visitor ( visitor );
   }
-  Value & operator [] ( std::string const& name ) {
-    if ( type () == typeid ( Object ) ) {
-      Object & object = boost::any_cast<Object &> ( *this );
-      return object[name];
-    }
-    throw std::runtime_error ( "JSON: Cannot call string accessor on non-Object.");
-  }
-
-  /// Conversions
-  operator String () const { 
-    if ( type () == typeid ( String ) ) return boost::any_cast<String>(*this);
-    throw std::runtime_error ( "JSON: Cannot cast to string.");
-  }
-  operator Array () const { 
-    if ( type () == typeid ( Array ) ) return boost::any_cast<Array>(*this);
-    throw std::runtime_error ( "JSON: Cannot cast to array.");
-  }
-  operator Object () const { 
-    if ( type () == typeid ( Object ) ) return boost::any_cast<Object>(*this);
-    throw std::runtime_error ( "JSON: Cannot cast to object.");
-  }
-  explicit operator Integer () const {
-    if ( type () == typeid ( Integer ) ) return boost::any_cast<Integer>(*this);
-    throw std::runtime_error ( "JSON: Cannot cast to integer.");
-  }
-  explicit operator Double () const { 
-    if ( type () == typeid ( Double ) ) return boost::any_cast<Double>(*this);
-    throw std::runtime_error ( "JSON: Cannot cast to integer.");
-  }
+private:
+  boost::variant<Integer, Double, String, Array, Object> data_;
 };
-
 
 inline Value
 parse ( std::string const& str ) {
@@ -183,7 +192,7 @@ parse ( std::string const& str ) {
   std::function<Value(void)> 
     parse_object, parse_array, parse_string, parse_numeric, parse_item;
   parse_object = [&](){
-    //std::cout << "parse_object begin " << item << "\n";
+    std::cout << "parse_object begin " << item << "\n";
     uint64_t this_item = item ++;
     Object data;
     bool onkey = true;
@@ -192,7 +201,7 @@ parse ( std::string const& str ) {
       if ( onkey ) {
         key = str . substr (left[item]+1, right[item]-left[item]-1);
         onkey = false;
-        //std::cout << "parse_object key (" << item << ") " << key << "\n";
+        std::cout << "parse_object key (" << item << ") " << key << "\n";
         ++ item;
       } else {
         data [ key ] = parse_item ();
@@ -202,37 +211,38 @@ parse ( std::string const& str ) {
     if ( not onkey ) {
       throw std::runtime_error ("JSON::parse: Invalid string." );
     }
-    //std::cout << "parse_object return " << this_item << "\n";
-    return data;
+    std::cout << "parse_object return " << this_item << "\n";
+    return Value(data);
   };
 
   parse_array = [&](){
-    //std::cout << "parse_array begin " << item << "\n";
+    std::cout << "parse_array begin " << item << "\n";
     uint64_t this_item = item ++;
     Array data;
     while ( isChild ( item, this_item ) ) {
       data . push_back ( parse_item () );
     }
-    //std::cout << "parse_array return " << this_item << "\n";
-    return data;  
+    std::cout << "parse_array return " << this_item << "\n";
+    std::cout << "parse_array return (cont): " << stringify(data) << "\n";
+    return Value(data);  
   };
 
   parse_string = [&](){
     std::string data = str . substr (left[item]+1, right[item]-left[item]-1);
-    //std::cout << "parse_string (" << item << "):\"" << data << "\"\n";
+    std::cout << "parse_string (" << item << "):\"" << data << "\"\n";
     ++ item;
-    return data;
+    return Value(data);
   };
   parse_numeric = [&](){
     std::string data = str . substr (left[item], right[item]-left[item]);
     if ( std::all_of(data.begin(), data.end(), ::isdigit) ) {
       if ( std::to_string(std::stoll(data)) == data ) {
         ++ item;
-        return (Value) (std::stoll(data));
+        return Value(std::stoll(data));
       } 
     }
     ++ item;
-    return (Value) (std::stod(data));
+    return Value(std::stod(data));
   }; 
 
   parse_item = [&](){
@@ -251,75 +261,66 @@ parse ( std::string const& str ) {
         result = parse_numeric ();
         break;
     }
+    std::cout << "parse_item: returning with " << stringify(result) << "\n";
     return result;
   };
 
   return parse_item ();
 }
 
-inline std::string 
-stringify ( Integer i ) {
-  return std::to_string ( i );
-}
-
-inline std::string 
-stringify ( Double d ) {
-  return std::to_string ( d );
-}
-
-inline std::string 
-stringify ( String const& s ) {
-  return "\"" + s + "\"";;
-}
-
-inline std::string 
-stringify ( Array const& a ) {
-  std::stringstream ss;
-    ss << "["; 
-  bool first = true;
-  for ( auto val : a ) { 
-    if ( first ) first = false; else ss << ",";
-    ss << stringify ( val ); 
+class stringify_visitor : public boost::static_visitor<std::string> {
+public:
+  /// stringify Integer
+  std::string operator()(Integer const& i) const {
+    std::cout << "stringify(Integer)\n";
+    return std::to_string ( i );
   }
-  ss << "]";
-  return ss . str ();
-}
-
-inline std::string 
-stringify ( Object const& obj ) {
-  std::stringstream ss;
-  ss << "{"; 
-  bool first = true;
-  for ( auto const& pair : obj ) { 
-    if ( first ) first = false; else ss << ",";
-    //ss << "$" << pair.first << "#"; 
-    ss << "\"" << pair.first << "\""; 
-    ss << ":";
-    ss << stringify ( pair.second );
-    //ss << "$" << pair.second -> stringify () << "#";
+  /// stringify Double
+  std::string operator()(Double const& d) const {
+    std::cout << "stringify(Double)\n";
+    return std::to_string ( d );
   }
-  ss << "}";
-  return ss . str (); 
-}
+  /// stringify String
+  std::string operator()(String const& s) const {
+    std::cout << "stringify(String)\n";
+    return "\"" + s + "\"";
+  }
+  /// stringify Array
+  std::string operator()(Array const& a) const {
+    std::cout << "stringify(Array)\n";
+    std::stringstream ss;
+      ss << "["; 
+    bool first = true;
+    for ( auto val : a ) { 
+      if ( first ) first = false; else ss << ",";
+      ss << stringify ( val ); 
+    }
+    ss << "]";
+    return ss . str ();
+  }
+  /// stringify Object
+  std::string operator()(Object const& obj) const {
+    std::cout << "stringify(Object)\n";
+    std::stringstream ss;
+    ss << "{"; 
+    bool first = true;
+    for ( auto const& pair : obj ) { 
+      if ( first ) first = false; else ss << ",";
+      //ss << "$" << pair.first << "#"; 
+      ss << "\"" << pair.first << "\""; 
+      ss << ":";
+      ss << stringify ( pair.second );
+      //ss << "$" << pair.second -> stringify () << "#";
+    }
+    ss << "}";
+    return ss . str (); 
+  }
+};
 
 inline std::string 
 stringify ( Value const& val ) {
-  if ( val . type () == typeid ( Object ) ) {
-    return stringify ( boost::any_cast<Object const&>(val) );
-  }
-  if ( val . type () == typeid ( Array ) ) {
-    return stringify ( boost::any_cast<Array const&>(val) );
-  }
-  if ( val . type () == typeid ( String ) ) {
-    return stringify ( boost::any_cast<String const&>(val) );
-  }
-  if ( val . type () == typeid ( Integer ) ) {
-    return stringify ( boost::any_cast<Integer>(val) );
-  }
-  if ( val . type () == typeid ( Double ) ) {
-    return stringify ( boost::any_cast<Double>(val) );
-  }
-  throw std::runtime_error ("JSON::stringify: Invalid value." );
+  std::cout << "stringify(Value)\n";
+  return boost::apply_visitor ( stringify_visitor (), val );
 }
 
 inline Value
@@ -335,6 +336,7 @@ load ( std::string const& filename ) {
   infile.seekg(0);
   infile.read(&buffer[0], size); 
   infile . close ();
+  std::cout << "Buffer=\"" << buffer << "\"\n";
   return parse ( buffer );
 }
 
@@ -348,7 +350,6 @@ save ( Value const& json, std::string const& filename ) {
   outfile << stringify ( json ) << "\n";
   outfile . close ();
 }
-
 
 }
 

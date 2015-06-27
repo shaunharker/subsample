@@ -139,8 +139,10 @@ assign ( int argc, char * argv [] ) {
 
   std::cout << "Loading samples...\n";
   JSON::Value samples_json = JSON::load ( samples_filename_ );
-  JSON::Array sample_array = samples_json["sample"];
-  JSON::String basepath = samples_json["path"];
+  std::cout << JSON::stringify(samples_json) << "\n";
+  JSON::Array sample_array = samples_json["sample"s];
+  JSON::String basepath = samples_json["path"s];
+  std::cout << JSON::stringify(sample_array) << "\n";
   for ( JSON::Array const& sample : sample_array ) {
     Point p;
     for ( JSON::String const& path : sample ) {
@@ -183,10 +185,10 @@ handleResults ( std::vector<Point> const& results ) const {
   std::sort ( subsample_indices . begin (), subsample_indices . end () );
 
   JSON::Object output;
-  output["sample"] = samples_filename_;
-  output["delta"] = delta_;
-  output["p"] = metric_;
-  output["subsample"] = subsample_indices;
+  output["sample"s] = samples_filename_;
+  output["delta"s] = delta_;
+  output["p"s] = metric_;
+  output["subsample"s] = subsample_indices;
   JSON::save( output, subsample_filename_ );
 #ifdef SUBSAMPLEDISTANCE_H
   std::cout << "Distance calculations = " << global_distance_count << "\n";
@@ -254,13 +256,14 @@ assign ( int argc, char * argv [] ) {
   distance_filename_ = argv[3];
   JSON::Value samples_json = JSON::load ( samples_filename_ );
   JSON::Value subsamples_json = JSON::load ( subsample_filename_ );
-  JSON::Array sample_array = samples_json["sample"];
-  JSON::String basepath = samples_json["path"];
-  JSON::Array subsample_array = subsamples_json["subsample"];
-  metric_ = (JSON::Double) subsamples_json [ "p" ];
+  JSON::Array& sample_array = samples_json["sample"s];
+  JSON::String& basepath = samples_json["path"s];
+  JSON::Array& subsample_array = subsamples_json["subsample"s];
+  metric_ = (JSON::Double) subsamples_json [ "p"s ];
   for ( JSON::Value const& i : subsample_array ) {
     Point p;
-    for ( JSON::String const& path : (JSON::Array)sample_array[(JSON::Integer)i] ) {
+    JSON::Array& tuple = sample_array[i];
+    for ( JSON::String const& path : tuple ) {
       p.pd.push_back(PersistenceDiagram(basepath + "/" + path));
     }
     subsamples_.push_back(p);
