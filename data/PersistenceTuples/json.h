@@ -8,8 +8,12 @@
 #include <vector>
 #include <string>
 #include <sstream>
+#include <fstream>
 #include <unordered_set>
 #include <cstdint>
+#include <cctype>
+#include <exception>
+#include <stdexcept>
 
 namespace JSON {
 
@@ -17,6 +21,7 @@ namespace JSON {
 
 class Value;
 typedef int64_t Integer;
+typedef double Double;
 typedef std::string String;
 typedef std::vector<Value> Array;
 typedef std::unordered_map<String,Value> Object;
@@ -31,6 +36,15 @@ parse ( std::string const& str );
 std::string 
 stringify ( Value const& json );
 
+/// load
+///   Parse contents of file into JSON object
+Value
+load ( std::string const& filename );
+
+/// save
+///    Serialize contents of JSON object to file
+void
+save ( Value const& json, std::string const& filename );
 
 // Definitions
 class Value : public boost::any {
@@ -58,38 +72,36 @@ public:
       Object const& object = boost::any_cast<Object const&> ( *this );
       return object . find ( name ) -> second;
     }
-    throw std::runtime_error ( "JSON: Cannot call accessor on non-Object.");
+    throw std::runtime_error ( "JSON: Cannot call string accessor on non-Object.");
   }
   Value & operator [] ( std::string const& name ) {
     if ( type () == typeid ( Object ) ) {
       Object & object = boost::any_cast<Object &> ( *this );
       return object[name];
     }
-    throw std::runtime_error ( "JSON: Cannot call accessor on non-Object.");
+    throw std::runtime_error ( "JSON: Cannot call string accessor on non-Object.");
   }
 
-  /// Integer methods
-  operator int32_t () const {
-    if ( type () == typeid ( Integer ) ) return boost::any_cast<Integer>(*this);
-    throw std::runtime_error ( "JSON: Cannot cast non-integer type to integer.");
-  }
-  operator int64_t () const { 
-    if ( type () == typeid ( Integer ) ) return boost::any_cast<Integer>(*this);
-    throw std::runtime_error ( "JSON: Cannot cast non-integer type to integer.");
-  }
-  operator uint32_t () const { 
-    if ( type () == typeid ( Integer ) ) return boost::any_cast<Integer>(*this);
-    throw std::runtime_error ( "JSON: Cannot cast non-integer type to integer.");
-  }
-  operator uint64_t () const { 
-    if ( type () == typeid ( Integer ) ) return boost::any_cast<Integer>(*this);
-    throw std::runtime_error ( "JSON: Cannot cast non-integer type to integer.");
-  }
-
-  /// String methods
-  operator std::string () const { 
+  /// Conversions
+  operator String () const { 
     if ( type () == typeid ( String ) ) return boost::any_cast<String>(*this);
-    throw std::runtime_error ( "JSON: Cannot cast non-string type to string.");
+    throw std::runtime_error ( "JSON: Cannot cast to string.");
+  }
+  operator Array () const { 
+    if ( type () == typeid ( Array ) ) return boost::any_cast<Array>(*this);
+    throw std::runtime_error ( "JSON: Cannot cast to array.");
+  }
+  operator Object () const { 
+    if ( type () == typeid ( Object ) ) return boost::any_cast<Object>(*this);
+    throw std::runtime_error ( "JSON: Cannot cast to object.");
+  }
+  explicit operator Integer () const {
+    if ( type () == typeid ( Integer ) ) return boost::any_cast<Integer>(*this);
+    throw std::runtime_error ( "JSON: Cannot cast to integer.");
+  }
+  explicit operator Double () const { 
+    if ( type () == typeid ( Double ) ) return boost::any_cast<Double>(*this);
+    throw std::runtime_error ( "JSON: Cannot cast to integer.");
   }
 };
 
@@ -106,7 +118,7 @@ parse ( std::string const& str ) {
   for ( uint64_t i = 0; i < N; ++ i ) {
     //std::cout << i << " " << str[i] << "\n";
     if ( numeric_mode ) {
-      if ( str [ i ] < '0' || str [ i ] > '9' ) {
+      if ( str [ i ] == ' ' || str [ i ] == ']' || str [ i ] == '}' ) {
         numeric_mode = false;
         //std::cout << "NUMERIC MODE OFF\n";
         match [ work_stack . top () ] = i;
@@ -122,7 +134,7 @@ parse ( std::string const& str ) {
       }
       if ( str [ i ] == '\\' ) ++ i; // skip escaped character
     } else {
-      if ( str[i] >= '0' && str[i] <= '9' ) {
+      if ( str[i]=='+' || str[i]=='-' || str[i]=='.' || (str[i] >= '0' && str[i] <= '9') ) {
         work_stack . push ( i );
         left . push_back ( i );
         numeric_mode = true;
@@ -169,7 +181,7 @@ parse ( std::string const& str ) {
   };
 
   std::function<Value(void)> 
-    parse_object, parse_array, parse_string, parse_integer, parse_item;
+    parse_object, parse_array, parse_string, parse_numeric, parse_item;
   parse_object = [&](){
     //std::cout << "parse_object begin " << item << "\n";
     uint64_t this_item = item ++;
@@ -211,11 +223,16 @@ parse ( std::string const& str ) {
     ++ item;
     return data;
   };
-  parse_integer = [&](){
+  parse_numeric = [&](){
     std::string data = str . substr (left[item], right[item]-left[item]);
-    //std::cout << "parse_integer (" << item << "):\"" << data << "\"\n";
+    if ( std::all_of(data.begin(), data.end(), ::isdigit) ) {
+      if ( std::to_string(std::stoll(data)) == data ) {
+        ++ item;
+        return (Value) (std::stoll(data));
+      } 
+    }
     ++ item;
-    return Integer (std::stoll(data));
+    return (Value) (std::stod(data));
   }; 
 
   parse_item = [&](){
@@ -231,7 +248,7 @@ parse ( std::string const& str ) {
         result = parse_string ();
         break;
       default :
-        result = parse_integer ();
+        result = parse_numeric ();
         break;
     }
     return result;
@@ -243,6 +260,11 @@ parse ( std::string const& str ) {
 inline std::string 
 stringify ( Integer i ) {
   return std::to_string ( i );
+}
+
+inline std::string 
+stringify ( Double d ) {
+  return std::to_string ( d );
 }
 
 inline std::string 
@@ -283,19 +305,50 @@ stringify ( Object const& obj ) {
 inline std::string 
 stringify ( Value const& val ) {
   if ( val . type () == typeid ( Object ) ) {
-    return stringify ( boost::any_cast<Object const&> val );
+    return stringify ( boost::any_cast<Object const&>(val) );
   }
   if ( val . type () == typeid ( Array ) ) {
-    return stringify ( boost::any_cast<Array const&> val );
+    return stringify ( boost::any_cast<Array const&>(val) );
   }
   if ( val . type () == typeid ( String ) ) {
-    return stringify ( boost::any_cast<String const&> val );
+    return stringify ( boost::any_cast<String const&>(val) );
   }
   if ( val . type () == typeid ( Integer ) ) {
-    return stringify ( boost::any_cast<Integer> val );
+    return stringify ( boost::any_cast<Integer>(val) );
+  }
+  if ( val . type () == typeid ( Double ) ) {
+    return stringify ( boost::any_cast<Double>(val) );
   }
   throw std::runtime_error ("JSON::stringify: Invalid value." );
 }
+
+inline Value
+load ( std::string const& filename ) {
+  std::ifstream infile ( filename );
+  if ( not infile ) {
+    throw std::runtime_error ( "JSON::load. Could not open file " 
+                               + filename + " for reading." );
+  }
+  infile.seekg(0, std::ios::end);
+  size_t size = infile.tellg();
+  std::string buffer(size, ' ');
+  infile.seekg(0);
+  infile.read(&buffer[0], size); 
+  infile . close ();
+  return parse ( buffer );
+}
+
+inline void
+save ( Value const& json, std::string const& filename ) {
+  std::ofstream outfile ( filename );
+  if ( not outfile ) {
+    throw std::runtime_error ( "JSON::save. Could not open " 
+                               + filename + " for writing.");
+  }
+  outfile << stringify ( json ) << "\n";
+  outfile . close ();
+}
+
 
 }
 

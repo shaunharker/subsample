@@ -36,10 +36,15 @@ private:
   }
 };
 
+inline Distance 
+getDistanceFunctor ( int argc, char * argv [] ) {
+  return Distance ();
+}
+
 /// Functions for Subsample.cpp
 
 inline int64_t 
-getCohortSize ( void ) {
+getCohortSize ( int argc, char * argv [] ) {
   return 1000;
 }
 
@@ -47,7 +52,7 @@ inline std::vector<Point>
 getSamples ( int argc, char * argv [] ) {
   std::vector<Point> samples;
   if ( argc != 4 ) {
-    std::cout << "Give four arguments: /path/to/data number_of_samples delta \n";
+    std::cout << "Give three arguments: /path/to/data number_of_samples delta \n";
     return samples;
   }
   std::cout << "Loading samples...\n";
@@ -58,8 +63,8 @@ getSamples ( int argc, char * argv [] ) {
     ss0 << folder_name << "/" << INPUTPREFIX << i << INPUTSUFFIX0;
     ss1 << folder_name << "/" << INPUTPREFIX << i << INPUTSUFFIX1;
     samples . push_back ( Point () );
-    samples . back () . x . load ( ss0 . str () . c_str () );
-    samples . back () . y . load ( ss1 . str () . c_str () );
+    samples . back () . x . load ( ss0 . str () );
+    samples . back () . y . load ( ss1 . str () );
     samples . back () . id = i;
   }
   std::cout << "Finished loading samples.\n";
@@ -69,11 +74,11 @@ getSamples ( int argc, char * argv [] ) {
 
 inline double
 getDelta ( int argc, char * argv [] ) {
-  return std::atof ( argv[3] );
+  return std::stod ( argv[3] );
 }
 
 inline void
-handleResults ( std::vector<Point> const& results ) {
+handleResults ( int argc, char * argv [], std::vector<Point> const& results ) {
   std::cout << "There were " << results . size () 
             << " points in the subsample.\n";
   std::vector<int64_t> subsample_indices;
@@ -106,7 +111,7 @@ getSubsamples ( int argc, char * argv [] ) {
   std::string folder_name = std::string ( argv[1] );
   std::stringstream ss;
   ss << argv[2];
-  std::ifstream infile ( ss . str () . c_str () );
+  std::ifstream infile ( ss . str () );
   std::vector<int64_t> sample_indices;
   while ( 1 ) {
     int64_t i;
@@ -123,8 +128,8 @@ getSubsamples ( int argc, char * argv [] ) {
     ss0 << folder_name << "/" << INPUTPREFIX << sample_index << INPUTSUFFIX0;
     ss1 << folder_name << "/" << INPUTPREFIX << sample_index << INPUTSUFFIX1;
     subsamples . push_back ( Point () );
-    subsamples . back () . x . load ( ss0 . str () . c_str () );
-    subsamples . back () . y . load ( ss1 . str () . c_str () );
+    subsamples . back () . x . load ( ss0 . str () );
+    subsamples . back () . y . load ( ss1 . str () );
     subsamples . back () . id = i;
   }
   std::cout << "Finished loading subsamples.\n";

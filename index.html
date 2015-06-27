@@ -464,11 +464,11 @@ MathJax.Hub.Config({
 <div class="sect3">
 <h4 id="_subsample">Subsample</h4>
 <div class="paragraph">
-<p>subsample will accept three command line arguments:</p>
+<p>subsample will accept four command line arguments:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">/path/to/sample.json delta p</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">/path/to/sample.json delta p /path/to/subsample.json</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -480,10 +480,11 @@ MathJax.Hub.Config({
 </div>
 </div>
 <div class="paragraph">
-<p>The sample.json file may contain additional fields which can be ignored.</p>
+<p>and <code>delta</code> is the subsampling parameter (we want to achieve a delta-sparse, delta-dense subsample).
+The sample.json file may contain additional fields which can be ignored.</p>
 </div>
 <div class="paragraph">
-<p>The output of the subsample program will be</p>
+<p>The output of the subsample program will be stored in the supplied filename <code>/path/to/subsample.json</code> and will be of the following form:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -494,7 +495,15 @@ MathJax.Hub.Config({
 <div class="sect3">
 <h4 id="_distance">Distance</h4>
 <div class="paragraph">
-<p>The input to the distance program is the output from the subsample program. Optionally the two parameters <code>delta</code> and <code>p</code> may be given, in which case they will override the values in the file.</p>
+<p>The input to the distance program is the output from the subsample program. The arguments are</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">/path/to/sample.json /path/to/subsample.json /path/to/distance.txt</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>where the first two paths are the original sample and the output of the subsample program, and the third path is the location the distance matrix is to be stored.</p>
 </div>
 </div>
 </div>
@@ -504,7 +513,7 @@ MathJax.Hub.Config({
 <div id="footer">
 <div id="footer-text">
 Version 1.0<br>
-Last updated 2015-06-26 15:22:30 EDT
+Last updated 2015-06-27 14:01:37 EDT
 </div>
 </div>
 </body>

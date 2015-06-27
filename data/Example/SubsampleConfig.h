@@ -16,8 +16,12 @@
 ///        std::vector<Point> getSamples ( int argc, char * argv [] );
 ///       which returns the points to subsample from.
 ///
+///     + A function
+///         Distance getDistanceFunctor ( int argc, char * argv [] );
+///       which returns a distance object to be used for the calculations.
+///
 ///     + A function 
-///        int64_t getCohortSize ( void );
+///        int64_t getCohortSize ( int argc, char * argv [] );
 ///       which returns the number of subsamples we should attempt to deal 
 ///       with in parallel. (Suggestion: use the number of processor cores
 ///       on the cluster).
@@ -27,7 +31,7 @@
 ///        double getDelta ( int argc, char * argv [] );
 ///
 ///     + A function 
-///        void handleResults ( std::vector<Point> const& results );
+///        void handleResults ( int argc, char * argv [], std::vector<Point> const& results );
 ///       which receives the "Point"s in the computed subsample and 
 ///       produces the desired output.
 
@@ -84,8 +88,13 @@ public:
   }
 };
 
+inline Distance 
+getDistanceFunctor ( int argc, char * argv [] ) {
+  return Distance ();
+}
+
 inline int64_t 
-getCohortSize ( void ) {
+getCohortSize ( int argc, char * argv [] ) {
   return 1000;
 }
 
@@ -109,7 +118,7 @@ getDelta ( int argc, char * argv [] ) {
 }
 
 inline void
-handleResults ( std::vector<Point> const& results ) {
+handleResults ( int argc, char * argv [], std::vector<Point> const& results ) {
   std::cout << "There were " << results . size () 
             << " points in the subsample.\n";
   std::ofstream outfile ( "subsample.txt" );

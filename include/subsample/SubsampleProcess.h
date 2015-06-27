@@ -38,6 +38,8 @@ private:
   std::stack<std::pair<int64_t,std::pair<T,T> > > work_items_;
   boost::shared_ptr<boost::thread> thread_ptr;
   mutable int64_t time_delay_;
+  int64_t cohort_size_;
+  SubsampleConfig config_;
 };
 
 template < class T, class D >
@@ -112,10 +114,11 @@ public:
                     boost::mutex * mutex,
                     bool * all_done, 
                     std::stack<std::pair<int64_t,std::pair<T,T > > > * work_items,
-                    boost::shared_ptr<D> distance ) 
+                    boost::shared_ptr<D> distance, 
+                    int64_t cohort_size ) 
     : mt_(mt), samples_(samples), delta_(delta), 
       ready_(ready), mutex_(mutex), all_done_(all_done), 
-      work_items_(work_items), distance_(distance) {}
+      work_items_(work_items), distance_(distance), cohort_size_(cohort_size) {}
   void operator () ( void );
   template < class FunctionObject > void
   parallel ( std::vector<typename FunctionObject::ReturnType> * results,
@@ -131,6 +134,7 @@ private:
   std::stack<std::pair<int64_t,std::pair<T,T > > > * work_items_;
   boost::shared_ptr<D> distance_;
   int64_t time_delay_;
+  int64_t cohort_size_;
 };
 
 template < class T, class D >
@@ -144,9 +148,9 @@ operator () ( void ) {
     std::vector<int64_t> candidates;
     /* Stage 1 */ {
       AspirationFunctor<T,D> functor ( mt_, samples_, delta_ );
-      while ( N < samples_ . size () && candidates . size () < getCohortSize () ) {
+      while ( N < samples_ . size () && candidates . size () < cohort_size_ ) {
         std::vector<int64_t> arguments;
-        while ( N < samples_ . size () && arguments . size () < getCohortSize () ) {
+        while ( N < samples_ . size () && arguments . size () < cohort_size_ ) {
           arguments . push_back ( N );
           ++ N;
         }
@@ -216,7 +220,7 @@ operator () ( void ) {
       if ( accepted [ i ] ) {
         std::vector<int64_t> & adjacency_list = 
           adjacency_structure [ i ];
-        BOOST_FOREACH ( int64_t j, adjacency_list ) {
+        for ( int64_t j : adjacency_list ) {
           if ( i == j ) continue;
           accepted [ j ] = false;
         }
@@ -340,22 +344,24 @@ parallel ( std::vector<typename FunctionObject::ReturnType> * results,
 template < class T, class D >
 void SubsampleProcess<T,D>::
 command_line ( int argc, char * argv [] ) {
+  config_ . assign ( argc, argv );
   argc_ = argc;
   argv_ = argv;
   time_delay_ = 1;
-  distance_ . reset ( new D );
+  distance_ . reset ( new D ( config_ . getDistanceFunctor () ) );
+  cohort_size_ = config_ . getCohortSize ();
 }
 
 template < class T, class D >
 void SubsampleProcess<T,D>::
 initialize ( void ) {
   all_done_ = false;
-  samples_ = getSamples ( argc_, argv_ );
-  delta_   = getDelta ( argc_, argv_ );
+  samples_ = config_ . getSamples ();
+  delta_   = config_ . getDelta ();
   mt_ . assign ( distance_ );
   thread_ptr . reset ( new boost::thread 
     ( SubsampleThread<T,D> ( &mt_, samples_, delta_, &ready_, &mutex_, 
-                             &all_done_, &work_items_, distance_ ) ) );
+                             &all_done_, &work_items_, distance_, cohort_size_ ) ) );
 }
 
 template < class T, class D >
@@ -441,10 +447,10 @@ void SubsampleProcess<T,D>::
 finalize ( void ) {
   std::cout << "finalize.\n";
   std::vector<T> results;
-  BOOST_FOREACH ( T const& p, mt_ ) {
+  for ( T const& p : mt_ ) {
     results . push_back ( p );
   }
-  handleResults ( results );
+  config_ . handleResults ( results );
 }
 
 #endif

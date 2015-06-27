@@ -5,6 +5,8 @@
 #define PERSISTENCEDIAGRAM
 
 #include <algorithm>
+#include <exception>
+#include <stdexcept>
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -77,11 +79,11 @@ public:
   using Base::iterator;
   using Base::const_iterator;
   using Base::operator[];
-  void load ( char const* filename ) {
+  void load ( std::string const& filename ) {
     clear ();
     std::ifstream infile ( filename );
     if ( not infile . good () ) {
-      throw "PersistenceDiagram::load. File not found.\n";
+      throw std::runtime_error("PersistenceDiagram::load. File not found.\n");
     }
     std::string line;
     while ( std::getline ( infile, line ) ) {
@@ -106,6 +108,10 @@ public:
       if ( (*this)[i].death == -1.0 ) (*this)[i].death = 100000.0;
     }
     //std::cout << "Loaded a persistence diagram of size " << size () << "\n";
+  }
+  PersistenceDiagram ( void ) {}
+  PersistenceDiagram ( std::string const& filename ) {
+    load ( filename );
   }
   friend class boost::serialization::access; 
   template<class Archive>

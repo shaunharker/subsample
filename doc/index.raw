@@ -14,24 +14,28 @@ v1.0, 2015-06-26
 === PersistenceTuples ===
 ==== Subsample ====
 
-subsample will accept three command line arguments:
+subsample will accept four command line arguments:
 ```bash
-/path/to/sample.json delta p
+/path/to/sample.json delta p /path/to/subsample.json
 ```
 where `sample.json` is a file containing paths to persistence diagrams
 ```json
 {"path":"/base/folder","sample":[["...","...","..."],["...","...","..."],["...","...","..."],...]}
 ```
-
+and `delta` is the subsampling parameter (we want to achieve a delta-sparse, delta-dense subsample).
 The sample.json file may contain additional fields which can be ignored.
 
-The output of the subsample program will be
+The output of the subsample program will be stored in the supplied filename `/path/to/subsample.json` and will be of the following form:
 ```json
 {"sample":"/path/to/sample.json","delta":delta, "p": p, "subsample":[...]}
 ```
 
 ==== Distance ====
 
-The input to the distance program is the output from the subsample program. Optionally the two parameters `delta` and `p` may be given, in which case they will override the values in the file.
+The input to the distance program is the output from the subsample program. The arguments are
+```bash
+/path/to/sample.json /path/to/subsample.json /path/to/distance.txt
+```
+where the first two paths are the original sample and the output of the subsample program, and the third path is the location the distance matrix is to be stored.
 
 

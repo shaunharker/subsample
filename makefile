@@ -1,7 +1,8 @@
 CC = mpicxx
 CXX = mpicxx
 BOOST = /share/data/sharker/opt
-CXXFLAGS = -I../cluster-delegator/include -I./include -I$(MODELDIR) -I$(BOOST)/include
+MODELDIR = ./data/PersistenceTuples
+CXXFLAGS = -DNDEBUG -O3 -std=c++11 -I../cluster-delegator/include -I./include -I$(MODELDIR) -I$(BOOST)/include
 LDFLAGS = -L$(BOOST)/lib
 LDFLAGS += -Wl,-rpath,"$(abspath $(BOOST))/lib"
 LDLIBS = -lboost_serialization -lboost_thread -lboost_system -lboost_chrono

@@ -20,6 +20,7 @@ private:
   int64_t N_;
   int64_t last_job_;
   int64_t result_index_;
+  DistanceMatrixConfig config_;
   std::vector<Point> subsamples_;
   std::vector<double> results_;
   Distance distance_;
@@ -27,13 +28,15 @@ private:
 
 void ComputeMatrixProcess::
 command_line ( int argc, char * argv [] ) {
+  config_ . assign ( argc, argv );
   argc_ = argc;
   argv_ = argv;
+  distance_ = config_ . getDistanceFunctor ();
 }
 
 void ComputeMatrixProcess::
 initialize ( void ) {
-  subsamples_ = getSubsamples ( argc_, argv_ );
+  subsamples_ = config_ . getSubsamples ();
   job_num_ = 0;
   result_index_ = 0;
   N_ = subsamples_ . size ();
@@ -87,7 +90,9 @@ accept ( const Message &result ) {
 void ComputeMatrixProcess::
 finalize ( void ) {
   //std::cout << "finalize.\n";
-  std::ofstream outfile ( DISTANCEFILENAME );
+  std::string filename = config_ . getOutputFile ();
+  std::ofstream outfile ( filename );
+  if ( not outfile ) throw std::runtime_error ( "Invalid output filename " + filename );
   for ( int64_t i = 0; i < results_ . size (); ++ i ) {
     if ( i > 0 ) outfile << " ";
     outfile << results_[i];
