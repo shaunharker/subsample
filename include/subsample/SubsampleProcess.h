@@ -144,7 +144,8 @@ operator () ( void ) {
   int64_t N = 0;
   while ( N < samples_ . size () ) {
     // Stage 1. Aspiration Search Stage (identify candidates)
-    std::cout << "Stage 1. N = " << N << "\n";
+    //std::cout << "Stage 1. N = " << N << "\n";
+    //std::cout << "cohort_size_ = " << cohort_size_ << "\n";
     std::vector<int64_t> candidates;
     /* Stage 1 */ {
       AspirationFunctor<T,D> functor ( mt_, samples_, delta_ );
@@ -164,7 +165,7 @@ operator () ( void ) {
       }
     }
     // Stage 2. Build candidate Metric Tree.
-    std::cout << "Stage 2. N = " << N << "\n";
+    //std::cout << "Stage 2. N = " << N << "\n";
     MetricTree<T,D> candidate_mt;
     candidate_mt . assign ( distance_ );
     boost::unordered_map<int64_t, int64_t> iterator_to_candidate_number;
@@ -183,12 +184,12 @@ operator () ( void ) {
     }
     
     // DEBUG 
-    std::cout << "candidate_mt . size () == " << candidate_mt . size () << "\n";
+    //std::cout << "candidate_mt . size () == " << candidate_mt . size () << "\n";
     // END DEBUG
 
     // Stage 3. Build adjacency lists for delta-closeness in 
     //          candidate metric tree.
-    std::cout << "Stage 3. N = " << N << "\n";
+    //std::cout << "Stage 3. N = " << N << "\n";
     std::vector< std::vector<int64_t> > adjacency_structure ( candidates . size () );
     /* Stage 3 */ {
       DeltaCloseFunctor<T,D> functor ( &candidate_mt, samples_, delta_ );
@@ -198,23 +199,23 @@ operator () ( void ) {
       }
       std::vector< std::vector<iterator> > results;
       parallel ( &results, arguments, functor );
-      std::cout << "Building adjacency structure.\n";
+      //std::cout << "Building adjacency structure.\n";
       for ( int i = 0; i < results . size (); ++ i ) {
-        std::cout << "adjacency_structure[" << i << "] = ";
+        //std::cout << "adjacency_structure[" << i << "] = ";
         for ( int j = 0; j < results [ i ] . size (); ++ j ) {
           adjacency_structure [ i ] . 
             push_back ( iterator_to_candidate_number 
               [ candidate_mt . index ( results [ i ] [ j ] ) ] );
-          std::cout << adjacency_structure [ i ] . back () << " ";
+          //std::cout << adjacency_structure [ i ] . back () << " ";
         }
-        std::cout << "\n";
+        //std::cout << "\n";
       }
     }
 
     // Stage 4. Compute a maximal independent set of the graph on 
     //          candidates described by adjacency_structure. We use 
     //          a serial greedy algorithm.
-    std::cout << "Stage 4. N = " << N << "\n";
+    //std::cout << "Stage 4. N = " << N << "\n";
     std::vector<bool> accepted ( candidates . size (), true );
     for ( int i = 0; i < candidates . size (); ++ i ) {
       if ( accepted [ i ] ) {
@@ -228,7 +229,7 @@ operator () ( void ) {
     }
 
     // Stage 5. Insert accepted candidates.
-    std::cout << "Stage 5. N = " << N << "\n";
+    //std::cout << "Stage 5. N = " << N << "\n";
     /* Stage 5 */ { 
       InsertFunctor<T,D> functor ( mt_, samples_ );
       std::vector<int64_t> results;
@@ -242,7 +243,7 @@ operator () ( void ) {
     }
   }
   mutex_ -> lock ();
-  std::cout << "All done! " << all_done_ << "\n";
+  //std::cout << "All done! \n";
   * all_done_ = true;
   mutex_ -> unlock ();
 }
@@ -369,7 +370,7 @@ int SubsampleProcess<T,D>::
 prepare ( Message & job ) {
   mutex_ . lock ();
   if ( all_done_ ) { 
-    std::cout << "prepare. All done!\n";
+    //std::cout << "prepare. All done!\n";
     mutex_ . unlock ();
     return 1;
   }
@@ -445,7 +446,7 @@ accept ( const Message &result ) {
 template < class T, class D >
 void SubsampleProcess<T,D>::
 finalize ( void ) {
-  std::cout << "finalize.\n";
+  //std::cout << "finalize.\n";
   std::vector<T> results;
   for ( T const& p : mt_ ) {
     results . push_back ( p );

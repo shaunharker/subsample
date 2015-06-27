@@ -118,6 +118,13 @@ private:
 inline Value
 parse ( std::string const& str ) {
   // Build balanced parentheses structure
+  auto is_numeric = [](char c){ 
+    if ( std::isspace(c) ) return false;
+    return c != '\"' && c != '[' && c != ']' 
+        && c != '{' & c != '}' && c != ',' && c != ':';
+//  return c =='+' || c =='-' || c =='.' || (c >= '0' && c <= '9');
+  };
+
   std::vector<uint64_t> left;
   std::unordered_map<uint64_t, uint64_t> match;
   std::stack<uint64_t> work_stack;
@@ -127,7 +134,7 @@ parse ( std::string const& str ) {
   for ( uint64_t i = 0; i < N; ++ i ) {
     //std::cout << i << " " << str[i] << "\n";
     if ( numeric_mode ) {
-      if ( str [ i ] == ' ' || str [ i ] == ']' || str [ i ] == '}' ) {
+      if ( not is_numeric ( str[i] ) ) {
         numeric_mode = false;
         //std::cout << "NUMERIC MODE OFF\n";
         match [ work_stack . top () ] = i;
@@ -143,7 +150,7 @@ parse ( std::string const& str ) {
       }
       if ( str [ i ] == '\\' ) ++ i; // skip escaped character
     } else {
-      if ( str[i]=='+' || str[i]=='-' || str[i]=='.' || (str[i] >= '0' && str[i] <= '9') ) {
+      if ( is_numeric ( str[i] ) ) {
         work_stack . push ( i );
         left . push_back ( i );
         numeric_mode = true;
@@ -166,14 +173,14 @@ parse ( std::string const& str ) {
         if ( work_stack . empty () ||
              (str[work_stack.top()] == '{' && str[i] != '}') ||
              (str[work_stack.top()] == '[' && str[i] != ']')  ) {
-          throw std::runtime_error ("JSON::parse: Invalid string.");
+          throw std::runtime_error ("JSON::parse: Invalid string (1).");
         }
         work_stack . pop ();
       }
     }
   }
   if ( not work_stack . empty () ) {
-    throw std::runtime_error ("JSON::parse: Invalid string.");
+    throw std::runtime_error ("JSON::parse: Invalid string (2).");
   }
 
   uint64_t item = 0;
@@ -192,7 +199,7 @@ parse ( std::string const& str ) {
   std::function<Value(void)> 
     parse_object, parse_array, parse_string, parse_numeric, parse_item;
   parse_object = [&](){
-    std::cout << "parse_object begin " << item << "\n";
+    //std::cout << "parse_object begin " << item << "\n";
     uint64_t this_item = item ++;
     Object data;
     bool onkey = true;
@@ -201,7 +208,7 @@ parse ( std::string const& str ) {
       if ( onkey ) {
         key = str . substr (left[item]+1, right[item]-left[item]-1);
         onkey = false;
-        std::cout << "parse_object key (" << item << ") " << key << "\n";
+        //std::cout << "parse_object key (" << item << ") " << key << "\n";
         ++ item;
       } else {
         data [ key ] = parse_item ();
@@ -209,27 +216,27 @@ parse ( std::string const& str ) {
       }
     }
     if ( not onkey ) {
-      throw std::runtime_error ("JSON::parse: Invalid string." );
+      throw std::runtime_error ("JSON::parse: Invalid string (3)." );
     }
-    std::cout << "parse_object return " << this_item << "\n";
+    //std::cout << "parse_object return " << this_item << "\n";
     return Value(data);
   };
 
   parse_array = [&](){
-    std::cout << "parse_array begin " << item << "\n";
+    //std::cout << "parse_array begin " << item << "\n";
     uint64_t this_item = item ++;
     Array data;
     while ( isChild ( item, this_item ) ) {
       data . push_back ( parse_item () );
     }
-    std::cout << "parse_array return " << this_item << "\n";
-    std::cout << "parse_array return (cont): " << stringify(data) << "\n";
+    //std::cout << "parse_array return " << this_item << "\n";
+    //std::cout << "parse_array return (cont): " << stringify(data) << "\n";
     return Value(data);  
   };
 
   parse_string = [&](){
     std::string data = str . substr (left[item]+1, right[item]-left[item]-1);
-    std::cout << "parse_string (" << item << "):\"" << data << "\"\n";
+    //std::cout << "parse_string (" << item << "):\"" << data << "\"\n";
     ++ item;
     return Value(data);
   };
@@ -242,6 +249,7 @@ parse ( std::string const& str ) {
       } 
     }
     ++ item;
+    //std::cout << "Double: \"" << data << "\"\n";
     return Value(std::stod(data));
   }; 
 
@@ -261,7 +269,7 @@ parse ( std::string const& str ) {
         result = parse_numeric ();
         break;
     }
-    std::cout << "parse_item: returning with " << stringify(result) << "\n";
+    //std::cout << "parse_item: returning with " << stringify(result) << "\n";
     return result;
   };
 
@@ -272,22 +280,22 @@ class stringify_visitor : public boost::static_visitor<std::string> {
 public:
   /// stringify Integer
   std::string operator()(Integer const& i) const {
-    std::cout << "stringify(Integer)\n";
+    //std::cout << "stringify(Integer)\n";
     return std::to_string ( i );
   }
   /// stringify Double
   std::string operator()(Double const& d) const {
-    std::cout << "stringify(Double)\n";
+    //std::cout << "stringify(Double)\n";
     return std::to_string ( d );
   }
   /// stringify String
   std::string operator()(String const& s) const {
-    std::cout << "stringify(String)\n";
+    //std::cout << "stringify(String)\n";
     return "\"" + s + "\"";
   }
   /// stringify Array
   std::string operator()(Array const& a) const {
-    std::cout << "stringify(Array)\n";
+    //std::cout << "stringify(Array)\n";
     std::stringstream ss;
       ss << "["; 
     bool first = true;
@@ -300,7 +308,7 @@ public:
   }
   /// stringify Object
   std::string operator()(Object const& obj) const {
-    std::cout << "stringify(Object)\n";
+    //std::cout << "stringify(Object)\n";
     std::stringstream ss;
     ss << "{"; 
     bool first = true;
@@ -319,7 +327,7 @@ public:
 
 inline std::string 
 stringify ( Value const& val ) {
-  std::cout << "stringify(Value)\n";
+  //std::cout << "stringify(Value)\n";
   return boost::apply_visitor ( stringify_visitor (), val );
 }
 
@@ -336,7 +344,7 @@ load ( std::string const& filename ) {
   infile.seekg(0);
   infile.read(&buffer[0], size); 
   infile . close ();
-  std::cout << "Buffer=\"" << buffer << "\"\n";
+  //std::cout << "Buffer=\"" << buffer << "\"\n";
   return parse ( buffer );
 }
 

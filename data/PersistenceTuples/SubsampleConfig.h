@@ -52,6 +52,7 @@ public:
         result += std::pow ( WassersteinDistance ( p.pd[i], q.pd[i], p_), p_ );
       }
       result = std::pow ( result, 1.0 / p_ );
+      //std::cout << "Distance = " << result << "\n";
       return result;
     }
   }
@@ -137,21 +138,26 @@ assign ( int argc, char * argv [] ) {
   distance_ = Distance ( metric_ );
   cohort_size_ = 1000;
 
-  std::cout << "Loading samples...\n";
+  //std::cout << "Loading samples...\n";
   JSON::Value samples_json = JSON::load ( samples_filename_ );
-  std::cout << JSON::stringify(samples_json) << "\n";
+  //std::cout << JSON::stringify(samples_json) << "\n";
   JSON::Array sample_array = samples_json["sample"s];
   JSON::String basepath = samples_json["path"s];
-  std::cout << JSON::stringify(sample_array) << "\n";
+  //std::cout << JSON::stringify(sample_array) << "\n";
+  int64_t id = 0;
   for ( JSON::Array const& sample : sample_array ) {
     Point p;
+    p . id = id ++;
     for ( JSON::String const& path : sample ) {
       p.pd.push_back(PersistenceDiagram(basepath + "/" + path));
     }
     samples_.push_back(p);
   }
-  std::cout << "Finished loading samples.\n";
+  //std::cout << "Finished loading samples.\n";
   std::random_shuffle ( samples_ . begin (), samples_ . end () );
+  //std::cout << "There are " << samples_ . size () << " samples.\n";
+  //std::cout << "Delta = " << delta_ << "\n";
+  //std::cout << "Metric = " << metric_ << "\n";
 }
 
 inline Distance SubsampleConfig::
@@ -176,8 +182,8 @@ getDelta ( void ) const {
 
 inline void SubsampleConfig::
 handleResults ( std::vector<Point> const& results ) const {
-  std::cout << "There were " << results . size () 
-            << " points in the subsample.\n";
+  //std::cout << "There were " << results . size () 
+  //          << " points in the subsample.\n";
   std::vector<int64_t> subsample_indices;
   for ( int i = 0; i < results.size(); ++ i ) {
     subsample_indices . push_back ( results[i].id );
@@ -191,7 +197,7 @@ handleResults ( std::vector<Point> const& results ) const {
   output["subsample"s] = subsample_indices;
   JSON::save( output, subsample_filename_ );
 #ifdef SUBSAMPLEDISTANCE_H
-  std::cout << "Distance calculations = " << global_distance_count << "\n";
+  //std::cout << "Distance calculations = " << global_distance_count << "\n";
 #endif
 }
 
@@ -250,11 +256,12 @@ assign ( int argc, char * argv [] ) {
     std::cout << " (Note: the last argument is the output file.)\n";
     throw std::logic_error ( "Bad arguments." );
   }
-  std::cout << "Loading subsamples...\n";
+  //std::cout << "Loading subsamples...\n";
   samples_filename_ = argv[1];
   subsample_filename_ = argv[2];
   distance_filename_ = argv[3];
   JSON::Value samples_json = JSON::load ( samples_filename_ );
+  //std::cout << subsample_filename_ << "\n";
   JSON::Value subsamples_json = JSON::load ( subsample_filename_ );
   JSON::Array& sample_array = samples_json["sample"s];
   JSON::String& basepath = samples_json["path"s];
@@ -262,13 +269,14 @@ assign ( int argc, char * argv [] ) {
   metric_ = (JSON::Double) subsamples_json [ "p"s ];
   for ( JSON::Value const& i : subsample_array ) {
     Point p;
+    p . id = i;
     JSON::Array& tuple = sample_array[i];
     for ( JSON::String const& path : tuple ) {
       p.pd.push_back(PersistenceDiagram(basepath + "/" + path));
     }
     subsamples_.push_back(p);
   }
-  std::cout << "Finished loading subsamples.\n";
+  //std::cout << "Finished loading subsamples.\n";
 }
 
 inline Distance DistanceMatrixConfig::
