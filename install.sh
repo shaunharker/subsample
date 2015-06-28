@@ -29,4 +29,3 @@ cd build
 cmake -DCMAKE_CXX_COMPILER=`which g++` $ARGUMENT ..
 make
 make install
-make test || echo "One or more tests failed.\n"

@@ -36,7 +36,3 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 # Recurse into the "source" subdirectory.
 add_subdirectory (source)
 
-# Tests
-# enable_testing()
-# add_test( all ../tests/test.sh )
-
