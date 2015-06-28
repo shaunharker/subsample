@@ -12,13 +12,17 @@
 #include <algorithm>
 #include <cstdlib>
 #include <cmath>
+#include <limits>
+#include <stdexcept>
+#include <exception>
 
 #include "boost/serialization/serialization.hpp"
 #include "persistence/PersistenceDiagram.h"
 #include "persistence/WassersteinDistance.h"
 #include "persistence/BottleneckDistance.h"
 
-#include "json.h"
+#include "tools/json.hpp"
+using json = nlohmann::json;
 
 class Point {
 public:
@@ -139,16 +143,18 @@ assign ( int argc, char * argv [] ) {
   cohort_size_ = 1000;
 
   //std::cout << "Loading samples...\n";
-  JSON::Value samples_json = JSON::load ( samples_filename_ );
-  //std::cout << JSON::stringify(samples_json) << "\n";
-  JSON::Array sample_array = samples_json["sample"s];
-  JSON::String basepath = samples_json["path"s];
-  //std::cout << JSON::stringify(sample_array) << "\n";
+  
+  std::ifstream sample_infile ( samples_filename_ );
+  json samples_json = json::parse ( sample_infile );
+  sample_infile . close ();
+
+  json sample_array = samples_json["sample"];
+  std::string basepath = samples_json["path"];
   int64_t id = 0;
-  for ( JSON::Array const& sample : sample_array ) {
+  for ( json const& tuple : sample_array ) {
     Point p;
     p . id = id ++;
-    for ( JSON::String const& path : sample ) {
+    for ( std::string const& path : tuple ) {
       p.pd.push_back(PersistenceDiagram(basepath + "/" + path));
     }
     samples_.push_back(p);
@@ -190,12 +196,16 @@ handleResults ( std::vector<Point> const& results ) const {
   }
   std::sort ( subsample_indices . begin (), subsample_indices . end () );
 
-  JSON::Object output;
-  output["sample"s] = samples_filename_;
-  output["delta"s] = delta_;
-  output["p"s] = metric_;
-  output["subsample"s] = subsample_indices;
-  JSON::save( output, subsample_filename_ );
+  json output;
+  output["sample"] = samples_filename_;
+  output["delta"] = delta_;
+  if ( std::isinf ( metric_ ) ) {
+    output["p"] = "inf";
+  } else {
+    output["p"] = metric_;
+  }
+  output["subsample"] = subsample_indices;
+  std::ofstream ( subsample_filename_ ) << output;
 #ifdef SUBSAMPLEDISTANCE_H
   //std::cout << "Distance calculations = " << global_distance_count << "\n";
 #endif
@@ -260,18 +270,28 @@ assign ( int argc, char * argv [] ) {
   samples_filename_ = argv[1];
   subsample_filename_ = argv[2];
   distance_filename_ = argv[3];
-  JSON::Value samples_json = JSON::load ( samples_filename_ );
-  //std::cout << subsample_filename_ << "\n";
-  JSON::Value subsamples_json = JSON::load ( subsample_filename_ );
-  JSON::Array& sample_array = samples_json["sample"s];
-  JSON::String& basepath = samples_json["path"s];
-  JSON::Array& subsample_array = subsamples_json["subsample"s];
-  metric_ = (JSON::Double) subsamples_json [ "p"s ];
-  for ( JSON::Value const& i : subsample_array ) {
+  
+  std::ifstream sample_infile ( samples_filename_ );
+  json samples_json = json::parse ( sample_infile );
+  sample_infile . close ();
+
+  std::ifstream subsample_infile ( subsample_filename_ );
+  json subsamples_json = json::parse ( subsample_infile );
+  subsample_infile . close ();
+
+  json sample_array = samples_json["sample"];
+  std::string basepath = samples_json["path"];
+  json subsample_array = subsamples_json["subsample"];
+  try { 
+    metric_ = subsamples_json [ "p" ];
+  } catch ( ... ) {
+    metric_ = std::numeric_limits<double>::infinity();
+  }
+  for ( int64_t const& i : subsample_array ) {
     Point p;
     p . id = i;
-    JSON::Array& tuple = sample_array[i];
-    for ( JSON::String const& path : tuple ) {
+    json tuple = sample_array[i];
+    for ( std::string const& path : tuple ) {
       p.pd.push_back(PersistenceDiagram(basepath + "/" + path));
     }
     subsamples_.push_back(p);
