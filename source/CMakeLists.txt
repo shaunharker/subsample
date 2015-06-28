@@ -23,6 +23,4 @@ if(MPI_LINK_FLAGS)
 endif()
 
 install(TARGETS ComputeSubsample ComputeDistances
-        RUNTIME DESTINATION bin
-        LIBRARY DESTINATION lib
-        ARCHIVE DESTINATION lib)
+        RUNTIME DESTINATION CMAKE_RUNTIME_OUTPUT_DIRECTORY )
