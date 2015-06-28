@@ -441,6 +441,12 @@ MathJax.Hub.Config({
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#_overview">Overview</a></li>
+<li><a href="#_installation">Installation</a>
+<ul class="sectlevel2">
+<li><a href="#_prerequisites">Prerequisites</a></li>
+<li><a href="#_building">Building</a></li>
+</ul>
+</li>
 <li><a href="#_instructions">Instructions</a>
 <ul class="sectlevel2">
 <li><a href="#_persistencetuples">PersistenceTuples</a></li>
@@ -454,6 +460,55 @@ MathJax.Hub.Config({
 <h2 id="_overview">Overview</h2>
 <div class="sectionbody">
 
+</div>
+</div>
+<div class="sect1">
+<h2 id="_installation">Installation</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_prerequisites">Prerequisites</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Boost 1.58</p>
+</li>
+<li>
+<p>OpenMPI</p>
+</li>
+<li>
+<p>cmake</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_building">Building</h3>
+<div class="paragraph">
+<p>The program does not attempt to install to any system directories. Rather its binaries into its own <code>./bin</code> folder. In order to compile the software, type</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">./install.sh</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If prerequisites are not installed in a default directory (e.g. there are errors relating to Boost) then you can tell the installer to find <code>include</code> and <code>lib</code> directories at another location by passing a command line argument to <code>install.sh</code>. For example, suppose that Boost is installed in</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">/home/sharker/work/include
+/home/sharker/work/lib</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then the installation could succeed with</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">./install.sh /home/sharker/work</code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -513,7 +568,7 @@ The sample.json file may contain additional fields which can be ignored.</p>
 <div id="footer">
 <div id="footer-text">
 Version 1.0<br>
-Last updated 2015-06-27 14:01:37 EDT
+Last updated 2015-06-28 17:28:11 EDT
 </div>
 </div>
 </body>

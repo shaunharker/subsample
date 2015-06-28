@@ -9,6 +9,34 @@ v1.0, 2015-06-26
 
 == Overview ==
 
+== Installation ==
+
+=== Prerequisites ===
+
+* Boost 1.58
+* OpenMPI
+* cmake
+
+=== Building ===
+
+The program does not attempt to install to any system directories. Rather its binaries into its own `./bin` folder. In order to compile the software, type
+
+```bash
+./install.sh
+```
+
+If prerequisites are not installed in a default directory (e.g. there are errors relating to Boost) then you can tell the installer to find `include` and `lib` directories at another location by passing a command line argument to `install.sh`. For example, suppose that Boost is installed in 
+```bash
+/home/sharker/work/include
+/home/sharker/work/lib
+```
+
+Then the installation could succeed with
+
+```bash
+./install.sh /home/sharker/work
+```
+
 == Instructions ==
 
 === PersistenceTuples ===
