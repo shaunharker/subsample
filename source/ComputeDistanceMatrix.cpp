@@ -3,7 +3,7 @@
 /// Date: July 17, 2014
 #include <vector>
 #include "delegator/delegator.h" 
-#include "SubsampleConfig.h" // Defines class Point, class Distance
+#include "subsample/SubsampleConfig.h" // Defines class Point, class Distance
 
 class ComputeMatrixProcess : public Coordinator_Worker_Process {
 public:

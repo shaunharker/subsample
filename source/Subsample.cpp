@@ -4,8 +4,7 @@
 #include "delegator/delegator.h" 
 #include "subsample/SubsampleDistance.h"
 #include "subsample/SubsampleProcess.h" 
-
-#include "SubsampleConfig.h" // Defines class Point, class Distance
+#include "subsample/SubsampleConfig.h" // Defines class Point, class Distance
 
 int main ( int argc, char * argv [] ) {
   typedef SubsampleProcess<Point,SubsampleDistance<Point, Distance> > Process;
