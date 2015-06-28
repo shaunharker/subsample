@@ -12,9 +12,11 @@ DISTANCE = source/ComputeDistanceMatrix.o
 
 Subsample: $(SUBSAMPLE)
 	$(CC) $(LDFLAGS) $(SUBSAMPLE) -o $@ $(LDLIBS)
-#	mv Subsample ./bin
+	mv Subsample ./bin
 ComputeDistanceMatrix: $(DISTANCE)
 	$(CC) $(LDFLAGS) $(DISTANCE) -o $@ $(LDLIBS)
-#	mv ComputeDistanceMatrix ./bin
+	mv ComputeDistanceMatrix ./bin
 clean:
 	rm -f ./source/*.o
+	rm -f ./bin/Subsample
+	rm -f ./bin/ComputeDistanceMatrix
