@@ -1,0 +1,8 @@
+#!/bin/bash
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
+## Later set this up to check which scheduler (PBS, SGE, SLURM)
+
+## SLURM
+sbatch $DIR/slurm.sh "$@"
+
