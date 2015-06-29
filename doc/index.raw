@@ -62,8 +62,8 @@ The output of the subsample program will be stored in the supplied filename `/pa
 
 The input to the distance program is the output from the subsample program. The arguments are
 ```bash
-/path/to/sample.json /path/to/subsample.json /path/to/distance.txt
+/path/to/subsample.json /path/to/distance.txt
 ```
-where the first two paths are the original sample and the output of the subsample program, and the third path is the location the distance matrix is to be stored.
+where the first is a path to the subsample (which contains a path to the original sample), and the second path is the location the distance matrix is to be stored.
 
 

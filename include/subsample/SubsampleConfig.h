@@ -241,8 +241,6 @@ public:
   getOutputFile ( void ) const;
 
 private:
-  std::string samples_filename_;
-  std::string subsample_filename_;
   std::string distance_filename_;
 
   double delta_;
@@ -261,23 +259,24 @@ DistanceMatrixConfig ( int argc, char * argv [] ) {
 
 inline void DistanceMatrixConfig::
 assign ( int argc, char * argv [] ) {
-  if ( argc != 4 ) {
-    std::cout << "Give three arguments: /path/to/sample.json /path/to/subsample.json /path/to/distance.txt\n";
-    std::cout << " (Note: the last argument is the output file.)\n";
+  if ( argc != 3 ) {
+    std::cout << "Give two arguments: /path/to/subsample.json /path/to/distance.txt\n";
+    std::cout << " (Note: the second argument is the output file.)\n";
     throw std::logic_error ( "Bad arguments." );
   }
   //std::cout << "Loading subsamples...\n";
-  samples_filename_ = argv[1];
-  subsample_filename_ = argv[2];
-  distance_filename_ = argv[3];
+  std::string subsample_filename = argv[1];
+  distance_filename_ = argv[2];
   
-  std::ifstream sample_infile ( samples_filename_ );
-  json samples_json = json::parse ( sample_infile );
-  sample_infile . close ();
-
-  std::ifstream subsample_infile ( subsample_filename_ );
+  std::ifstream subsample_infile ( subsample_filename );
   json subsamples_json = json::parse ( subsample_infile );
   subsample_infile . close ();
+
+  std::string samples_filename = subsamples_json["sample"];
+
+  std::ifstream sample_infile ( samples_filename );
+  json samples_json = json::parse ( sample_infile );
+  sample_infile . close ();
 
   json sample_array = samples_json["sample"];
   std::string basepath = samples_json["path"];
