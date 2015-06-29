@@ -25,7 +25,9 @@ notifications:
     on_failure: always
 before_install:
   - ./.install/boost.sh thread,system,serialization `pwd`
-  - ./.install/delegator.sh `pwd`
-  - sudo ./.install/mpi.sh $MPI
+  - ls ./include
+  - ls ./lib
+#  - ./.install/delegator.sh `pwd`
+#  - sudo ./.install/mpi.sh $MPI
 script: 
   - ./install.sh ./
