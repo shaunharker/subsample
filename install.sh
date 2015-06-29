@@ -15,13 +15,11 @@ if [ $# -ge 1 ]; then
     fi
     ARGUMENT="-DCMAKE_PREFIX_PATH=${PREFIX} -DUSER_INCLUDE_PATH=${PREFIX}/include -DUSER_LIBRARY_PATH=${PREFIX}/lib"
 fi
-
+ARGUMENT="$ARGUMENT -DCMAKE_BUILD_TYPE=Release"
 cd ${CUR_DIR}
 rm -rf build
 mkdir build
 cd build
-# Note: we pass `which g++` because apparently
-#  CMake doesn't necessarily pick the compiler on the path
 cmake $ARGUMENT ..
 make
 make install

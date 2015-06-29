@@ -83,7 +83,7 @@ public:
     clear ();
     std::ifstream infile ( filename );
     if ( not infile . good () ) {
-      throw std::runtime_error("PersistenceDiagram::load. File not found.\n");
+      throw std::runtime_error("PersistenceDiagram::load. File not found: " + filename );
     }
     std::string line;
     while ( std::getline ( infile, line ) ) {
