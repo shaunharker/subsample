@@ -1,0 +1,31 @@
+#sudo: false
+language: cpp
+compiler:
+  - gcc
+  - clang
+env:
+  - MPI=mpich3
+  - MPI=mpich2
+  - MPI=openmpi
+install:
+- if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - gcc-4.8
+    - g++-4.8
+    - clang
+notifications:
+  email:
+    recipients:
+      - sharker81@gmail.com
+    on_success: change
+    on_failure: always
+before_install:
+  - ./.install/boost.sh thread,system,serialization `pwd`
+  - ./.install/delegator.sh `pwd`
+  - ./.install/mpi.sh $MPI
+script: 
+  - ./install.sh ./

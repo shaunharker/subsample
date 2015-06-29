@@ -13,7 +13,6 @@ if [ $# -ge 1 ]; then
     else
         PREFIX=`pwd -P`
     fi
-    echo "DSGRN will be installed in '${PREFIX}'"    
     ARGUMENT="-DCMAKE_PREFIX_PATH=${PREFIX} -DUSER_INCLUDE_PATH=${PREFIX}/include -DUSER_LIBRARY_PATH=${PREFIX}/lib"
 fi
 
@@ -23,6 +22,6 @@ mkdir build
 cd build
 # Note: we pass `which g++` because apparently
 #  CMake doesn't necessarily pick the compiler on the path
-cmake -DCMAKE_CXX_COMPILER=`which g++` $ARGUMENT ..
+cmake $ARGUMENT ..
 make
 make install
