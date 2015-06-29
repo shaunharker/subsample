@@ -26,6 +26,6 @@ notifications:
 before_install:
   - ./.install/boost.sh thread,system,serialization `pwd`
   - ./.install/delegator.sh `pwd`
-  - ./.install/mpi.sh $MPI
+  - sudo ./.install/mpi.sh $MPI
 script: 
   - ./install.sh ./
