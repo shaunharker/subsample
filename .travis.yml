@@ -2,10 +2,10 @@
 language: cpp
 compiler:
   - gcc
-#  - clang
+  - clang
 env:
-#  - MPI=mpich3
-#  - MPI=mpich2
+  - MPI=mpich3
+  - MPI=mpich2
   - MPI=openmpi
 install:
 - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
