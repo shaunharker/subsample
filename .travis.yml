@@ -29,4 +29,4 @@ install:
   - ./.install/delegator.sh
 script: 
   - ./install.sh --build=Debug
-  - coveralls -E ".*examples.*" -E ".*lib.*" -E ".*usr.*" -E ".*boost.*" --gcov-options '\-lp' --gcov /usr/bin/gcov-4.8
+  - coveralls -E ".*examples.*" -E ".*tools.*" -E ".*lib.*" -E ".*usr.*" -E ".*boost.*" --gcov-options '\-lp' --gcov /usr/bin/gcov-4.8
