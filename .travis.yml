@@ -1,14 +1,8 @@
-#sudo: false
+sudo: false
 language: cpp
 compiler:
   - gcc
-  - clang
-env:
-  - MPI=mpich3
-  - MPI=mpich2
-  - MPI=openmpi
-install:
-- if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
+#  - clang
 addons:
   apt:
     sources:
@@ -16,7 +10,9 @@ addons:
     packages:
     - gcc-4.8
     - g++-4.8
-    - clang
+    - openmpi-bin 
+    - libopenmpi-dev
+#    - clang
 notifications:
   email:
     recipients:
@@ -24,8 +20,13 @@ notifications:
     on_success: change
     on_failure: always
 before_install:
-  - ./.install/boost.sh thread,system,serialization,chrono `pwd`
-  - ./.install/delegator.sh `pwd`
-  - sudo ./.install/mpi.sh $MPI
+  - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
+  - PREFIX=$HOME/.local
+  - export PATH=$PREFIX/bin:$PATH
+install:
+  - pip install cpp-coveralls --user `whoami`
+  - ./.install/boost.sh thread,system,serialization,chrono
+  - ./.install/delegator.sh
 script: 
-  - ./install.sh ./
+  - ./install.sh --build=Debug
+  - coveralls -E ".*examples.*" -E ".*lib.*" -E ".*usr.*" -E ".*boost.*" --gcov-options '\-lp' --gcov /usr/bin/gcov-4.8

@@ -1,25 +1,17 @@
 #!/bin/bash
-CUR_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-if [ $# -ge 1 ]; then
-    # The user supplied an argument
-    PREFIX=${1}
-    # Get absolute path name of install directory
-    mkdir -p "${PREFIX}" 2> /dev/null
-    cd "${PREFIX}" > /dev/null 2>&1
-    if [ $? != 0 ] ; then
-        echo "ERROR: directory '${PREFIX}' does not exist nor could be created."
-        echo "Please choose another directory."
-        exit 1
-    else
-        PREFIX=`pwd -P`
-    fi
-    ARGUMENT="-DCMAKE_PREFIX_PATH=${PREFIX} -DUSER_INCLUDE_PATH=${PREFIX}/include -DUSER_LIBRARY_PATH=${PREFIX}/lib"
-fi
-ARGUMENT="$ARGUMENT -DCMAKE_BUILD_TYPE=Release"
-cd ${CUR_DIR}
-rm -rf build
-mkdir build
-cd build
-cmake $ARGUMENT ..
-make
-make install
+#  Usage: install.sh [--prefix=INSTALLATION_PREFIX]
+#  Effects: Copies header files into INSTALLATION_PREFIX/include
+#           If no prefix is provided, it chooses 
+#            /usr/local 
+#            unless it cannot write there, in which case it chooses
+#            ~/.local 
+#            unless it does not exist, in which case it fails.
+
+## Parse command line arguments to get
+#  PREFIX, SEARCHPATH, BUILDTYPE, TESTS, and MASS
+SRC_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+source $SRC_DIR/.install/parse.sh
+
+## Build the library
+./.install/build.sh --prefix=$PREFIX --searchpath=$SEARCHPATH --build=$BUILDTYPE --test $MASS || exit 1
+
