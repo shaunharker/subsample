@@ -1,7 +1,7 @@
 /// Subsample.cpp
 /// Author: Shaun Harker
 /// Date: July 3, 2014
-#include "delegator/delegator.h" 
+#include "cluster-delegator.hpp" 
 #include "subsample/SubsampleDistance.h"
 #include "subsample/SubsampleProcess.h" 
 #include "subsample/SubsampleConfig.h" // Defines class Point, class Distance
