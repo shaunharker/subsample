@@ -53,8 +53,22 @@ link_directories (
   /opt/local/lib )
 
 ###########
+# Outputs #
+###########
+
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+
+###########
 # Recurse #
 ###########
 
 add_subdirectory (source)
 
+#########
+# Tests #
+#########
+
+enable_testing()
+add_test( test ${CMAKE_SOURCE_DIR}/tests/tests.sh )
