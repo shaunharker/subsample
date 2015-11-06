@@ -20,6 +20,10 @@ endif("${isSystemDir}" STREQUAL "-1")
 # Flags #
 #########
 
+set(CFLAGS "${CFLAGS} -O3 -DNDEBUG -march=native -mtune=native -ffast-math")
+set(INCLUDE_FLAGS "${INCLUDE_FLAGS} -I/persistence/AuctinDistances/ann/include")
+set(LINK_FLAGS "${LINK_FLAGS} -L/persistence/AuctionDistances/ann/lib -lANN") 
+
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O0 -fprofile-arcs -ftest-coverage")
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3 -DNDEBUG" )
@@ -50,7 +54,8 @@ include_directories (
 link_directories ( 
   ${USER_LIBRARY_PATH} 
   /usr/local/lib 
-  /opt/local/lib )
+  /opt/local/lib
+  ./include/persistence/AuctionDistances/ann/include )
 
 ###########
 # Outputs #

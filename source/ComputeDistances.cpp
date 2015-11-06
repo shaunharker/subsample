@@ -2,7 +2,7 @@
 /// Author: Shaun Harker
 /// Date: July 17, 2014
 #include <vector>
-#include "cluster-delegator.hpp" 
+#include "../../cluster-delegator/include/cluster-delegator.hpp" 
 #include "subsample/SubsampleConfig.h" // Defines class Point, class Distance
 
 class ComputeMatrixProcess : public Coordinator_Worker_Process {

@@ -20,6 +20,8 @@
 #include "persistence/PersistenceDiagram.h"
 #include "persistence/WassersteinDistance.h"
 #include "persistence/BottleneckDistance.h"
+#include "persistence/BottleneckAuctionDistance.h"
+#include "persistence/WassersteinAuctionDistance.h"
 
 #include "tools/json.hpp"
 using json = nlohmann::json;
@@ -48,7 +50,7 @@ public:
     double result = 0.0;
     if ( std::isinf(p_) ) {
       for ( uint64_t i = 0; i < N; ++ i ) {
-        result = std::max(result, BottleneckDistance ( p.pd[i], q.pd[i] ) );
+        result = std::max(result, BottleneckAuctionDistance ( p.pd[i], q.pd[i], 0 ) );
       }
       return result;
     } else {
