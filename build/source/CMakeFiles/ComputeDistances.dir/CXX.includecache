@@ -6,6 +6,26 @@
 
 #IncludeRegexTransform: 
 
+.././include/persistence/AuctionDistances/ann/include/ANN/ANN.h
+cstdlib
+-
+cmath
+-
+iostream
+-
+cstring
+-
+vector
+-
+assert.h
+-
+cvalues
+-
+climits
+-
+cfloat
+-
+
 .././include/persistence/AuctionDistances/bottleneck/src/basic_defs.h
 vector
 -
