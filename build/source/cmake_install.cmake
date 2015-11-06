@@ -43,16 +43,10 @@ file(INSTALL DESTINATION "/Users/birdbrain/Documents/Research/Code/subsample/bin
       -delete_rpath "/opt/local/lib"
       "$ENV{DESTDIR}/Users/birdbrain/Documents/Research/Code/subsample/bin/ComputeSubsample")
     execute_process(COMMAND /usr/bin/install_name_tool
-      -delete_rpath "./include/persistence/AuctionDistances/ann/include"
-      "$ENV{DESTDIR}/Users/birdbrain/Documents/Research/Code/subsample/bin/ComputeSubsample")
-    execute_process(COMMAND /usr/bin/install_name_tool
       -add_rpath "/usr/local/lib"
       "$ENV{DESTDIR}/Users/birdbrain/Documents/Research/Code/subsample/bin/ComputeSubsample")
     execute_process(COMMAND /usr/bin/install_name_tool
       -add_rpath "/opt/local/lib"
-      "$ENV{DESTDIR}/Users/birdbrain/Documents/Research/Code/subsample/bin/ComputeSubsample")
-    execute_process(COMMAND /usr/bin/install_name_tool
-      -add_rpath "./include/persistence/AuctionDistances/ann/include"
       "$ENV{DESTDIR}/Users/birdbrain/Documents/Research/Code/subsample/bin/ComputeSubsample")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip" "$ENV{DESTDIR}/Users/birdbrain/Documents/Research/Code/subsample/bin/ComputeSubsample")
@@ -76,16 +70,10 @@ file(INSTALL DESTINATION "/Users/birdbrain/Documents/Research/Code/subsample/bin
       -delete_rpath "/opt/local/lib"
       "$ENV{DESTDIR}/Users/birdbrain/Documents/Research/Code/subsample/bin/ComputeDistances")
     execute_process(COMMAND /usr/bin/install_name_tool
-      -delete_rpath "./include/persistence/AuctionDistances/ann/include"
-      "$ENV{DESTDIR}/Users/birdbrain/Documents/Research/Code/subsample/bin/ComputeDistances")
-    execute_process(COMMAND /usr/bin/install_name_tool
       -add_rpath "/usr/local/lib"
       "$ENV{DESTDIR}/Users/birdbrain/Documents/Research/Code/subsample/bin/ComputeDistances")
     execute_process(COMMAND /usr/bin/install_name_tool
       -add_rpath "/opt/local/lib"
-      "$ENV{DESTDIR}/Users/birdbrain/Documents/Research/Code/subsample/bin/ComputeDistances")
-    execute_process(COMMAND /usr/bin/install_name_tool
-      -add_rpath "./include/persistence/AuctionDistances/ann/include"
       "$ENV{DESTDIR}/Users/birdbrain/Documents/Research/Code/subsample/bin/ComputeDistances")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip" "$ENV{DESTDIR}/Users/birdbrain/Documents/Research/Code/subsample/bin/ComputeDistances")

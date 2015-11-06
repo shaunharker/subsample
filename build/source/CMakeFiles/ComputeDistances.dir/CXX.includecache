@@ -6,26 +6,6 @@
 
 #IncludeRegexTransform: 
 
-.././include/persistence/AuctionDistances/ann/include/ANN/ANN.h
-cstdlib
--
-cmath
--
-iostream
--
-cstring
--
-vector
--
-assert.h
--
-cvalues
--
-climits
--
-cfloat
--
-
 .././include/persistence/AuctionDistances/bottleneck/src/basic_defs.h
 vector
 -
@@ -81,8 +61,8 @@ unordered_map
 -
 basic_defs.h
 .././include/persistence/AuctionDistances/bottleneck/src/basic_defs.h
-../../ann/include/ANN/ANN.h
-.././include/persistence/AuctionDistances/ann/include/ANN/ANN.h
+ANN/ANN.h
+-
 
 .././include/persistence/BottleneckAuctionDistance.h
 vector
