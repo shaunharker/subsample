@@ -25,6 +25,8 @@
 #include "basic_defs.h"
 #include <ANN/ANN.h>
 
+using namespace Auction;
+
 class NeighbOracleAbstract{
 public:
     virtual void deletePoint(const DiagramPoint& p) = 0;
@@ -82,5 +84,7 @@ public:
 
 //typedef NeighbOracleSimple NeighbOracle;
 typedef NeighbOracleAnn NeighbOracle;
+
+
 
 #endif

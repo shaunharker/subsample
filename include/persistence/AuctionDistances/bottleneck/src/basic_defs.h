@@ -35,6 +35,9 @@
 
 #define MIN_VALID_ID 10
 
+namespace Auction
+{
+
 struct Point {
     double x, y;
     bool operator==(const Point& other) const;
@@ -43,6 +46,8 @@ struct Point {
     Point() : x(0.0), y(0.0) {}
     friend std::ostream& operator<<(std::ostream& output, const Point p);
 };
+
+
 
 struct DiagramPoint 
 {
@@ -144,6 +149,8 @@ double getFurthestDistance3Approx(DiagPointContainer& A, DiagPointContainer& B)
         }
     }
     return result;
+}
+
 }
 
 

@@ -22,6 +22,7 @@ along with GeomBottleneck.  If not, see <http://www.gnu.org/licenses/>.
 #include <assert.h>
 #include "bound_match.h"
 
+
 /*static void printDebug(//bool isDebug, std::string s)*/
 //{
 //#ifdef DEBUG_BOUND_MATCH

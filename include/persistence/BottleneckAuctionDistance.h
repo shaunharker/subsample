@@ -5,6 +5,9 @@
 ///   - Created from BottleneckDistance.h to interface auction algorithms with Subsample code (Rache Levanger, Nov 6, 2015)
 
 
+#ifndef BOTTLENECKAUCTIONDISTANCE_H
+#define BOTTLENECKAUCTIONDISTANCE_H
+
 #include <vector>
 #include "persistence/PersistenceDiagram.h"
 #include "persistence/AuctionDistances/bottleneck/src/basic_defs.h"
@@ -16,7 +19,7 @@ BottleneckAuctionDistance( PersistenceDiagram const& diagram_1,
                     const double epsilon );
 
 
-namespace BottleneckAuctionDistance_detail {
+namespace BottleneckAuctionDistance_wrapper {
 
 struct BottleneckAuctionWrapper {
 
@@ -25,24 +28,23 @@ struct BottleneckAuctionWrapper {
     std::vector<Generator> Generators2;
 
     /* Read the generators into the auction algorithm class. */
-    bool populateDiagramPointSets(DiagramPointSet& A,
-                              DiagramPointSet& B)
+    bool populateDiagramPointSets(Auction::DiagramPointSet& A,
+                              Auction::DiagramPointSet& B)
     {
         A.clear();
         B.clear();
-        Point p;
         size_t uniqueId {MIN_VALID_ID};
         for ( std::vector<Generator>::const_iterator cur = Generators1.begin(); 
           cur != Generators1.end(); ++cur ) {
-            DiagramPoint dpA {cur->birth, cur->death, DiagramPoint::NORMAL, uniqueId++};
-            DiagramPoint dpB {0.5*(cur->birth +cur->death), 0.5 *(cur->birth + cur->death), DiagramPoint::DIAG, uniqueId++};
+            Auction::DiagramPoint dpA {cur->birth, cur->death, Auction::DiagramPoint::NORMAL, uniqueId++};
+            Auction::DiagramPoint dpB {0.5*(cur->birth +cur->death), 0.5 *(cur->birth + cur->death), Auction::DiagramPoint::DIAG, uniqueId++};
             A.insert(dpA);
             B.insert(dpB);
         }
         for ( std::vector<Generator>::const_iterator cur = Generators2.begin(); 
           cur != Generators2.end(); ++cur ) {
-            DiagramPoint dpB {cur->birth, cur->death, DiagramPoint::NORMAL, uniqueId++};
-            DiagramPoint dpA {0.5*(cur->birth +cur->death), 0.5 *(cur->birth + cur->death), DiagramPoint::DIAG, uniqueId++};
+            Auction::DiagramPoint dpB {cur->birth, cur->death, Auction::DiagramPoint::NORMAL, uniqueId++};
+            Auction::DiagramPoint dpA {0.5*(cur->birth +cur->death), 0.5 *(cur->birth + cur->death), Auction::DiagramPoint::DIAG, uniqueId++};
             B.insert(dpB);
             A.insert(dpA);
         }
@@ -57,7 +59,8 @@ inline double
 BottleneckAuctionDistance( PersistenceDiagram const& diagram_1, 
                     PersistenceDiagram const& diagram_2,
                     const double epsilon ) {
-    using namespace BottleneckAuctionDistance_detail;
+
+    using namespace BottleneckAuctionDistance_wrapper;
 
     BottleneckAuctionWrapper bw;
 
@@ -66,7 +69,7 @@ BottleneckAuctionDistance( PersistenceDiagram const& diagram_1,
     Generators1 . assign ( diagram_1 . begin (), diagram_1 . end () );
     Generators2 . assign ( diagram_2 . begin (), diagram_2 . end () );
   
-    DiagramPointSet A, B;
+    Auction::DiagramPointSet A, B;
     if (!bw.populateDiagramPointSets(A, B)) {
         std::cout << "Could not convert PersistenceDiagrams to DiagramPointSets.\n";
         return -1;
@@ -87,3 +90,4 @@ BottleneckAuctionDistance( PersistenceDiagram const& diagram_1,
 
 }
 
+#endif

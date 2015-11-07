@@ -32,6 +32,10 @@
 //#include "test_neighb_oracle.h"
 //#include "test_dist_calc.h"
 
+using namespace Auction;
+
+
+
 typedef std::pair<double, std::pair<size_t, size_t>> DistVerticesPair;
 
 // return the interval (distMin, distMax) such that: 
@@ -39,6 +43,7 @@ typedef std::pair<double, std::pair<size_t, size_t>> DistVerticesPair;
 // b) if the interval is not (0,0), then  (distMax - distMin) / distMin < epsilon 
 std::pair<double, double> bottleneckDistApproxInterval(DiagramPointSet& A, DiagramPointSet& B, const double epsilon)
 {
+
     // TODO: think about that!
     // we need one threshold for checking if the distance is 0,
     // another one for the oracle!
@@ -93,6 +98,9 @@ std::pair<double, double> bottleneckDistApproxInterval(DiagramPointSet& A, Diagr
 // see bottleneckDistApproxInterval
 double bottleneckDistApprox(DiagramPointSet& A, DiagramPointSet& B, const double epsilon)
 {
+
+
+
     auto interval = bottleneckDistApproxInterval(A, B, epsilon);
     return (interval.first + interval.second) / 2.0;
 }
@@ -100,6 +108,8 @@ double bottleneckDistApprox(DiagramPointSet& A, DiagramPointSet& B, const double
 
 double bottleneckDistExactFromSortedPwDist(DiagramPointSet&A, DiagramPointSet& B, std::vector<double>& pairwiseDist)
 {
+
+
     //for(size_t k = 0; k < pairwiseDist.size(); ++k) {
         //std::cout << "pairwiseDist[" << k << "] = " << std::setprecision(15) << pairwiseDist[k] << std::endl;
     //}
@@ -143,6 +153,9 @@ double bottleneckDistExactFromSortedPwDist(DiagramPointSet&A, DiagramPointSet& B
 
 double bottleneckDistExact(DiagramPointSet& A, DiagramPointSet& B)
 {
+
+
+
     constexpr double epsilon = 0.001;
     auto interval = bottleneckDistApproxInterval(A, B, epsilon);
     const double delta = 0.5 * (interval.second - interval.first);
@@ -304,6 +317,9 @@ double bottleneckDistExact(DiagramPointSet& A, DiagramPointSet& B)
 
 double bottleneckDistSlow(DiagramPointSet& A, DiagramPointSet& B)
 {
+
+
+
     // use range search when building the layer graph
     bool useRangeSearch { true };
     // find maximum of min. distances for each point,
@@ -538,6 +554,8 @@ bool readDiagramPointSets(const char* fnameA,
     fB.close();
     return true;
 }
+
+
 
 // int main(int argc, char* argv[])
 // {

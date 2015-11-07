@@ -5,6 +5,8 @@
 #include "../../cluster-delegator/include/cluster-delegator.hpp" 
 #include "subsample/SubsampleConfig.h" // Defines class Point, class Distance
 
+
+
 class ComputeMatrixProcess : public Coordinator_Worker_Process {
 public:
   void command_line ( int argc, char * argv [] );
@@ -21,7 +23,7 @@ private:
   int64_t last_job_;
   int64_t result_index_;
   DistanceMatrixConfig config_;
-  std::vector<Point> subsamples_;
+  std::vector<subsample::Point> subsamples_;
   std::vector<double> results_;
   Distance distance_;
 };
@@ -66,7 +68,7 @@ void ComputeMatrixProcess::
 work ( Message & result, const Message & job ) const {
   //std::cout << "working...\n";
   int64_t id;
-  Point x, y;
+  subsample::Point x, y;
   job >> id;
   job >> x;
   job >> y;
