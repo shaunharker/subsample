@@ -85,6 +85,4 @@ public:
 //typedef NeighbOracleSimple NeighbOracle;
 typedef NeighbOracleAnn NeighbOracle;
 
-
-
 #endif

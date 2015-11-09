@@ -13,7 +13,7 @@ DEP    := $(OBJ:%.o=%.d)
 
 CFLAGS   += -O3 -DNDEBUG -march=native -mtune=native -ffast-math
 INCLUDE_FLAGS =  -I../ann/include
-LINK_FLAGS =   -L/ann/lib -lANN 
+LINK_FLAGS =   -L../ann/lib -lANN 
 CXXFLAGS += $(CFLAGS) -std=c++11 $(INCLUDE_FLAGS)  
 
 DUMMY := $(shell mkdir -p $(sort $(dir $(OBJ))))

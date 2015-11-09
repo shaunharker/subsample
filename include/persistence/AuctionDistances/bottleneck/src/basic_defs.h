@@ -47,8 +47,6 @@ struct Point {
     friend std::ostream& operator<<(std::ostream& output, const Point p);
 };
 
-
-
 struct DiagramPoint 
 {
     // Points above the diagonal have type NORMAL
@@ -152,6 +150,5 @@ double getFurthestDistance3Approx(DiagPointContainer& A, DiagPointContainer& B)
 }
 
 }
-
 
 #endif

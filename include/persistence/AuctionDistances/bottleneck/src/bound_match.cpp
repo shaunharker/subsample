@@ -23,6 +23,8 @@ along with GeomBottleneck.  If not, see <http://www.gnu.org/licenses/>.
 #include "bound_match.h"
 
 
+using namespace Auction;
+
 /*static void printDebug(//bool isDebug, std::string s)*/
 //{
 //#ifdef DEBUG_BOUND_MATCH

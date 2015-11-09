@@ -26,9 +26,8 @@
 #include "basic_defs.h"
 #include "neighb_oracle.h"
 
-    
-using namespace Auction;
 
+using namespace Auction;
 
 typedef std::vector<DiagramPoint> Path;
 

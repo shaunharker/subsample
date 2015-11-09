@@ -23,6 +23,7 @@
 #include "neighb_oracle.h"
 #include "def_debug.h"
 
+
 using namespace Auction;
 
 /*static void printDebug(//bool isDebug, std::string s)*/
@@ -60,7 +61,6 @@ using namespace Auction;
     //}
 //#endif
 //}
-
 
 
 

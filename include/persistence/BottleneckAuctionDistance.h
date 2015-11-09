@@ -31,20 +31,21 @@ struct BottleneckAuctionWrapper {
     bool populateDiagramPointSets(Auction::DiagramPointSet& A,
                               Auction::DiagramPointSet& B)
     {
+        using namespace Auction;
         A.clear();
         B.clear();
         size_t uniqueId {MIN_VALID_ID};
         for ( std::vector<Generator>::const_iterator cur = Generators1.begin(); 
           cur != Generators1.end(); ++cur ) {
-            Auction::DiagramPoint dpA {cur->birth, cur->death, Auction::DiagramPoint::NORMAL, uniqueId++};
-            Auction::DiagramPoint dpB {0.5*(cur->birth +cur->death), 0.5 *(cur->birth + cur->death), Auction::DiagramPoint::DIAG, uniqueId++};
+            DiagramPoint dpA {cur->birth, cur->death, DiagramPoint::NORMAL, uniqueId++};
+            DiagramPoint dpB {0.5*(cur->birth +cur->death), 0.5 *(cur->birth + cur->death), DiagramPoint::DIAG, uniqueId++};
             A.insert(dpA);
             B.insert(dpB);
         }
         for ( std::vector<Generator>::const_iterator cur = Generators2.begin(); 
           cur != Generators2.end(); ++cur ) {
-            Auction::DiagramPoint dpB {cur->birth, cur->death, Auction::DiagramPoint::NORMAL, uniqueId++};
-            Auction::DiagramPoint dpA {0.5*(cur->birth +cur->death), 0.5 *(cur->birth + cur->death), Auction::DiagramPoint::DIAG, uniqueId++};
+            DiagramPoint dpB {cur->birth, cur->death, DiagramPoint::NORMAL, uniqueId++};
+            DiagramPoint dpA {0.5*(cur->birth +cur->death), 0.5 *(cur->birth + cur->death), DiagramPoint::DIAG, uniqueId++};
             B.insert(dpB);
             A.insert(dpA);
         }

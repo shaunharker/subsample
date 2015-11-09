@@ -22,6 +22,9 @@
 #include <cfloat>
 #include "basic_defs.h"
 
+namespace Auction
+{
+
 // Point
 
 bool Point::operator==(const Point& other) const
@@ -179,4 +182,6 @@ void DiagramPointSet::print()
     for(const auto& pt : points) {
         std::cout << "(" << pt.getRealX() << "," << pt.getRealY() << ")\n";
     }
+}
+
 }
