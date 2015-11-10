@@ -13,6 +13,11 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.3.2/CMakeSystem.cmake"
   "CMakeFiles/feature_tests.c"
   "CMakeFiles/feature_tests.cxx"
+  "../include/persistence/AuctionDistances/CMakeLists.txt"
+  "../include/persistence/AuctionDistances/ann/CMakeLists.txt"
+  "../include/persistence/AuctionDistances/ann/src/CMakeLists.txt"
+  "../include/persistence/AuctionDistances/bottleneck/CMakeLists.txt"
+  "../include/persistence/AuctionDistances/bottleneck/src/CMakeLists.txt"
   "../source/CMakeLists.txt"
   "/usr/local/Cellar/cmake/3.3.2/share/cmake/Modules/CMakeCCompiler.cmake.in"
   "/usr/local/Cellar/cmake/3.3.2/share/cmake/Modules/CMakeCCompilerABI.c"
@@ -115,11 +120,20 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/3.3.2/CMakeCCompiler.cmake"
   "CMakeFiles/3.3.2/CMakeCXXCompiler.cmake"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
+  "include/persistence/AuctionDistances/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "include/persistence/AuctionDistances/ann/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "include/persistence/AuctionDistances/ann/src/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "include/persistence/AuctionDistances/bottleneck/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/CMakeDirectoryInformation.cmake"
   "source/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
+  "include/persistence/AuctionDistances/ann/src/CMakeFiles/libANNshared.dir/DependInfo.cmake"
+  "include/persistence/AuctionDistances/ann/src/CMakeFiles/libANN.dir/DependInfo.cmake"
+  "include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneckshared.dir/DependInfo.cmake"
+  "include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneck.dir/DependInfo.cmake"
   "source/CMakeFiles/ComputeSubsample.dir/DependInfo.cmake"
   "source/CMakeFiles/ComputeDistances.dir/DependInfo.cmake"
   )

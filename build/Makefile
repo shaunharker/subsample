@@ -166,6 +166,58 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named libANN
+
+# Build rule for target.
+libANN: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 libANN
+.PHONY : libANN
+
+# fast build rule for target.
+libANN/fast:
+	$(MAKE) -f include/persistence/AuctionDistances/ann/src/CMakeFiles/libANN.dir/build.make include/persistence/AuctionDistances/ann/src/CMakeFiles/libANN.dir/build
+.PHONY : libANN/fast
+
+#=============================================================================
+# Target rules for targets named libANNshared
+
+# Build rule for target.
+libANNshared: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 libANNshared
+.PHONY : libANNshared
+
+# fast build rule for target.
+libANNshared/fast:
+	$(MAKE) -f include/persistence/AuctionDistances/ann/src/CMakeFiles/libANNshared.dir/build.make include/persistence/AuctionDistances/ann/src/CMakeFiles/libANNshared.dir/build
+.PHONY : libANNshared/fast
+
+#=============================================================================
+# Target rules for targets named libbottleneck
+
+# Build rule for target.
+libbottleneck: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 libbottleneck
+.PHONY : libbottleneck
+
+# fast build rule for target.
+libbottleneck/fast:
+	$(MAKE) -f include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneck.dir/build.make include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneck.dir/build
+.PHONY : libbottleneck/fast
+
+#=============================================================================
+# Target rules for targets named libbottleneckshared
+
+# Build rule for target.
+libbottleneckshared: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 libbottleneckshared
+.PHONY : libbottleneckshared
+
+# fast build rule for target.
+libbottleneckshared/fast:
+	$(MAKE) -f include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneckshared.dir/build.make include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneckshared.dir/build
+.PHONY : libbottleneckshared/fast
+
+#=============================================================================
 # Target rules for targets named ComputeDistances
 
 # Build rule for target.
@@ -204,6 +256,10 @@ help:
 	@echo "... list_install_components"
 	@echo "... install"
 	@echo "... install/strip"
+	@echo "... libANNshared"
+	@echo "... libANN"
+	@echo "... libbottleneckshared"
+	@echo "... libbottleneck"
 	@echo "... ComputeSubsample"
 	@echo "... ComputeDistances"
 .PHONY : help

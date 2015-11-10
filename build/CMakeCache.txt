@@ -283,6 +283,18 @@ USER_INCLUDE_PATH:UNINITIALIZED=/usr/local/include
 //No help, variable specified on the command line.
 USER_LIBRARY_PATH:UNINITIALIZED=/usr/local/lib
 
+//Dependencies for target
+libANN_LIB_DEPENDS:STATIC=
+
+//Dependencies for target
+libANNshared_LIB_DEPENDS:STATIC=
+
+//Dependencies for target
+libbottleneck_LIB_DEPENDS:STATIC=
+
+//Dependencies for the target
+libbottleneckshared_LIB_DEPENDS:STATIC=general;libANNshared;general;/usr/local/lib/libboost_system-mt.dylib;general;/usr/local/lib/libboost_thread-mt.dylib;general;/usr/local/lib/libboost_serialization-mt.dylib;general;/usr/local/lib/libboost_chrono-mt.dylib;
+
 
 ########################
 # INTERNAL cache entries
@@ -400,7 +412,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_LOCAL_GENERATORS:INTERNAL=2
+CMAKE_NUMBER_OF_LOCAL_GENERATORS:INTERNAL=7
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

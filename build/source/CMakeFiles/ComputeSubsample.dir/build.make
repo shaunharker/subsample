@@ -96,6 +96,8 @@ bin/ComputeSubsample: /usr/local/lib/libboost_serialization-mt.dylib
 bin/ComputeSubsample: /usr/local/lib/libboost_chrono-mt.dylib
 bin/ComputeSubsample: /usr/local/Cellar/open-mpi/1.10.0/lib/libmpi_cxx.dylib
 bin/ComputeSubsample: /usr/local/Cellar/open-mpi/1.10.0/lib/libmpi.dylib
+bin/ComputeSubsample: lib/libbottleneck.a
+bin/ComputeSubsample: lib/libANN.a
 bin/ComputeSubsample: source/CMakeFiles/ComputeSubsample.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable ../bin/ComputeSubsample"
 	cd /Users/birdbrain/Documents/Research/Code/subsample/build/source && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ComputeSubsample.dir/link.txt --verbose=$(VERBOSE)

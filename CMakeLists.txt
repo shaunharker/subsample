@@ -66,6 +66,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 # Recurse #
 ###########
 
+add_subdirectory (include/persistence/AuctionDistances)
 add_subdirectory (source)
 
 #########
