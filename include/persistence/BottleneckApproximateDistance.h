@@ -10,8 +10,8 @@
 
 #include <vector>
 #include "persistence/PersistenceDiagram.h"
-#include "persistence/approximatedistances/bottleneck/src/basic_defs.h"
-#include "persistence/approximatedistances/bottleneck/src/bottleneck.cpp"
+#include "persistence/approximatedistances/geom_bottleneck/bottleneck/src/basic_defs.h"
+#include "persistence/approximatedistances/geom_bottleneck/bottleneck/src/bottleneck.cpp"
 
 double 
 BottleneckApproximateDistance( subsample::PersistenceDiagram const& diagram_1, 

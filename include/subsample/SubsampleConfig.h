@@ -56,7 +56,7 @@ public:
     double result = 0.0;
     if ( std::isinf(p_) ) {
       for ( uint64_t i = 0; i < N; ++ i ) {
-        result = std::max(result, BottleneckAuctionDistance ( p.pd[i], q.pd[i], 1 ) );
+        result = std::max(result, BottleneckApproximateDistance ( p.pd[i], q.pd[i], 1 ) );
       }
       return result;
     } else {
