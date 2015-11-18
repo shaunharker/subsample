@@ -6,6 +6,7 @@
 #include "subsample/SubsampleConfig.h" // Defines class Point, class Distance
 
 
+using namespace subsample;
 
 class ComputeMatrixProcess : public Coordinator_Worker_Process {
 public:

@@ -38,7 +38,7 @@ find_package(MPI REQUIRED)
 
 include_directories ( 
   ./include 
-  ./include/persistence/approximatedistances/ann/include
+  ./include/persistence/approximatedistances/geom_bottleneck/ann/include
   /usr/local/include 
   /opt/local/include 
   ${Boost_INCLUDE_DIRS} 

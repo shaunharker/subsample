@@ -24,7 +24,7 @@ set(CMAKE_CXX_COMPILER_ID "Clang")
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   ".././include"
-  ".././include/persistence/approximatedistances/ann/include"
+  ".././include/persistence/approximatedistances/geom_bottleneck/ann/include"
   "/usr/local/include"
   "/opt/local/include"
   "/usr/local/Cellar/open-mpi/1.10.0/include"
