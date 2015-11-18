@@ -1,6 +1,0 @@
-/usr/local/lib/libANN.a
-/usr/local/lib/libANN.dylib
-/usr/local/lib/libbottleneck.a
-/usr/local/lib/libbottleneck.dylib
-/Users/birdbrain/Documents/Research/Code/subsample/bin/ComputeSubsample
-/Users/birdbrain/Documents/Research/Code/subsample/bin/ComputeDistances

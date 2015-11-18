@@ -16,6 +16,8 @@
 
 #include "delegator/delegator.h"
 
+using namespace subsample;
+
 template < class T, class D >
 class SubsampleProcess : public Coordinator_Worker_Process {
 public:

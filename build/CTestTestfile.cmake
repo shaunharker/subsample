@@ -5,5 +5,5 @@
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.
 add_test(test "/Users/birdbrain/Documents/Research/Code/subsample/tests/tests.sh")
-subdirs(include/persistence/AuctionDistances)
+subdirs(include/persistence/approximatedistances)
 subdirs(source)

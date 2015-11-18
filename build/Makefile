@@ -175,7 +175,7 @@ libANN: cmake_check_build_system
 
 # fast build rule for target.
 libANN/fast:
-	$(MAKE) -f include/persistence/AuctionDistances/ann/src/CMakeFiles/libANN.dir/build.make include/persistence/AuctionDistances/ann/src/CMakeFiles/libANN.dir/build
+	$(MAKE) -f include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/build.make include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/build
 .PHONY : libANN/fast
 
 #=============================================================================
@@ -188,34 +188,21 @@ libANNshared: cmake_check_build_system
 
 # fast build rule for target.
 libANNshared/fast:
-	$(MAKE) -f include/persistence/AuctionDistances/ann/src/CMakeFiles/libANNshared.dir/build.make include/persistence/AuctionDistances/ann/src/CMakeFiles/libANNshared.dir/build
+	$(MAKE) -f include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANNshared.dir/build.make include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANNshared.dir/build
 .PHONY : libANNshared/fast
 
 #=============================================================================
-# Target rules for targets named libbottleneck
+# Target rules for targets named bottleneck
 
 # Build rule for target.
-libbottleneck: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 libbottleneck
-.PHONY : libbottleneck
+bottleneck: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 bottleneck
+.PHONY : bottleneck
 
 # fast build rule for target.
-libbottleneck/fast:
-	$(MAKE) -f include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneck.dir/build.make include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneck.dir/build
-.PHONY : libbottleneck/fast
-
-#=============================================================================
-# Target rules for targets named libbottleneckshared
-
-# Build rule for target.
-libbottleneckshared: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 libbottleneckshared
-.PHONY : libbottleneckshared
-
-# fast build rule for target.
-libbottleneckshared/fast:
-	$(MAKE) -f include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneckshared.dir/build.make include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneckshared.dir/build
-.PHONY : libbottleneckshared/fast
+bottleneck/fast:
+	$(MAKE) -f include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/build.make include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/build
+.PHONY : bottleneck/fast
 
 #=============================================================================
 # Target rules for targets named ComputeDistances
@@ -258,8 +245,7 @@ help:
 	@echo "... install/strip"
 	@echo "... libANNshared"
 	@echo "... libANN"
-	@echo "... libbottleneckshared"
-	@echo "... libbottleneck"
+	@echo "... bottleneck"
 	@echo "... ComputeSubsample"
 	@echo "... ComputeDistances"
 .PHONY : help

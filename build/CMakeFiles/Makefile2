@@ -60,247 +60,208 @@ CMAKE_SOURCE_DIR = /Users/birdbrain/Documents/Research/Code/subsample
 CMAKE_BINARY_DIR = /Users/birdbrain/Documents/Research/Code/subsample/build
 
 #=============================================================================
-# Directory level rules for directory include/persistence/AuctionDistances
+# Directory level rules for directory include/persistence/approximatedistances
 
 # Convenience name for "all" pass in the directory.
-include/persistence/AuctionDistances/all: include/persistence/AuctionDistances/ann/all
-include/persistence/AuctionDistances/all: include/persistence/AuctionDistances/bottleneck/all
+include/persistence/approximatedistances/all: include/persistence/approximatedistances/geom_bottleneck/all
 
-.PHONY : include/persistence/AuctionDistances/all
+.PHONY : include/persistence/approximatedistances/all
 
 # Convenience name for "clean" pass in the directory.
-include/persistence/AuctionDistances/clean: include/persistence/AuctionDistances/ann/clean
-include/persistence/AuctionDistances/clean: include/persistence/AuctionDistances/bottleneck/clean
+include/persistence/approximatedistances/clean: include/persistence/approximatedistances/geom_bottleneck/clean
 
-.PHONY : include/persistence/AuctionDistances/clean
+.PHONY : include/persistence/approximatedistances/clean
 
 # Convenience name for "preinstall" pass in the directory.
-include/persistence/AuctionDistances/preinstall: include/persistence/AuctionDistances/ann/preinstall
-include/persistence/AuctionDistances/preinstall: include/persistence/AuctionDistances/bottleneck/preinstall
+include/persistence/approximatedistances/preinstall: include/persistence/approximatedistances/geom_bottleneck/preinstall
 
-.PHONY : include/persistence/AuctionDistances/preinstall
+.PHONY : include/persistence/approximatedistances/preinstall
 
 #=============================================================================
-# Directory level rules for directory include/persistence/AuctionDistances/ann
+# Directory level rules for directory include/persistence/approximatedistances/geom_bottleneck
 
 # Convenience name for "all" pass in the directory.
-include/persistence/AuctionDistances/ann/all: include/persistence/AuctionDistances/ann/src/all
+include/persistence/approximatedistances/geom_bottleneck/all: include/persistence/approximatedistances/geom_bottleneck/ann/all
+include/persistence/approximatedistances/geom_bottleneck/all: include/persistence/approximatedistances/geom_bottleneck/bottleneck/all
 
-.PHONY : include/persistence/AuctionDistances/ann/all
+.PHONY : include/persistence/approximatedistances/geom_bottleneck/all
 
 # Convenience name for "clean" pass in the directory.
-include/persistence/AuctionDistances/ann/clean: include/persistence/AuctionDistances/ann/src/clean
+include/persistence/approximatedistances/geom_bottleneck/clean: include/persistence/approximatedistances/geom_bottleneck/ann/clean
+include/persistence/approximatedistances/geom_bottleneck/clean: include/persistence/approximatedistances/geom_bottleneck/bottleneck/clean
 
-.PHONY : include/persistence/AuctionDistances/ann/clean
+.PHONY : include/persistence/approximatedistances/geom_bottleneck/clean
 
 # Convenience name for "preinstall" pass in the directory.
-include/persistence/AuctionDistances/ann/preinstall: include/persistence/AuctionDistances/ann/src/preinstall
+include/persistence/approximatedistances/geom_bottleneck/preinstall: include/persistence/approximatedistances/geom_bottleneck/ann/preinstall
+include/persistence/approximatedistances/geom_bottleneck/preinstall: include/persistence/approximatedistances/geom_bottleneck/bottleneck/preinstall
 
-.PHONY : include/persistence/AuctionDistances/ann/preinstall
+.PHONY : include/persistence/approximatedistances/geom_bottleneck/preinstall
 
 #=============================================================================
-# Directory level rules for directory include/persistence/AuctionDistances/ann/src
+# Directory level rules for directory include/persistence/approximatedistances/geom_bottleneck/ann
 
 # Convenience name for "all" pass in the directory.
-include/persistence/AuctionDistances/ann/src/all: include/persistence/AuctionDistances/ann/src/CMakeFiles/libANN.dir/all
-include/persistence/AuctionDistances/ann/src/all: include/persistence/AuctionDistances/ann/src/CMakeFiles/libANNshared.dir/all
+include/persistence/approximatedistances/geom_bottleneck/ann/all: include/persistence/approximatedistances/geom_bottleneck/ann/src/all
 
-.PHONY : include/persistence/AuctionDistances/ann/src/all
+.PHONY : include/persistence/approximatedistances/geom_bottleneck/ann/all
 
 # Convenience name for "clean" pass in the directory.
-include/persistence/AuctionDistances/ann/src/clean: include/persistence/AuctionDistances/ann/src/CMakeFiles/libANN.dir/clean
-include/persistence/AuctionDistances/ann/src/clean: include/persistence/AuctionDistances/ann/src/CMakeFiles/libANNshared.dir/clean
+include/persistence/approximatedistances/geom_bottleneck/ann/clean: include/persistence/approximatedistances/geom_bottleneck/ann/src/clean
 
-.PHONY : include/persistence/AuctionDistances/ann/src/clean
+.PHONY : include/persistence/approximatedistances/geom_bottleneck/ann/clean
 
 # Convenience name for "preinstall" pass in the directory.
-include/persistence/AuctionDistances/ann/src/preinstall:
+include/persistence/approximatedistances/geom_bottleneck/ann/preinstall: include/persistence/approximatedistances/geom_bottleneck/ann/src/preinstall
 
-.PHONY : include/persistence/AuctionDistances/ann/src/preinstall
+.PHONY : include/persistence/approximatedistances/geom_bottleneck/ann/preinstall
 
 #=============================================================================
-# Target rules for target include/persistence/AuctionDistances/ann/src/CMakeFiles/libANN.dir
+# Directory level rules for directory include/persistence/approximatedistances/geom_bottleneck/ann/src
+
+# Convenience name for "all" pass in the directory.
+include/persistence/approximatedistances/geom_bottleneck/ann/src/all: include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/all
+include/persistence/approximatedistances/geom_bottleneck/ann/src/all: include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANNshared.dir/all
+
+.PHONY : include/persistence/approximatedistances/geom_bottleneck/ann/src/all
+
+# Convenience name for "clean" pass in the directory.
+include/persistence/approximatedistances/geom_bottleneck/ann/src/clean: include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/clean
+include/persistence/approximatedistances/geom_bottleneck/ann/src/clean: include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANNshared.dir/clean
+
+.PHONY : include/persistence/approximatedistances/geom_bottleneck/ann/src/clean
+
+# Convenience name for "preinstall" pass in the directory.
+include/persistence/approximatedistances/geom_bottleneck/ann/src/preinstall:
+
+.PHONY : include/persistence/approximatedistances/geom_bottleneck/ann/src/preinstall
+
+#=============================================================================
+# Target rules for target include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir
 
 # All Build rule for target.
-include/persistence/AuctionDistances/ann/src/CMakeFiles/libANN.dir/all:
-	$(MAKE) -f include/persistence/AuctionDistances/ann/src/CMakeFiles/libANN.dir/build.make include/persistence/AuctionDistances/ann/src/CMakeFiles/libANN.dir/depend
-	$(MAKE) -f include/persistence/AuctionDistances/ann/src/CMakeFiles/libANN.dir/build.make include/persistence/AuctionDistances/ann/src/CMakeFiles/libANN.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles --progress-num=5,6,7,8,9,10,11,12,13,14,15,16,17,18,19 "Built target libANN"
-.PHONY : include/persistence/AuctionDistances/ann/src/CMakeFiles/libANN.dir/all
+include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/all:
+	$(MAKE) -f include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/build.make include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/depend
+	$(MAKE) -f include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/build.make include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles --progress-num=10,11,12,13,14,15,16,17,18,19,20,21,22,23,24 "Built target libANN"
+.PHONY : include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/all
 
 # Include target in all.
-all: include/persistence/AuctionDistances/ann/src/CMakeFiles/libANN.dir/all
+all: include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-include/persistence/AuctionDistances/ann/src/CMakeFiles/libANN.dir/rule: cmake_check_build_system
+include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles 15
-	$(MAKE) -f CMakeFiles/Makefile2 include/persistence/AuctionDistances/ann/src/CMakeFiles/libANN.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles 0
-.PHONY : include/persistence/AuctionDistances/ann/src/CMakeFiles/libANN.dir/rule
+.PHONY : include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/rule
 
 # Convenience name for target.
-libANN: include/persistence/AuctionDistances/ann/src/CMakeFiles/libANN.dir/rule
+libANN: include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/rule
 
 .PHONY : libANN
 
 # clean rule for target.
-include/persistence/AuctionDistances/ann/src/CMakeFiles/libANN.dir/clean:
-	$(MAKE) -f include/persistence/AuctionDistances/ann/src/CMakeFiles/libANN.dir/build.make include/persistence/AuctionDistances/ann/src/CMakeFiles/libANN.dir/clean
-.PHONY : include/persistence/AuctionDistances/ann/src/CMakeFiles/libANN.dir/clean
+include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/clean:
+	$(MAKE) -f include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/build.make include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/clean
+.PHONY : include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/clean
 
 # clean rule for target.
-clean: include/persistence/AuctionDistances/ann/src/CMakeFiles/libANN.dir/clean
+clean: include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target include/persistence/AuctionDistances/ann/src/CMakeFiles/libANNshared.dir
+# Target rules for target include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANNshared.dir
 
 # All Build rule for target.
-include/persistence/AuctionDistances/ann/src/CMakeFiles/libANNshared.dir/all:
-	$(MAKE) -f include/persistence/AuctionDistances/ann/src/CMakeFiles/libANNshared.dir/build.make include/persistence/AuctionDistances/ann/src/CMakeFiles/libANNshared.dir/depend
-	$(MAKE) -f include/persistence/AuctionDistances/ann/src/CMakeFiles/libANNshared.dir/build.make include/persistence/AuctionDistances/ann/src/CMakeFiles/libANNshared.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles --progress-num=20,21,22,23,24,25,26,27,28,29,30,31,32,33,34 "Built target libANNshared"
-.PHONY : include/persistence/AuctionDistances/ann/src/CMakeFiles/libANNshared.dir/all
+include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANNshared.dir/all:
+	$(MAKE) -f include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANNshared.dir/build.make include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANNshared.dir/depend
+	$(MAKE) -f include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANNshared.dir/build.make include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANNshared.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles --progress-num=25,26,27,28,29,30,31,32,33,34,35,36,37,38,39 "Built target libANNshared"
+.PHONY : include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANNshared.dir/all
 
 # Include target in all.
-all: include/persistence/AuctionDistances/ann/src/CMakeFiles/libANNshared.dir/all
+all: include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANNshared.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-include/persistence/AuctionDistances/ann/src/CMakeFiles/libANNshared.dir/rule: cmake_check_build_system
+include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANNshared.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles 15
-	$(MAKE) -f CMakeFiles/Makefile2 include/persistence/AuctionDistances/ann/src/CMakeFiles/libANNshared.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANNshared.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles 0
-.PHONY : include/persistence/AuctionDistances/ann/src/CMakeFiles/libANNshared.dir/rule
+.PHONY : include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANNshared.dir/rule
 
 # Convenience name for target.
-libANNshared: include/persistence/AuctionDistances/ann/src/CMakeFiles/libANNshared.dir/rule
+libANNshared: include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANNshared.dir/rule
 
 .PHONY : libANNshared
 
 # clean rule for target.
-include/persistence/AuctionDistances/ann/src/CMakeFiles/libANNshared.dir/clean:
-	$(MAKE) -f include/persistence/AuctionDistances/ann/src/CMakeFiles/libANNshared.dir/build.make include/persistence/AuctionDistances/ann/src/CMakeFiles/libANNshared.dir/clean
-.PHONY : include/persistence/AuctionDistances/ann/src/CMakeFiles/libANNshared.dir/clean
+include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANNshared.dir/clean:
+	$(MAKE) -f include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANNshared.dir/build.make include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANNshared.dir/clean
+.PHONY : include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANNshared.dir/clean
 
 # clean rule for target.
-clean: include/persistence/AuctionDistances/ann/src/CMakeFiles/libANNshared.dir/clean
+clean: include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANNshared.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Directory level rules for directory include/persistence/AuctionDistances/bottleneck
+# Directory level rules for directory include/persistence/approximatedistances/geom_bottleneck/bottleneck
 
 # Convenience name for "all" pass in the directory.
-include/persistence/AuctionDistances/bottleneck/all: include/persistence/AuctionDistances/bottleneck/src/all
+include/persistence/approximatedistances/geom_bottleneck/bottleneck/all: include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/all
 
-.PHONY : include/persistence/AuctionDistances/bottleneck/all
-
-# Convenience name for "clean" pass in the directory.
-include/persistence/AuctionDistances/bottleneck/clean: include/persistence/AuctionDistances/bottleneck/src/clean
-
-.PHONY : include/persistence/AuctionDistances/bottleneck/clean
-
-# Convenience name for "preinstall" pass in the directory.
-include/persistence/AuctionDistances/bottleneck/preinstall: include/persistence/AuctionDistances/bottleneck/src/preinstall
-
-.PHONY : include/persistence/AuctionDistances/bottleneck/preinstall
-
-#=============================================================================
-# Directory level rules for directory include/persistence/AuctionDistances/bottleneck/src
-
-# Convenience name for "all" pass in the directory.
-include/persistence/AuctionDistances/bottleneck/src/all: include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneck.dir/all
-include/persistence/AuctionDistances/bottleneck/src/all: include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneckshared.dir/all
-
-.PHONY : include/persistence/AuctionDistances/bottleneck/src/all
+.PHONY : include/persistence/approximatedistances/geom_bottleneck/bottleneck/all
 
 # Convenience name for "clean" pass in the directory.
-include/persistence/AuctionDistances/bottleneck/src/clean: include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneck.dir/clean
-include/persistence/AuctionDistances/bottleneck/src/clean: include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneckshared.dir/clean
+include/persistence/approximatedistances/geom_bottleneck/bottleneck/clean: include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/clean
 
-.PHONY : include/persistence/AuctionDistances/bottleneck/src/clean
+.PHONY : include/persistence/approximatedistances/geom_bottleneck/bottleneck/clean
 
 # Convenience name for "preinstall" pass in the directory.
-include/persistence/AuctionDistances/bottleneck/src/preinstall:
+include/persistence/approximatedistances/geom_bottleneck/bottleneck/preinstall:
 
-.PHONY : include/persistence/AuctionDistances/bottleneck/src/preinstall
+.PHONY : include/persistence/approximatedistances/geom_bottleneck/bottleneck/preinstall
 
 #=============================================================================
-# Target rules for target include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneck.dir
+# Target rules for target include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir
 
 # All Build rule for target.
-include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneck.dir/all:
-	$(MAKE) -f include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneck.dir/build.make include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneck.dir/depend
-	$(MAKE) -f include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneck.dir/build.make include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneck.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles --progress-num=35,36,37,38,39 "Built target libbottleneck"
-.PHONY : include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneck.dir/all
+include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/all:
+	$(MAKE) -f include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/build.make include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/depend
+	$(MAKE) -f include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/build.make include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles --progress-num=5,6,7,8,9 "Built target bottleneck"
+.PHONY : include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/all
 
 # Include target in all.
-all: include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneck.dir/all
+all: include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneck.dir/rule: cmake_check_build_system
+include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles 5
-	$(MAKE) -f CMakeFiles/Makefile2 include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneck.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles 0
-.PHONY : include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneck.dir/rule
+.PHONY : include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/rule
 
 # Convenience name for target.
-libbottleneck: include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneck.dir/rule
+bottleneck: include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/rule
 
-.PHONY : libbottleneck
-
-# clean rule for target.
-include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneck.dir/clean:
-	$(MAKE) -f include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneck.dir/build.make include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneck.dir/clean
-.PHONY : include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneck.dir/clean
+.PHONY : bottleneck
 
 # clean rule for target.
-clean: include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneck.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneckshared.dir
-
-# All Build rule for target.
-include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneckshared.dir/all: include/persistence/AuctionDistances/ann/src/CMakeFiles/libANNshared.dir/all
-	$(MAKE) -f include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneckshared.dir/build.make include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneckshared.dir/depend
-	$(MAKE) -f include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneckshared.dir/build.make include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneckshared.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles --progress-num=40,41,42,43,44 "Built target libbottleneckshared"
-.PHONY : include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneckshared.dir/all
-
-# Include target in all.
-all: include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneckshared.dir/all
-
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneckshared.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles 20
-	$(MAKE) -f CMakeFiles/Makefile2 include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneckshared.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles 0
-.PHONY : include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneckshared.dir/rule
-
-# Convenience name for target.
-libbottleneckshared: include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneckshared.dir/rule
-
-.PHONY : libbottleneckshared
+include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/clean:
+	$(MAKE) -f include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/build.make include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/clean
+.PHONY : include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/clean
 
 # clean rule for target.
-include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneckshared.dir/clean:
-	$(MAKE) -f include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneckshared.dir/build.make include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneckshared.dir/clean
-.PHONY : include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneckshared.dir/clean
-
-# clean rule for target.
-clean: include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneckshared.dir/clean
+clean: include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/clean
 
 .PHONY : clean
 
@@ -328,8 +289,7 @@ source/preinstall:
 # Target rules for target source/CMakeFiles/ComputeDistances.dir
 
 # All Build rule for target.
-source/CMakeFiles/ComputeDistances.dir/all: include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneck.dir/all
-source/CMakeFiles/ComputeDistances.dir/all: include/persistence/AuctionDistances/ann/src/CMakeFiles/libANN.dir/all
+source/CMakeFiles/ComputeDistances.dir/all: include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/all
 	$(MAKE) -f source/CMakeFiles/ComputeDistances.dir/build.make source/CMakeFiles/ComputeDistances.dir/depend
 	$(MAKE) -f source/CMakeFiles/ComputeDistances.dir/build.make source/CMakeFiles/ComputeDistances.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles --progress-num=1,2 "Built target ComputeDistances"
@@ -342,7 +302,7 @@ all: source/CMakeFiles/ComputeDistances.dir/all
 
 # Build rule for subdir invocation for target.
 source/CMakeFiles/ComputeDistances.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles 22
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles 17
 	$(MAKE) -f CMakeFiles/Makefile2 source/CMakeFiles/ComputeDistances.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles 0
 .PHONY : source/CMakeFiles/ComputeDistances.dir/rule
@@ -366,8 +326,7 @@ clean: source/CMakeFiles/ComputeDistances.dir/clean
 # Target rules for target source/CMakeFiles/ComputeSubsample.dir
 
 # All Build rule for target.
-source/CMakeFiles/ComputeSubsample.dir/all: include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneck.dir/all
-source/CMakeFiles/ComputeSubsample.dir/all: include/persistence/AuctionDistances/ann/src/CMakeFiles/libANN.dir/all
+source/CMakeFiles/ComputeSubsample.dir/all: include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/all
 	$(MAKE) -f source/CMakeFiles/ComputeSubsample.dir/build.make source/CMakeFiles/ComputeSubsample.dir/depend
 	$(MAKE) -f source/CMakeFiles/ComputeSubsample.dir/build.make source/CMakeFiles/ComputeSubsample.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles --progress-num=3,4 "Built target ComputeSubsample"
@@ -380,7 +339,7 @@ all: source/CMakeFiles/ComputeSubsample.dir/all
 
 # Build rule for subdir invocation for target.
 source/CMakeFiles/ComputeSubsample.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles 22
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles 17
 	$(MAKE) -f CMakeFiles/Makefile2 source/CMakeFiles/ComputeSubsample.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles 0
 .PHONY : source/CMakeFiles/ComputeSubsample.dir/rule

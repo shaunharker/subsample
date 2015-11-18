@@ -11,7 +11,7 @@ set(CMAKE_CXX_COMPILER_ID "Clang")
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   ".././include"
-  ".././include/persistence/AuctionDistances/ann/include"
+  ".././include/persistence/approximatedistances/ann/include"
   "/usr/local/include"
   "/opt/local/include"
   "/usr/local/Cellar/open-mpi/1.10.0/include"
@@ -19,6 +19,5 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/AuctionDistances/bottleneck/src/CMakeFiles/libbottleneck.dir/DependInfo.cmake"
-  "/Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/AuctionDistances/ann/src/CMakeFiles/libANN.dir/DependInfo.cmake"
+  "/Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/DependInfo.cmake"
   )

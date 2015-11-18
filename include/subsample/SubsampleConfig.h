@@ -20,8 +20,8 @@
 #include "persistence/PersistenceDiagram.h"
 #include "persistence/WassersteinDistance.h"
 #include "persistence/BottleneckDistance.h"
-#include "persistence/BottleneckAuctionDistance.h"
-#include "persistence/WassersteinAuctionDistance.h"
+#include "persistence/BottleneckApproximateDistance.h"
+#include "persistence/WassersteinApproximateDistance.h"
 
 #include "tools/json.hpp"
 using json = nlohmann::json;
@@ -43,7 +43,6 @@ private:
     ar & pd;
   }
 };
-}
 
 
 
@@ -57,7 +56,7 @@ public:
     double result = 0.0;
     if ( std::isinf(p_) ) {
       for ( uint64_t i = 0; i < N; ++ i ) {
-        result = std::max(result, BottleneckAuctionDistance ( p.pd[i], q.pd[i], 0 ) );
+        result = std::max(result, BottleneckAuctionDistance ( p.pd[i], q.pd[i], 1 ) );
       }
       return result;
     } else {
@@ -320,6 +319,8 @@ getSubsamples ( void ) const {
 inline std::string const& DistanceMatrixConfig::
 getOutputFile ( void ) const {
   return distance_filename_;
+}
+
 }
 
 #endif

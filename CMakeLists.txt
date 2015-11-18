@@ -38,7 +38,7 @@ find_package(MPI REQUIRED)
 
 include_directories ( 
   ./include 
-  ./include/persistence/AuctionDistances/ann/include
+  ./include/persistence/approximatedistances/ann/include
   /usr/local/include 
   /opt/local/include 
   ${Boost_INCLUDE_DIRS} 
@@ -66,7 +66,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 # Recurse #
 ###########
 
-add_subdirectory (include/persistence/AuctionDistances)
+add_subdirectory (include/persistence/approximatedistances)
 add_subdirectory (source)
 
 #########

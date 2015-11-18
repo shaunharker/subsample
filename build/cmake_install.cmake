@@ -29,7 +29,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/AuctionDistances/cmake_install.cmake")
+  include("/Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/cmake_install.cmake")
   include("/Users/birdbrain/Documents/Research/Code/subsample/build/source/cmake_install.cmake")
 
 endif()

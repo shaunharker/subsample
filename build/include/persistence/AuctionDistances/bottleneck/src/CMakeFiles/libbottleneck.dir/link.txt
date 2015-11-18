@@ -1,2 +1,0 @@
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar cq ../../../../../lib/libbottleneck.a  CMakeFiles/libbottleneck.dir/bottleneck.cpp.o CMakeFiles/libbottleneck.dir/basic_defs.cpp.o CMakeFiles/libbottleneck.dir/bound_match.cpp.o CMakeFiles/libbottleneck.dir/neighb_oracle.cpp.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib ../../../../../lib/libbottleneck.a

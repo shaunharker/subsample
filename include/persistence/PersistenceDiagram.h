@@ -20,6 +20,9 @@
 #include <boost/serialization/base_object.hpp>
 #include <boost/serialization/vector.hpp>
 
+namespace subsample
+{
+
 int64_t generator_distance_count = 0;
 struct Generator {
   double birth;
@@ -123,5 +126,7 @@ public:
    // for ( int i = 0; i < )
   }
 };
+
+}
 
 #endif
