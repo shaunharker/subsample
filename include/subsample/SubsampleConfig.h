@@ -42,28 +42,28 @@ private:
 class Distance {
 public:
   Distance ( void ) {}
-  Distance ( double p ) : p_(p) {}
+  //Distance ( double p ) : p_(p) {}
   Distance ( double p, double approx ) : p_(p), approx_(approx) {}
   double operator () ( Point const& p, Point const& q ) const {
     uint64_t N = p . pd . size ();
     double result = 0.0;
     if ( std::isinf(p_) ) {
       for ( uint64_t i = 0; i < N; ++ i ) {
-        if ( approx_ = 0 ) {
+        if ( approx_ == 0 ) {
           result = std::max(result, BottleneckDistance ( p.pd[i], q.pd[i] ) );
         } else {
           //Replace me with actual reference to ApproximateBottleneckDistance
-          result = approx_;
+          result = 10 + approx_;
         }
       }
       return result;
     } else {
       for ( uint64_t i = 0; i < N; ++ i ) {
-        if ( approx_ = 0 ) {
+        if ( approx_ == 0 ) {
           result += std::pow ( WassersteinDistance ( p.pd[i], q.pd[i], p_), p_ );
         } else {
           //Replace me with actual reference to ApproximateWassersteinDistance
-          result += approx_;
+          result += 10 + approx_;
         }
       }
       result = std::pow ( result, 1.0 / p_ );
@@ -73,6 +73,7 @@ public:
   }
 private:
   double p_;
+  double approx_;
 };
 
 
