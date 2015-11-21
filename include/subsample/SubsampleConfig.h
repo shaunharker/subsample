@@ -43,17 +43,28 @@ class Distance {
 public:
   Distance ( void ) {}
   Distance ( double p ) : p_(p) {}
+  Distance ( double p, double approx ) : p_(p), approx_(approx) {}
   double operator () ( Point const& p, Point const& q ) const {
     uint64_t N = p . pd . size ();
     double result = 0.0;
     if ( std::isinf(p_) ) {
       for ( uint64_t i = 0; i < N; ++ i ) {
-        result = std::max(result, BottleneckDistance ( p.pd[i], q.pd[i] ) );
+        if ( approx_ = 0 ) {
+          result = std::max(result, BottleneckDistance ( p.pd[i], q.pd[i] ) );
+        } else {
+          //Replace me with actual reference to ApproximateBottleneckDistance
+          result = 1;
+        }
       }
       return result;
     } else {
       for ( uint64_t i = 0; i < N; ++ i ) {
-        result += std::pow ( WassersteinDistance ( p.pd[i], q.pd[i], p_), p_ );
+        if ( approx_ = 0 ) {
+          result += std::pow ( WassersteinDistance ( p.pd[i], q.pd[i], p_), p_ );
+        } else {
+          //Replace me with actual reference to ApproximateWassersteinDistance
+          result += 1;
+        }
       }
       result = std::pow ( result, 1.0 / p_ );
       //std::cout << "Distance = " << result << "\n";
@@ -146,7 +157,7 @@ assign ( int argc, char * argv [] ) {
   metric_ = std::stod ( argv[3] );
   approx_ = std::stod ( argv[4] );
   subsample_filename_ = argv[5];
-  distance_ = Distance ( metric_ );
+  distance_ = Distance ( metric_, approx_ );
   cohort_size_ = 1000;
 
   //std::cout << "Loading samples...\n";
@@ -315,7 +326,7 @@ assign ( int argc, char * argv [] ) {
 
 inline Distance DistanceMatrixConfig::
 getDistanceFunctor ( void ) const {
-  return Distance ( metric_ );
+  return Distance ( metric_, approx_ );
 }
 
 inline std::vector<Point> const& DistanceMatrixConfig::
