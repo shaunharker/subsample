@@ -135,7 +135,7 @@ SubsampleConfig ( int argc, char * argv [] ) {
 inline void SubsampleConfig::
 assign ( int argc, char * argv [] ) {
   if ( argc != 6 ) {
-    std::cout << "Give five arguments: /path/to/sample.json delta p epsilon /path/to/subsample.json \n";
+    std::cout << "Give five arguments: /path/to/sample.json delta p approximation_error /path/to/subsample.json \n";
     std::cout << " (Note: the last argument is the output file.)\n";
     throw std::logic_error ( "Bad arguments." );
   }
