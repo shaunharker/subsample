@@ -1,0 +1,2 @@
+/Users/birdbrain/Documents/Research/Code/subsample/bin/ComputeSubsample
+/Users/birdbrain/Documents/Research/Code/subsample/bin/ComputeDistances

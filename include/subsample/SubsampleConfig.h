@@ -42,7 +42,6 @@ private:
 class Distance {
 public:
   Distance ( void ) {}
-  //Distance ( double p ) : p_(p) {}
   Distance ( double p, double approx ) : p_(p), approx_(approx) {}
   double operator () ( Point const& p, Point const& q ) const {
     uint64_t N = p . pd . size ();
