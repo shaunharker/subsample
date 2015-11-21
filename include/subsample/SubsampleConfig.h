@@ -53,7 +53,7 @@ public:
           result = std::max(result, BottleneckDistance ( p.pd[i], q.pd[i] ) );
         } else {
           //Replace me with actual reference to ApproximateBottleneckDistance
-          result = 1;
+          result = approx_;
         }
       }
       return result;
@@ -63,7 +63,7 @@ public:
           result += std::pow ( WassersteinDistance ( p.pd[i], q.pd[i], p_), p_ );
         } else {
           //Replace me with actual reference to ApproximateWassersteinDistance
-          result += 1;
+          result += approx_;
         }
       }
       result = std::pow ( result, 1.0 / p_ );
