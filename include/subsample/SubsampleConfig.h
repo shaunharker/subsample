@@ -95,6 +95,11 @@ public:
   double
   getDelta ( void ) const;
 
+  /// getApproximation ( void )
+  ///   Return the approximation parameter (for auction algorithms)
+  double
+  getApproximationError ( void ) const;
+
   /// getSamples
   ///   Return collection of samples (Points)
   std::vector<Point> const&
@@ -112,6 +117,7 @@ private:
   std::string samples_filename_;
   double delta_;
   double metric_;
+  double approx_;
   std::string subsample_filename_;
   Distance distance_;
   int64_t cohort_size_;
@@ -128,8 +134,8 @@ SubsampleConfig ( int argc, char * argv [] ) {
 
 inline void SubsampleConfig::
 assign ( int argc, char * argv [] ) {
-  if ( argc != 5 ) {
-    std::cout << "Give four arguments: /path/to/sample.json delta p /path/to/subsample.json \n";
+  if ( argc != 6 ) {
+    std::cout << "Give five arguments: /path/to/sample.json delta p epsilon /path/to/subsample.json \n";
     std::cout << " (Note: the last argument is the output file.)\n";
     throw std::logic_error ( "Bad arguments." );
   }
@@ -138,7 +144,8 @@ assign ( int argc, char * argv [] ) {
   samples_filename_ = argv[1];
   delta_ = std::stod ( argv[2] );
   metric_ = std::stod ( argv[3] );
-  subsample_filename_ = argv[4];
+  approx_ = std::stod ( argv[4] );
+  subsample_filename_ = argv[5];
   distance_ = Distance ( metric_ );
   cohort_size_ = 1000;
 
@@ -186,6 +193,11 @@ getDelta ( void ) const {
   return delta_;
 }
 
+inline double SubsampleConfig::
+getApproximationError ( void ) const {
+  return approx_;
+}
+
 inline void SubsampleConfig::
 handleResults ( std::vector<Point> const& results ) const {
   //std::cout << "There were " << results . size () 
@@ -204,6 +216,7 @@ handleResults ( std::vector<Point> const& results ) const {
   } else {
     output["p"] = metric_;
   }
+  output["approximation_error"] = approx_;
   output["subsample"] = subsample_indices;
   std::ofstream ( subsample_filename_ ) << output;
 #ifdef SUBSAMPLEDISTANCE_H
@@ -245,6 +258,7 @@ private:
 
   double delta_;
   double metric_;
+  double approx_;
   Distance distance_;
   std::vector<Point> subsamples_;
 };
@@ -286,6 +300,7 @@ assign ( int argc, char * argv [] ) {
   } catch ( ... ) {
     metric_ = std::numeric_limits<double>::infinity();
   }
+  approx_ = subsamples_json [ "approximation_error" ];
   for ( int64_t const& i : subsample_array ) {
     Point p;
     p . id = i;
