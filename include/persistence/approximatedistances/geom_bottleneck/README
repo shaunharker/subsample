@@ -1,0 +1,26 @@
+# Dependency
+
+The program uses ANN library (http://www.cs.umd.edu/~mount/ANN/),
+modified to support deletion of points from k-d trees.
+The modified version is contained in "ann" directory.
+
+# License
+
+The program is distributed under Lesser GPL license.
+
+# Building
+
+First build the modified version of ANN in ann/ directory following the
+instructions for ANN compilation.
+Then cd to "bottleneck" directory and build the program with make.
+The executable "bottleneck" will appear in bottleneck/build/default.
+
+Usage: bottleneck file1 file2  [relative_error]. 
+If relative error is not supplied, the exact distance is computed.
+file1 and file2 must contain persistence diagrams in plain text format 
+(no headers, no comments, one point per line):
+
+x_1 y_1
+...
+x_n y_n
+

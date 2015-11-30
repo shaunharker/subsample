@@ -1,0 +1,65 @@
+project(geom_bottleneck)
+cmake_minimum_required(VERSION 2.8.9)
+
+# Default to Release
+if(NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE "Release" CACHE STRING "Choose the type of build, options are: Debug Release RelWithDebInfo MinSizeRel." FORCE)
+endif(NOT CMAKE_BUILD_TYPE)
+
+# Add path to ANN header files
+include_directories("${CMAKE_CURRENT_SOURCE_DIR}/src"
+                    "${CMAKE_CURRENT_SOURCE_DIR}/../ann/include")
+
+if(WIN32)
+    # path to ANN.lib in windows
+    link_directories("${CMAKE_CURRENT_SOURCE_DIR}/../ann/MS_Win32/dll/Release")
+else(WIN32)
+    # path to libANN.a in linux
+    link_directories("${CMAKE_CURRENT_SOURCE_DIR}/../ann/lib/")
+endif(WIN32)
+
+set(CXX_FLAGS ${CMAKE_CXX_FLAGS_RELEASE})
+
+if(NOT WIN32)
+    set(CMAKE_CXX_FLAGS "-O3 -DNDEBUG -DBOOST_DISABLE_ASSERTS -march=native -mtune=native --fast-math")
+    add_definitions(-std=c++11)
+endif(NOT WIN32)
+
+if (WIN32)
+    # on Windows ANN is compiled to dll
+    add_library(ann SHARED IMPORTED)
+else(WIN32)
+    # on linux link statically
+    add_library(ann STATIC IMPORTED)
+endif(WIN32)
+
+if(UNIX)
+    # specify full path to ANN
+    set_property(TARGET ann PROPERTY IMPORTED_LOCATION "${CMAKE_CURRENT_SOURCE_DIR}/../ann/lib/libANN.a")
+endif(UNIX)
+
+add_executable (bottleneck src/bottleneck.cpp src/bound_match.cpp src/neighb_oracle.cpp src/basic_defs.cpp)
+
+if(WIN32)
+    target_link_libraries(bottleneck PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../ann/MS_Win32/dll/${CMAKE_BUILD_TYPE}/ANN.lib")
+    # tell VS we're building a console application
+    set_target_properties(bottleneck PROPERTIES LINK_FLAGS_DEBUG "/SUBSYSTEM:CONSOLE")
+    set_target_properties(bottleneck PROPERTIES LINK_FLAGS_RELWITHDEBINFO "/SUBSYSTEM:CONSOLE")
+    set_target_properties(bottleneck PROPERTIES LINK_FLAGS_RELEASE "/SUBSYSTEM:CONSOLE")
+    set_target_properties(bottleneck PROPERTIES LINK_FLAGS_MINSIZEREL "/SUBSYSTEM:CONSOLE")
+    # copy ANN.dll to the folder with bottleneck.exe
+    # Release configuration:
+    add_custom_command(TARGET bottleneck POST_BUILD
+                       COMMAND ${CMAKE_COMMAND} -E copy_if_different 
+                       "${CMAKE_CURRENT_SOURCE_DIR}/../ann/MS_Win32/bin/ANN.dll"      
+                       "${CMAKE_BINARY_DIR}/Release/ANN.dll")                 
+
+    # Debug configuration:
+    add_custom_command(TARGET bottleneck POST_BUILD       
+                       COMMAND ${CMAKE_COMMAND} -E copy_if_different  
+                               "${CMAKE_CURRENT_SOURCE_DIR}/../ann/MS_Win32/bin/ANN.dll"      
+                               "${CMAKE_BINARY_DIR}/Debug/ANN.dll")                 
+else(WIN32)
+    target_link_libraries(bottleneck PUBLIC ann)
+endif(WIN32)
+
