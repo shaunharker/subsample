@@ -14,17 +14,6 @@ source/CMakeFiles/ComputeDistances.dir/ComputeDistances.cpp.o: .././include/pers
 source/CMakeFiles/ComputeDistances.dir/ComputeDistances.cpp.o: .././include/persistence/approximatedistances/geom_bottleneck/bottleneck/src/neighb_oracle.h
 source/CMakeFiles/ComputeDistances.dir/ComputeDistances.cpp.o: .././include/subsample/SubsampleConfig.h
 source/CMakeFiles/ComputeDistances.dir/ComputeDistances.cpp.o: .././include/tools/json.hpp
-source/CMakeFiles/ComputeDistances.dir/ComputeDistances.cpp.o: /Users/birdbrain/Documents/Research/Code/cluster-delegator/include/cluster-delegator.hpp
-source/CMakeFiles/ComputeDistances.dir/ComputeDistances.cpp.o: /Users/birdbrain/Documents/Research/Code/cluster-delegator/include/delegator/Communicator.h
-source/CMakeFiles/ComputeDistances.dir/ComputeDistances.cpp.o: /Users/birdbrain/Documents/Research/Code/cluster-delegator/include/delegator/Communicator.hpp
-source/CMakeFiles/ComputeDistances.dir/ComputeDistances.cpp.o: /Users/birdbrain/Documents/Research/Code/cluster-delegator/include/delegator/Coordinator_Worker_Process.h
-source/CMakeFiles/ComputeDistances.dir/ComputeDistances.cpp.o: /Users/birdbrain/Documents/Research/Code/cluster-delegator/include/delegator/Coordinator_Worker_Process.hpp
-source/CMakeFiles/ComputeDistances.dir/ComputeDistances.cpp.o: /Users/birdbrain/Documents/Research/Code/cluster-delegator/include/delegator/Coordinator_Worker_Scheme.h
-source/CMakeFiles/ComputeDistances.dir/ComputeDistances.cpp.o: /Users/birdbrain/Documents/Research/Code/cluster-delegator/include/delegator/Coordinator_Worker_Scheme.hpp
-source/CMakeFiles/ComputeDistances.dir/ComputeDistances.cpp.o: /Users/birdbrain/Documents/Research/Code/cluster-delegator/include/delegator/Message.h
-source/CMakeFiles/ComputeDistances.dir/ComputeDistances.cpp.o: /Users/birdbrain/Documents/Research/Code/cluster-delegator/include/delegator/Message.hpp
-source/CMakeFiles/ComputeDistances.dir/ComputeDistances.cpp.o: /Users/birdbrain/Documents/Research/Code/cluster-delegator/include/delegator/delegator.h
-source/CMakeFiles/ComputeDistances.dir/ComputeDistances.cpp.o: /Users/birdbrain/Documents/Research/Code/cluster-delegator/include/delegator/delegator.hpp
 source/CMakeFiles/ComputeDistances.dir/ComputeDistances.cpp.o: ../source/ComputeDistances.cpp
 source/CMakeFiles/ComputeDistances.dir/ComputeDistances.cpp.o: /usr/local/include/boost/align/align.hpp
 source/CMakeFiles/ComputeDistances.dir/ComputeDistances.cpp.o: /usr/local/include/boost/align/detail/address.hpp
@@ -665,6 +654,7 @@ source/CMakeFiles/ComputeDistances.dir/ComputeDistances.cpp.o: /usr/local/includ
 source/CMakeFiles/ComputeDistances.dir/ComputeDistances.cpp.o: /usr/local/include/boost/utility/declval.hpp
 source/CMakeFiles/ComputeDistances.dir/ComputeDistances.cpp.o: /usr/local/include/boost/utility/enable_if.hpp
 source/CMakeFiles/ComputeDistances.dir/ComputeDistances.cpp.o: /usr/local/include/boost/version.hpp
+source/CMakeFiles/ComputeDistances.dir/ComputeDistances.cpp.o: /usr/local/include/cluster-delegator.hpp
 source/CMakeFiles/ComputeDistances.dir/ComputeDistances.cpp.o: /usr/local/include/mpi.h
 source/CMakeFiles/ComputeDistances.dir/ComputeDistances.cpp.o: /usr/local/include/mpi_portable_platform.h
 source/CMakeFiles/ComputeDistances.dir/ComputeDistances.cpp.o: /usr/local/include/openmpi/ompi/mpi/cxx/comm.h

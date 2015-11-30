@@ -1,4 +1,4 @@
-# Install script for directory: /Users/birdbrain/Documents/Research/Code/subsample
+# Install script for directory: /Users/birdbrain/Documents/Research/Code/clean/subsample
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -29,8 +29,8 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/cmake_install.cmake")
-  include("/Users/birdbrain/Documents/Research/Code/subsample/build/source/cmake_install.cmake")
+  include("/Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/cmake_install.cmake")
+  include("/Users/birdbrain/Documents/Research/Code/clean/subsample/build/source/cmake_install.cmake")
 
 endif()
 
@@ -42,5 +42,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/birdbrain/Documents/Research/Code/subsample/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/birdbrain/Documents/Research/Code/clean/subsample/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

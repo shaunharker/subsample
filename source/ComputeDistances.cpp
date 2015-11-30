@@ -2,11 +2,9 @@
 /// Author: Shaun Harker
 /// Date: July 17, 2014
 #include <vector>
-#include "../../cluster-delegator/include/cluster-delegator.hpp" 
+#include "cluster-delegator.hpp" 
 #include "subsample/SubsampleConfig.h" // Defines class Point, class Distance
 
-
-using namespace subsample;
 
 class ComputeMatrixProcess : public Coordinator_Worker_Process {
 public:
@@ -23,10 +21,10 @@ private:
   int64_t N_;
   int64_t last_job_;
   int64_t result_index_;
-  DistanceMatrixConfig config_;
+  subsample::DistanceMatrixConfig config_;
   std::vector<subsample::Point> subsamples_;
   std::vector<double> results_;
-  Distance distance_;
+  subsample::Distance distance_;
 };
 
 void ComputeMatrixProcess::

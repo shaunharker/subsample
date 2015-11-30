@@ -26,6 +26,7 @@
 #include "tools/json.hpp"
 using json = nlohmann::json;
 
+
 namespace subsample
 {
 
@@ -51,7 +52,7 @@ public:
   Distance ( void ) {}
   Distance ( double p ) : p_(p) {}
 
-  double operator () ( subsample::Point const& p, subsample::Point const& q ) const {
+  double operator () ( Point const& p, Point const& q ) const {
     uint64_t N = p . pd . size ();
     double result = 0.0;
     if ( std::isinf(p_) ) {

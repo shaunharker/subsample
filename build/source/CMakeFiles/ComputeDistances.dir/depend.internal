@@ -15,18 +15,7 @@ source/CMakeFiles/ComputeDistances.dir/ComputeDistances.cpp.o
  .././include/persistence/approximatedistances/geom_bottleneck/bottleneck/src/neighb_oracle.h
  .././include/subsample/SubsampleConfig.h
  .././include/tools/json.hpp
- /Users/birdbrain/Documents/Research/Code/cluster-delegator/include/cluster-delegator.hpp
- /Users/birdbrain/Documents/Research/Code/cluster-delegator/include/delegator/Communicator.h
- /Users/birdbrain/Documents/Research/Code/cluster-delegator/include/delegator/Communicator.hpp
- /Users/birdbrain/Documents/Research/Code/cluster-delegator/include/delegator/Coordinator_Worker_Process.h
- /Users/birdbrain/Documents/Research/Code/cluster-delegator/include/delegator/Coordinator_Worker_Process.hpp
- /Users/birdbrain/Documents/Research/Code/cluster-delegator/include/delegator/Coordinator_Worker_Scheme.h
- /Users/birdbrain/Documents/Research/Code/cluster-delegator/include/delegator/Coordinator_Worker_Scheme.hpp
- /Users/birdbrain/Documents/Research/Code/cluster-delegator/include/delegator/Message.h
- /Users/birdbrain/Documents/Research/Code/cluster-delegator/include/delegator/Message.hpp
- /Users/birdbrain/Documents/Research/Code/cluster-delegator/include/delegator/delegator.h
- /Users/birdbrain/Documents/Research/Code/cluster-delegator/include/delegator/delegator.hpp
- /Users/birdbrain/Documents/Research/Code/subsample/source/ComputeDistances.cpp
+ /Users/birdbrain/Documents/Research/Code/clean/subsample/source/ComputeDistances.cpp
  /usr/local/include/boost/align/align.hpp
  /usr/local/include/boost/align/detail/address.hpp
  /usr/local/include/boost/align/detail/align.hpp
@@ -666,6 +655,7 @@ source/CMakeFiles/ComputeDistances.dir/ComputeDistances.cpp.o
  /usr/local/include/boost/utility/declval.hpp
  /usr/local/include/boost/utility/enable_if.hpp
  /usr/local/include/boost/version.hpp
+ /usr/local/include/cluster-delegator.hpp
  /usr/local/include/mpi.h
  /usr/local/include/mpi_portable_platform.h
  /usr/local/include/openmpi/ompi/mpi/cxx/comm.h

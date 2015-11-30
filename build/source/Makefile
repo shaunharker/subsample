@@ -48,10 +48,10 @@ RM = /usr/local/Cellar/cmake/3.3.2/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/birdbrain/Documents/Research/Code/subsample
+CMAKE_SOURCE_DIR = /Users/birdbrain/Documents/Research/Code/clean/subsample
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/birdbrain/Documents/Research/Code/subsample/build
+CMAKE_BINARY_DIR = /Users/birdbrain/Documents/Research/Code/clean/subsample/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -135,14 +135,14 @@ install/strip/fast: install/strip
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles /Users/birdbrain/Documents/Research/Code/subsample/build/source/CMakeFiles/progress.marks
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build && $(MAKE) -f CMakeFiles/Makefile2 source/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles 0
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/birdbrain/Documents/Research/Code/clean/subsample/build/CMakeFiles /Users/birdbrain/Documents/Research/Code/clean/subsample/build/source/CMakeFiles/progress.marks
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build && $(MAKE) -f CMakeFiles/Makefile2 source/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/birdbrain/Documents/Research/Code/clean/subsample/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build && $(MAKE) -f CMakeFiles/Makefile2 source/clean
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build && $(MAKE) -f CMakeFiles/Makefile2 source/clean
 .PHONY : clean
 
 # The main clean target
@@ -152,22 +152,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build && $(MAKE) -f CMakeFiles/Makefile2 source/preinstall
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build && $(MAKE) -f CMakeFiles/Makefile2 source/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build && $(MAKE) -f CMakeFiles/Makefile2 source/preinstall
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build && $(MAKE) -f CMakeFiles/Makefile2 source/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 source/CMakeFiles/ComputeDistances.dir/rule:
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build && $(MAKE) -f CMakeFiles/Makefile2 source/CMakeFiles/ComputeDistances.dir/rule
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build && $(MAKE) -f CMakeFiles/Makefile2 source/CMakeFiles/ComputeDistances.dir/rule
 .PHONY : source/CMakeFiles/ComputeDistances.dir/rule
 
 # Convenience name for target.
@@ -177,12 +177,12 @@ ComputeDistances: source/CMakeFiles/ComputeDistances.dir/rule
 
 # fast build rule for target.
 ComputeDistances/fast:
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build && $(MAKE) -f source/CMakeFiles/ComputeDistances.dir/build.make source/CMakeFiles/ComputeDistances.dir/build
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build && $(MAKE) -f source/CMakeFiles/ComputeDistances.dir/build.make source/CMakeFiles/ComputeDistances.dir/build
 .PHONY : ComputeDistances/fast
 
 # Convenience name for target.
 source/CMakeFiles/ComputeSubsample.dir/rule:
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build && $(MAKE) -f CMakeFiles/Makefile2 source/CMakeFiles/ComputeSubsample.dir/rule
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build && $(MAKE) -f CMakeFiles/Makefile2 source/CMakeFiles/ComputeSubsample.dir/rule
 .PHONY : source/CMakeFiles/ComputeSubsample.dir/rule
 
 # Convenience name for target.
@@ -192,7 +192,7 @@ ComputeSubsample: source/CMakeFiles/ComputeSubsample.dir/rule
 
 # fast build rule for target.
 ComputeSubsample/fast:
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build && $(MAKE) -f source/CMakeFiles/ComputeSubsample.dir/build.make source/CMakeFiles/ComputeSubsample.dir/build
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build && $(MAKE) -f source/CMakeFiles/ComputeSubsample.dir/build.make source/CMakeFiles/ComputeSubsample.dir/build
 .PHONY : ComputeSubsample/fast
 
 ComputeDistances.o: ComputeDistances.cpp.o
@@ -201,7 +201,7 @@ ComputeDistances.o: ComputeDistances.cpp.o
 
 # target to build an object file
 ComputeDistances.cpp.o:
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build && $(MAKE) -f source/CMakeFiles/ComputeDistances.dir/build.make source/CMakeFiles/ComputeDistances.dir/ComputeDistances.cpp.o
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build && $(MAKE) -f source/CMakeFiles/ComputeDistances.dir/build.make source/CMakeFiles/ComputeDistances.dir/ComputeDistances.cpp.o
 .PHONY : ComputeDistances.cpp.o
 
 ComputeDistances.i: ComputeDistances.cpp.i
@@ -210,7 +210,7 @@ ComputeDistances.i: ComputeDistances.cpp.i
 
 # target to preprocess a source file
 ComputeDistances.cpp.i:
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build && $(MAKE) -f source/CMakeFiles/ComputeDistances.dir/build.make source/CMakeFiles/ComputeDistances.dir/ComputeDistances.cpp.i
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build && $(MAKE) -f source/CMakeFiles/ComputeDistances.dir/build.make source/CMakeFiles/ComputeDistances.dir/ComputeDistances.cpp.i
 .PHONY : ComputeDistances.cpp.i
 
 ComputeDistances.s: ComputeDistances.cpp.s
@@ -219,7 +219,7 @@ ComputeDistances.s: ComputeDistances.cpp.s
 
 # target to generate assembly for a file
 ComputeDistances.cpp.s:
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build && $(MAKE) -f source/CMakeFiles/ComputeDistances.dir/build.make source/CMakeFiles/ComputeDistances.dir/ComputeDistances.cpp.s
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build && $(MAKE) -f source/CMakeFiles/ComputeDistances.dir/build.make source/CMakeFiles/ComputeDistances.dir/ComputeDistances.cpp.s
 .PHONY : ComputeDistances.cpp.s
 
 ComputeSubsample.o: ComputeSubsample.cpp.o
@@ -228,7 +228,7 @@ ComputeSubsample.o: ComputeSubsample.cpp.o
 
 # target to build an object file
 ComputeSubsample.cpp.o:
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build && $(MAKE) -f source/CMakeFiles/ComputeSubsample.dir/build.make source/CMakeFiles/ComputeSubsample.dir/ComputeSubsample.cpp.o
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build && $(MAKE) -f source/CMakeFiles/ComputeSubsample.dir/build.make source/CMakeFiles/ComputeSubsample.dir/ComputeSubsample.cpp.o
 .PHONY : ComputeSubsample.cpp.o
 
 ComputeSubsample.i: ComputeSubsample.cpp.i
@@ -237,7 +237,7 @@ ComputeSubsample.i: ComputeSubsample.cpp.i
 
 # target to preprocess a source file
 ComputeSubsample.cpp.i:
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build && $(MAKE) -f source/CMakeFiles/ComputeSubsample.dir/build.make source/CMakeFiles/ComputeSubsample.dir/ComputeSubsample.cpp.i
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build && $(MAKE) -f source/CMakeFiles/ComputeSubsample.dir/build.make source/CMakeFiles/ComputeSubsample.dir/ComputeSubsample.cpp.i
 .PHONY : ComputeSubsample.cpp.i
 
 ComputeSubsample.s: ComputeSubsample.cpp.s
@@ -246,7 +246,7 @@ ComputeSubsample.s: ComputeSubsample.cpp.s
 
 # target to generate assembly for a file
 ComputeSubsample.cpp.s:
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build && $(MAKE) -f source/CMakeFiles/ComputeSubsample.dir/build.make source/CMakeFiles/ComputeSubsample.dir/ComputeSubsample.cpp.s
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build && $(MAKE) -f source/CMakeFiles/ComputeSubsample.dir/build.make source/CMakeFiles/ComputeSubsample.dir/ComputeSubsample.cpp.s
 .PHONY : ComputeSubsample.cpp.s
 
 # Help Target
@@ -281,6 +281,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

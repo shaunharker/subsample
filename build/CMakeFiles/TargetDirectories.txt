@@ -1,5 +1,6 @@
-/Users/birdbrain/Documents/Research/Code/subsample/build/source/CMakeFiles/ComputeDistances.dir
-/Users/birdbrain/Documents/Research/Code/subsample/build/source/CMakeFiles/ComputeSubsample.dir
-/Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir
-/Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANNshared.dir
-/Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir
+/Users/birdbrain/Documents/Research/Code/clean/subsample/build/source/CMakeFiles/ComputeDistances.dir
+/Users/birdbrain/Documents/Research/Code/clean/subsample/build/source/CMakeFiles/ComputeSubsample.dir
+/Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANNshared.dir
+/Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/bottleneck/src/CMakeFiles/libbottleneckshared.dir
+/Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/bottleneck/src/CMakeFiles/libbottleneck.dir
+/Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir

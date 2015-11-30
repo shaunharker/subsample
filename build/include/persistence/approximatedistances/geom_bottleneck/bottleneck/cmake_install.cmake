@@ -1,4 +1,4 @@
-# Install script for directory: /Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/bottleneck
+# Install script for directory: /Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/bottleneck
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -25,5 +25,11 @@ if(NOT CMAKE_INSTALL_COMPONENT)
   else()
     set(CMAKE_INSTALL_COMPONENT)
   endif()
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for each subdirectory.
+  include("/Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/bottleneck/src/cmake_install.cmake")
+
 endif()
 

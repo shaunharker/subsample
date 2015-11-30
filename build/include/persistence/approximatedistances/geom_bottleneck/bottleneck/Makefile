@@ -48,10 +48,10 @@ RM = /usr/local/Cellar/cmake/3.3.2/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/birdbrain/Documents/Research/Code/subsample
+CMAKE_SOURCE_DIR = /Users/birdbrain/Documents/Research/Code/clean/subsample
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/birdbrain/Documents/Research/Code/subsample/build
+CMAKE_BINARY_DIR = /Users/birdbrain/Documents/Research/Code/clean/subsample/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -77,6 +77,28 @@ install/local: preinstall
 install/local/fast: install/local
 
 .PHONY : install/local/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/usr/local/Cellar/cmake/3.3.2/bin/ccmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/local/Cellar/cmake/3.3.2/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # Special rule for the target list_install_components
 list_install_components:
@@ -111,38 +133,16 @@ install/strip/fast: install/strip
 
 .PHONY : install/strip/fast
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/local/Cellar/cmake/3.3.2/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/usr/local/Cellar/cmake/3.3.2/bin/ccmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
 # The main all target
 all: cmake_check_build_system
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/progress.marks
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build && $(MAKE) -f CMakeFiles/Makefile2 include/persistence/approximatedistances/geom_bottleneck/bottleneck/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles 0
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/birdbrain/Documents/Research/Code/clean/subsample/build/CMakeFiles /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/progress.marks
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build && $(MAKE) -f CMakeFiles/Makefile2 include/persistence/approximatedistances/geom_bottleneck/bottleneck/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/birdbrain/Documents/Research/Code/clean/subsample/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build && $(MAKE) -f CMakeFiles/Makefile2 include/persistence/approximatedistances/geom_bottleneck/bottleneck/clean
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build && $(MAKE) -f CMakeFiles/Makefile2 include/persistence/approximatedistances/geom_bottleneck/bottleneck/clean
 .PHONY : clean
 
 # The main clean target
@@ -152,141 +152,18 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build && $(MAKE) -f CMakeFiles/Makefile2 include/persistence/approximatedistances/geom_bottleneck/bottleneck/preinstall
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build && $(MAKE) -f CMakeFiles/Makefile2 include/persistence/approximatedistances/geom_bottleneck/bottleneck/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build && $(MAKE) -f CMakeFiles/Makefile2 include/persistence/approximatedistances/geom_bottleneck/bottleneck/preinstall
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build && $(MAKE) -f CMakeFiles/Makefile2 include/persistence/approximatedistances/geom_bottleneck/bottleneck/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
-
-# Convenience name for target.
-include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/rule:
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build && $(MAKE) -f CMakeFiles/Makefile2 include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/rule
-.PHONY : include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/rule
-
-# Convenience name for target.
-bottleneck: include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/rule
-
-.PHONY : bottleneck
-
-# fast build rule for target.
-bottleneck/fast:
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build && $(MAKE) -f include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/build.make include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/build
-.PHONY : bottleneck/fast
-
-src/basic_defs.o: src/basic_defs.cpp.o
-
-.PHONY : src/basic_defs.o
-
-# target to build an object file
-src/basic_defs.cpp.o:
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build && $(MAKE) -f include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/build.make include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/src/basic_defs.cpp.o
-.PHONY : src/basic_defs.cpp.o
-
-src/basic_defs.i: src/basic_defs.cpp.i
-
-.PHONY : src/basic_defs.i
-
-# target to preprocess a source file
-src/basic_defs.cpp.i:
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build && $(MAKE) -f include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/build.make include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/src/basic_defs.cpp.i
-.PHONY : src/basic_defs.cpp.i
-
-src/basic_defs.s: src/basic_defs.cpp.s
-
-.PHONY : src/basic_defs.s
-
-# target to generate assembly for a file
-src/basic_defs.cpp.s:
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build && $(MAKE) -f include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/build.make include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/src/basic_defs.cpp.s
-.PHONY : src/basic_defs.cpp.s
-
-src/bottleneck.o: src/bottleneck.cpp.o
-
-.PHONY : src/bottleneck.o
-
-# target to build an object file
-src/bottleneck.cpp.o:
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build && $(MAKE) -f include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/build.make include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/src/bottleneck.cpp.o
-.PHONY : src/bottleneck.cpp.o
-
-src/bottleneck.i: src/bottleneck.cpp.i
-
-.PHONY : src/bottleneck.i
-
-# target to preprocess a source file
-src/bottleneck.cpp.i:
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build && $(MAKE) -f include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/build.make include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/src/bottleneck.cpp.i
-.PHONY : src/bottleneck.cpp.i
-
-src/bottleneck.s: src/bottleneck.cpp.s
-
-.PHONY : src/bottleneck.s
-
-# target to generate assembly for a file
-src/bottleneck.cpp.s:
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build && $(MAKE) -f include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/build.make include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/src/bottleneck.cpp.s
-.PHONY : src/bottleneck.cpp.s
-
-src/bound_match.o: src/bound_match.cpp.o
-
-.PHONY : src/bound_match.o
-
-# target to build an object file
-src/bound_match.cpp.o:
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build && $(MAKE) -f include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/build.make include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/src/bound_match.cpp.o
-.PHONY : src/bound_match.cpp.o
-
-src/bound_match.i: src/bound_match.cpp.i
-
-.PHONY : src/bound_match.i
-
-# target to preprocess a source file
-src/bound_match.cpp.i:
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build && $(MAKE) -f include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/build.make include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/src/bound_match.cpp.i
-.PHONY : src/bound_match.cpp.i
-
-src/bound_match.s: src/bound_match.cpp.s
-
-.PHONY : src/bound_match.s
-
-# target to generate assembly for a file
-src/bound_match.cpp.s:
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build && $(MAKE) -f include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/build.make include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/src/bound_match.cpp.s
-.PHONY : src/bound_match.cpp.s
-
-src/neighb_oracle.o: src/neighb_oracle.cpp.o
-
-.PHONY : src/neighb_oracle.o
-
-# target to build an object file
-src/neighb_oracle.cpp.o:
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build && $(MAKE) -f include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/build.make include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/src/neighb_oracle.cpp.o
-.PHONY : src/neighb_oracle.cpp.o
-
-src/neighb_oracle.i: src/neighb_oracle.cpp.i
-
-.PHONY : src/neighb_oracle.i
-
-# target to preprocess a source file
-src/neighb_oracle.cpp.i:
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build && $(MAKE) -f include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/build.make include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/src/neighb_oracle.cpp.i
-.PHONY : src/neighb_oracle.cpp.i
-
-src/neighb_oracle.s: src/neighb_oracle.cpp.s
-
-.PHONY : src/neighb_oracle.s
-
-# target to generate assembly for a file
-src/neighb_oracle.cpp.s:
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build && $(MAKE) -f include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/build.make include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/src/neighb_oracle.cpp.s
-.PHONY : src/neighb_oracle.cpp.s
 
 # Help Target
 help:
@@ -296,24 +173,11 @@ help:
 	@echo "... depend"
 	@echo "... test"
 	@echo "... install/local"
+	@echo "... edit_cache"
+	@echo "... rebuild_cache"
 	@echo "... list_install_components"
 	@echo "... install"
 	@echo "... install/strip"
-	@echo "... rebuild_cache"
-	@echo "... edit_cache"
-	@echo "... bottleneck"
-	@echo "... src/basic_defs.o"
-	@echo "... src/basic_defs.i"
-	@echo "... src/basic_defs.s"
-	@echo "... src/bottleneck.o"
-	@echo "... src/bottleneck.i"
-	@echo "... src/bottleneck.s"
-	@echo "... src/bound_match.o"
-	@echo "... src/bound_match.i"
-	@echo "... src/bound_match.s"
-	@echo "... src/neighb_oracle.o"
-	@echo "... src/neighb_oracle.i"
-	@echo "... src/neighb_oracle.s"
 .PHONY : help
 
 
@@ -325,6 +189,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

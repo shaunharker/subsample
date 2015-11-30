@@ -6,8 +6,10 @@
 #include "subsample/SubsampleProcess.h" 
 #include "subsample/SubsampleConfig.h" // Defines class Point, class Distance
 
+
+
 int main ( int argc, char * argv [] ) {
-  typedef SubsampleProcess<subsample::Point,SubsampleDistance<subsample::Point, Distance> > Process;
+  typedef SubsampleProcess<subsample::Point,SubsampleDistance<subsample::Point, subsample::Distance> > Process;
   delegator::Start ();
   delegator::Run<Process> (argc, argv);
   delegator::Stop ();

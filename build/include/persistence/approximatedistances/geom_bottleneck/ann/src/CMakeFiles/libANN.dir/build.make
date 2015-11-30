@@ -43,10 +43,10 @@ RM = /usr/local/Cellar/cmake/3.3.2/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/birdbrain/Documents/Research/Code/subsample
+CMAKE_SOURCE_DIR = /Users/birdbrain/Documents/Research/Code/clean/subsample
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/birdbrain/Documents/Research/Code/subsample/build
+CMAKE_BINARY_DIR = /Users/birdbrain/Documents/Research/Code/clean/subsample/build
 
 # Include any dependencies generated for this target.
 include include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/depend.make
@@ -59,16 +59,16 @@ include include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFi
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/ANN.cpp.o: include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/flags.make
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/ANN.cpp.o: ../include/persistence/approximatedistances/geom_bottleneck/ann/src/ANN.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/ANN.cpp.o"
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/libANN.dir/ANN.cpp.o -c /Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/ANN.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/birdbrain/Documents/Research/Code/clean/subsample/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/ANN.cpp.o"
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/libANN.dir/ANN.cpp.o -c /Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/ANN.cpp
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/ANN.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/libANN.dir/ANN.cpp.i"
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/ANN.cpp > CMakeFiles/libANN.dir/ANN.cpp.i
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/ANN.cpp > CMakeFiles/libANN.dir/ANN.cpp.i
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/ANN.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/libANN.dir/ANN.cpp.s"
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/ANN.cpp -o CMakeFiles/libANN.dir/ANN.cpp.s
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/ANN.cpp -o CMakeFiles/libANN.dir/ANN.cpp.s
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/ANN.cpp.o.requires:
 
@@ -83,16 +83,16 @@ include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libA
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/bd_fix_rad_search.cpp.o: include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/flags.make
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/bd_fix_rad_search.cpp.o: ../include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_fix_rad_search.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/bd_fix_rad_search.cpp.o"
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/libANN.dir/bd_fix_rad_search.cpp.o -c /Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_fix_rad_search.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/birdbrain/Documents/Research/Code/clean/subsample/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/bd_fix_rad_search.cpp.o"
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/libANN.dir/bd_fix_rad_search.cpp.o -c /Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_fix_rad_search.cpp
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/bd_fix_rad_search.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/libANN.dir/bd_fix_rad_search.cpp.i"
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_fix_rad_search.cpp > CMakeFiles/libANN.dir/bd_fix_rad_search.cpp.i
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_fix_rad_search.cpp > CMakeFiles/libANN.dir/bd_fix_rad_search.cpp.i
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/bd_fix_rad_search.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/libANN.dir/bd_fix_rad_search.cpp.s"
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_fix_rad_search.cpp -o CMakeFiles/libANN.dir/bd_fix_rad_search.cpp.s
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_fix_rad_search.cpp -o CMakeFiles/libANN.dir/bd_fix_rad_search.cpp.s
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/bd_fix_rad_search.cpp.o.requires:
 
@@ -107,16 +107,16 @@ include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libA
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/bd_pr_search.cpp.o: include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/flags.make
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/bd_pr_search.cpp.o: ../include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_pr_search.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/bd_pr_search.cpp.o"
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/libANN.dir/bd_pr_search.cpp.o -c /Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_pr_search.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/birdbrain/Documents/Research/Code/clean/subsample/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/bd_pr_search.cpp.o"
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/libANN.dir/bd_pr_search.cpp.o -c /Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_pr_search.cpp
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/bd_pr_search.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/libANN.dir/bd_pr_search.cpp.i"
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_pr_search.cpp > CMakeFiles/libANN.dir/bd_pr_search.cpp.i
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_pr_search.cpp > CMakeFiles/libANN.dir/bd_pr_search.cpp.i
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/bd_pr_search.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/libANN.dir/bd_pr_search.cpp.s"
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_pr_search.cpp -o CMakeFiles/libANN.dir/bd_pr_search.cpp.s
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_pr_search.cpp -o CMakeFiles/libANN.dir/bd_pr_search.cpp.s
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/bd_pr_search.cpp.o.requires:
 
@@ -131,16 +131,16 @@ include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libA
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/bd_search.cpp.o: include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/flags.make
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/bd_search.cpp.o: ../include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_search.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/bd_search.cpp.o"
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/libANN.dir/bd_search.cpp.o -c /Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_search.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/birdbrain/Documents/Research/Code/clean/subsample/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/bd_search.cpp.o"
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/libANN.dir/bd_search.cpp.o -c /Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_search.cpp
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/bd_search.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/libANN.dir/bd_search.cpp.i"
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_search.cpp > CMakeFiles/libANN.dir/bd_search.cpp.i
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_search.cpp > CMakeFiles/libANN.dir/bd_search.cpp.i
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/bd_search.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/libANN.dir/bd_search.cpp.s"
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_search.cpp -o CMakeFiles/libANN.dir/bd_search.cpp.s
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_search.cpp -o CMakeFiles/libANN.dir/bd_search.cpp.s
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/bd_search.cpp.o.requires:
 
@@ -155,16 +155,16 @@ include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libA
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/bd_tree.cpp.o: include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/flags.make
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/bd_tree.cpp.o: ../include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_tree.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/bd_tree.cpp.o"
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/libANN.dir/bd_tree.cpp.o -c /Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_tree.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/birdbrain/Documents/Research/Code/clean/subsample/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/bd_tree.cpp.o"
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/libANN.dir/bd_tree.cpp.o -c /Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_tree.cpp
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/bd_tree.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/libANN.dir/bd_tree.cpp.i"
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_tree.cpp > CMakeFiles/libANN.dir/bd_tree.cpp.i
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_tree.cpp > CMakeFiles/libANN.dir/bd_tree.cpp.i
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/bd_tree.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/libANN.dir/bd_tree.cpp.s"
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_tree.cpp -o CMakeFiles/libANN.dir/bd_tree.cpp.s
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_tree.cpp -o CMakeFiles/libANN.dir/bd_tree.cpp.s
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/bd_tree.cpp.o.requires:
 
@@ -179,16 +179,16 @@ include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libA
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/brute.cpp.o: include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/flags.make
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/brute.cpp.o: ../include/persistence/approximatedistances/geom_bottleneck/ann/src/brute.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/brute.cpp.o"
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/libANN.dir/brute.cpp.o -c /Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/brute.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/birdbrain/Documents/Research/Code/clean/subsample/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/brute.cpp.o"
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/libANN.dir/brute.cpp.o -c /Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/brute.cpp
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/brute.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/libANN.dir/brute.cpp.i"
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/brute.cpp > CMakeFiles/libANN.dir/brute.cpp.i
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/brute.cpp > CMakeFiles/libANN.dir/brute.cpp.i
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/brute.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/libANN.dir/brute.cpp.s"
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/brute.cpp -o CMakeFiles/libANN.dir/brute.cpp.s
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/brute.cpp -o CMakeFiles/libANN.dir/brute.cpp.s
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/brute.cpp.o.requires:
 
@@ -203,16 +203,16 @@ include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libA
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_dump.cpp.o: include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/flags.make
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_dump.cpp.o: ../include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_dump.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_dump.cpp.o"
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/libANN.dir/kd_dump.cpp.o -c /Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_dump.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/birdbrain/Documents/Research/Code/clean/subsample/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_dump.cpp.o"
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/libANN.dir/kd_dump.cpp.o -c /Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_dump.cpp
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_dump.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/libANN.dir/kd_dump.cpp.i"
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_dump.cpp > CMakeFiles/libANN.dir/kd_dump.cpp.i
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_dump.cpp > CMakeFiles/libANN.dir/kd_dump.cpp.i
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_dump.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/libANN.dir/kd_dump.cpp.s"
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_dump.cpp -o CMakeFiles/libANN.dir/kd_dump.cpp.s
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_dump.cpp -o CMakeFiles/libANN.dir/kd_dump.cpp.s
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_dump.cpp.o.requires:
 
@@ -227,16 +227,16 @@ include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libA
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_fix_rad_search.cpp.o: include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/flags.make
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_fix_rad_search.cpp.o: ../include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_fix_rad_search.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_fix_rad_search.cpp.o"
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/libANN.dir/kd_fix_rad_search.cpp.o -c /Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_fix_rad_search.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/birdbrain/Documents/Research/Code/clean/subsample/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_fix_rad_search.cpp.o"
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/libANN.dir/kd_fix_rad_search.cpp.o -c /Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_fix_rad_search.cpp
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_fix_rad_search.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/libANN.dir/kd_fix_rad_search.cpp.i"
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_fix_rad_search.cpp > CMakeFiles/libANN.dir/kd_fix_rad_search.cpp.i
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_fix_rad_search.cpp > CMakeFiles/libANN.dir/kd_fix_rad_search.cpp.i
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_fix_rad_search.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/libANN.dir/kd_fix_rad_search.cpp.s"
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_fix_rad_search.cpp -o CMakeFiles/libANN.dir/kd_fix_rad_search.cpp.s
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_fix_rad_search.cpp -o CMakeFiles/libANN.dir/kd_fix_rad_search.cpp.s
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_fix_rad_search.cpp.o.requires:
 
@@ -251,16 +251,16 @@ include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libA
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_pr_search.cpp.o: include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/flags.make
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_pr_search.cpp.o: ../include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_pr_search.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_pr_search.cpp.o"
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/libANN.dir/kd_pr_search.cpp.o -c /Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_pr_search.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/birdbrain/Documents/Research/Code/clean/subsample/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_pr_search.cpp.o"
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/libANN.dir/kd_pr_search.cpp.o -c /Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_pr_search.cpp
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_pr_search.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/libANN.dir/kd_pr_search.cpp.i"
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_pr_search.cpp > CMakeFiles/libANN.dir/kd_pr_search.cpp.i
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_pr_search.cpp > CMakeFiles/libANN.dir/kd_pr_search.cpp.i
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_pr_search.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/libANN.dir/kd_pr_search.cpp.s"
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_pr_search.cpp -o CMakeFiles/libANN.dir/kd_pr_search.cpp.s
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_pr_search.cpp -o CMakeFiles/libANN.dir/kd_pr_search.cpp.s
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_pr_search.cpp.o.requires:
 
@@ -275,16 +275,16 @@ include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libA
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_search.cpp.o: include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/flags.make
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_search.cpp.o: ../include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_search.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_search.cpp.o"
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/libANN.dir/kd_search.cpp.o -c /Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_search.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/birdbrain/Documents/Research/Code/clean/subsample/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_search.cpp.o"
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/libANN.dir/kd_search.cpp.o -c /Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_search.cpp
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_search.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/libANN.dir/kd_search.cpp.i"
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_search.cpp > CMakeFiles/libANN.dir/kd_search.cpp.i
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_search.cpp > CMakeFiles/libANN.dir/kd_search.cpp.i
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_search.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/libANN.dir/kd_search.cpp.s"
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_search.cpp -o CMakeFiles/libANN.dir/kd_search.cpp.s
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_search.cpp -o CMakeFiles/libANN.dir/kd_search.cpp.s
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_search.cpp.o.requires:
 
@@ -299,16 +299,16 @@ include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libA
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_split.cpp.o: include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/flags.make
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_split.cpp.o: ../include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_split.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_split.cpp.o"
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/libANN.dir/kd_split.cpp.o -c /Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_split.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/birdbrain/Documents/Research/Code/clean/subsample/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_split.cpp.o"
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/libANN.dir/kd_split.cpp.o -c /Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_split.cpp
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_split.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/libANN.dir/kd_split.cpp.i"
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_split.cpp > CMakeFiles/libANN.dir/kd_split.cpp.i
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_split.cpp > CMakeFiles/libANN.dir/kd_split.cpp.i
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_split.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/libANN.dir/kd_split.cpp.s"
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_split.cpp -o CMakeFiles/libANN.dir/kd_split.cpp.s
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_split.cpp -o CMakeFiles/libANN.dir/kd_split.cpp.s
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_split.cpp.o.requires:
 
@@ -323,16 +323,16 @@ include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libA
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_tree.cpp.o: include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/flags.make
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_tree.cpp.o: ../include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_tree.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_tree.cpp.o"
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/libANN.dir/kd_tree.cpp.o -c /Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_tree.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/birdbrain/Documents/Research/Code/clean/subsample/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_tree.cpp.o"
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/libANN.dir/kd_tree.cpp.o -c /Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_tree.cpp
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_tree.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/libANN.dir/kd_tree.cpp.i"
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_tree.cpp > CMakeFiles/libANN.dir/kd_tree.cpp.i
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_tree.cpp > CMakeFiles/libANN.dir/kd_tree.cpp.i
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_tree.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/libANN.dir/kd_tree.cpp.s"
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_tree.cpp -o CMakeFiles/libANN.dir/kd_tree.cpp.s
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_tree.cpp -o CMakeFiles/libANN.dir/kd_tree.cpp.s
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_tree.cpp.o.requires:
 
@@ -347,16 +347,16 @@ include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libA
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_util.cpp.o: include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/flags.make
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_util.cpp.o: ../include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_util.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_util.cpp.o"
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/libANN.dir/kd_util.cpp.o -c /Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_util.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/birdbrain/Documents/Research/Code/clean/subsample/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_util.cpp.o"
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/libANN.dir/kd_util.cpp.o -c /Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_util.cpp
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_util.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/libANN.dir/kd_util.cpp.i"
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_util.cpp > CMakeFiles/libANN.dir/kd_util.cpp.i
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_util.cpp > CMakeFiles/libANN.dir/kd_util.cpp.i
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_util.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/libANN.dir/kd_util.cpp.s"
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_util.cpp -o CMakeFiles/libANN.dir/kd_util.cpp.s
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_util.cpp -o CMakeFiles/libANN.dir/kd_util.cpp.s
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/kd_util.cpp.o.requires:
 
@@ -371,16 +371,16 @@ include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libA
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/perf.cpp.o: include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/flags.make
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/perf.cpp.o: ../include/persistence/approximatedistances/geom_bottleneck/ann/src/perf.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/perf.cpp.o"
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/libANN.dir/perf.cpp.o -c /Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/perf.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/birdbrain/Documents/Research/Code/clean/subsample/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/perf.cpp.o"
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/libANN.dir/perf.cpp.o -c /Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/perf.cpp
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/perf.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/libANN.dir/perf.cpp.i"
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/perf.cpp > CMakeFiles/libANN.dir/perf.cpp.i
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/perf.cpp > CMakeFiles/libANN.dir/perf.cpp.i
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/perf.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/libANN.dir/perf.cpp.s"
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/perf.cpp -o CMakeFiles/libANN.dir/perf.cpp.s
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/perf.cpp -o CMakeFiles/libANN.dir/perf.cpp.s
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/perf.cpp.o.requires:
 
@@ -429,9 +429,9 @@ lib/libANN.a: include/persistence/approximatedistances/geom_bottleneck/ann/src/C
 lib/libANN.a: include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/perf.cpp.o
 lib/libANN.a: include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/build.make
 lib/libANN.a: include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX static library ../../../../../../lib/libANN.a"
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && $(CMAKE_COMMAND) -P CMakeFiles/libANN.dir/cmake_clean_target.cmake
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/libANN.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/birdbrain/Documents/Research/Code/clean/subsample/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX static library ../../../../../../lib/libANN.a"
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && $(CMAKE_COMMAND) -P CMakeFiles/libANN.dir/cmake_clean_target.cmake
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/libANN.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/build: lib/libANN.a
@@ -456,10 +456,10 @@ include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libA
 .PHONY : include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/requires
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/clean:
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && $(CMAKE_COMMAND) -P CMakeFiles/libANN.dir/cmake_clean.cmake
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src && $(CMAKE_COMMAND) -P CMakeFiles/libANN.dir/cmake_clean.cmake
 .PHONY : include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/clean
 
 include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/depend:
-	cd /Users/birdbrain/Documents/Research/Code/subsample/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/birdbrain/Documents/Research/Code/subsample /Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src /Users/birdbrain/Documents/Research/Code/subsample/build /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src /Users/birdbrain/Documents/Research/Code/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/birdbrain/Documents/Research/Code/clean/subsample/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/birdbrain/Documents/Research/Code/clean/subsample /Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src /Users/birdbrain/Documents/Research/Code/clean/subsample/build /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src /Users/birdbrain/Documents/Research/Code/clean/subsample/build/include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : include/persistence/approximatedistances/geom_bottleneck/ann/src/CMakeFiles/libANN.dir/depend
 

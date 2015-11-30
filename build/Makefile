@@ -48,10 +48,10 @@ RM = /usr/local/Cellar/cmake/3.3.2/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/birdbrain/Documents/Research/Code/subsample
+CMAKE_SOURCE_DIR = /Users/birdbrain/Documents/Research/Code/clean/subsample
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/birdbrain/Documents/Research/Code/subsample/build
+CMAKE_BINARY_DIR = /Users/birdbrain/Documents/Research/Code/clean/subsample/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -135,9 +135,9 @@ install/strip/fast: install/strip
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles /Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/birdbrain/Documents/Research/Code/clean/subsample/build/CMakeFiles /Users/birdbrain/Documents/Research/Code/clean/subsample/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/birdbrain/Documents/Research/Code/subsample/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/birdbrain/Documents/Research/Code/clean/subsample/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -192,17 +192,30 @@ libANNshared/fast:
 .PHONY : libANNshared/fast
 
 #=============================================================================
-# Target rules for targets named bottleneck
+# Target rules for targets named libbottleneck
 
 # Build rule for target.
-bottleneck: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 bottleneck
-.PHONY : bottleneck
+libbottleneck: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 libbottleneck
+.PHONY : libbottleneck
 
 # fast build rule for target.
-bottleneck/fast:
-	$(MAKE) -f include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/build.make include/persistence/approximatedistances/geom_bottleneck/bottleneck/CMakeFiles/bottleneck.dir/build
-.PHONY : bottleneck/fast
+libbottleneck/fast:
+	$(MAKE) -f include/persistence/approximatedistances/geom_bottleneck/bottleneck/src/CMakeFiles/libbottleneck.dir/build.make include/persistence/approximatedistances/geom_bottleneck/bottleneck/src/CMakeFiles/libbottleneck.dir/build
+.PHONY : libbottleneck/fast
+
+#=============================================================================
+# Target rules for targets named libbottleneckshared
+
+# Build rule for target.
+libbottleneckshared: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 libbottleneckshared
+.PHONY : libbottleneckshared
+
+# fast build rule for target.
+libbottleneckshared/fast:
+	$(MAKE) -f include/persistence/approximatedistances/geom_bottleneck/bottleneck/src/CMakeFiles/libbottleneckshared.dir/build.make include/persistence/approximatedistances/geom_bottleneck/bottleneck/src/CMakeFiles/libbottleneckshared.dir/build
+.PHONY : libbottleneckshared/fast
 
 #=============================================================================
 # Target rules for targets named ComputeDistances
@@ -245,7 +258,8 @@ help:
 	@echo "... install/strip"
 	@echo "... libANNshared"
 	@echo "... libANN"
-	@echo "... bottleneck"
+	@echo "... libbottleneckshared"
+	@echo "... libbottleneck"
 	@echo "... ComputeSubsample"
 	@echo "... ComputeDistances"
 .PHONY : help

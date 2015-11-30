@@ -36,7 +36,7 @@ iomanip
 ANN/ANN.h
 -
 
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/ANN.cpp
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/ANN.cpp
 ciso646
 -
 cstdlib
@@ -46,149 +46,149 @@ ANN/ANNx.h
 ANN/ANNperf.h
 -
 
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_fix_rad_search.cpp
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_fix_rad_search.cpp
 bd_tree.h
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_tree.h
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_tree.h
 kd_fix_rad_search.h
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_fix_rad_search.h
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_fix_rad_search.h
 
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_pr_search.cpp
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_pr_search.cpp
 bd_tree.h
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_tree.h
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_tree.h
 kd_pr_search.h
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_pr_search.h
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_pr_search.h
 
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_search.cpp
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_search.cpp
 bd_tree.h
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_tree.h
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_tree.h
 kd_search.h
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_search.h
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_search.h
 
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_tree.cpp
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_tree.cpp
 bd_tree.h
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_tree.h
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_tree.h
 kd_util.h
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_util.h
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_util.h
 kd_split.h
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_split.h
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_split.h
 ANN/ANNperf.h
 -
 
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_tree.h
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_tree.h
 ANN/ANNx.h
 -
 kd_tree.h
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_tree.h
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_tree.h
 
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/brute.cpp
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/brute.cpp
 ANN/ANNx.h
 -
 pr_queue_k.h
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/pr_queue_k.h
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/pr_queue_k.h
 
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_dump.cpp
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_dump.cpp
 kd_tree.h
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_tree.h
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_tree.h
 bd_tree.h
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_tree.h
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/bd_tree.h
 
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_fix_rad_search.cpp
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_fix_rad_search.cpp
 kd_fix_rad_search.h
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_fix_rad_search.h
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_fix_rad_search.h
 
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_fix_rad_search.h
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_fix_rad_search.h
 kd_tree.h
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_tree.h
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_tree.h
 kd_util.h
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_util.h
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_util.h
 pr_queue_k.h
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/pr_queue_k.h
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/pr_queue_k.h
 ANN/ANNperf.h
 -
 
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_pr_search.cpp
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_pr_search.cpp
 kd_pr_search.h
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_pr_search.h
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_pr_search.h
 
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_pr_search.h
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_pr_search.h
 kd_tree.h
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_tree.h
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_tree.h
 kd_util.h
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_util.h
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_util.h
 pr_queue.h
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/pr_queue.h
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/pr_queue.h
 pr_queue_k.h
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/pr_queue_k.h
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/pr_queue_k.h
 ANN/ANNperf.h
 -
 
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_search.cpp
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_search.cpp
 kd_search.h
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_search.h
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_search.h
 
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_search.h
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_search.h
 kd_tree.h
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_tree.h
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_tree.h
 kd_util.h
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_util.h
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_util.h
 pr_queue_k.h
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/pr_queue_k.h
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/pr_queue_k.h
 ANN/ANNperf.h
 -
 
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_split.cpp
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_split.cpp
 kd_tree.h
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_tree.h
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_tree.h
 kd_util.h
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_util.h
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_util.h
 kd_split.h
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_split.h
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_split.h
 
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_split.h
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_split.h
 kd_tree.h
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_tree.h
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_tree.h
 
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_tree.cpp
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_tree.cpp
 ciso646
 -
 kd_tree.h
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_tree.h
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_tree.h
 kd_split.h
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_split.h
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_split.h
 kd_util.h
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_util.h
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_util.h
 ANN/ANNperf.h
 -
 
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_tree.h
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_tree.h
 utility
 -
 ANN/ANNx.h
 -
 
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_util.cpp
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_util.cpp
 kd_util.h
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_util.h
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_util.h
 ANN/ANNperf.h
 -
 
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_util.h
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_util.h
 kd_tree.h
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_tree.h
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/kd_tree.h
 
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/perf.cpp
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/perf.cpp
 ANN/ANN.h
 -
 ANN/ANNperf.h
 -
 
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/pr_queue.h
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/pr_queue.h
 ANN/ANNx.h
 -
 ANN/ANNperf.h
 -
 
-/Users/birdbrain/Documents/Research/Code/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/pr_queue_k.h
+/Users/birdbrain/Documents/Research/Code/clean/subsample/include/persistence/approximatedistances/geom_bottleneck/ann/src/pr_queue_k.h
 ANN/ANNx.h
 -
 ANN/ANNperf.h

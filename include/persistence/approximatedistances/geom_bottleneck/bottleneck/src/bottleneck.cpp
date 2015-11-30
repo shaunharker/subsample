@@ -539,28 +539,28 @@ bool readDiagramPointSets(const char* fnameA,
     return true;
 }
 
-int main(int argc, char* argv[])
-{
-    DiagramPointSet A, B;
-    if (argc < 3 ) {
-        std::cerr << "Usage: " << argv[0] << "file1 file2 [relative_error]. Without relative_error calculate the exact distance." << std::endl;
-        return 1;
-    }
-    if (!readDiagramPointSets(argv[1], argv[2], A, B)) {
-        std::exit(1);
-    }
+// int main(int argc, char* argv[])
+// {
+//     DiagramPointSet A, B;
+//     if (argc < 3 ) {
+//         std::cerr << "Usage: " << argv[0] << "file1 file2 [relative_error]. Without relative_error calculate the exact distance." << std::endl;
+//         return 1;
+//     }
+//     if (!readDiagramPointSets(argv[1], argv[2], A, B)) {
+//         std::exit(1);
+//     }
 
-    double res;
-    if (argc >= 4) {
-        // the third parameter is epsilon,
-        // return approximate distance (faster)
-        double approxEpsilon =  atof(argv[3]);
-        res = bottleneckDistApprox(A, B, approxEpsilon);
-    } else {
-        // only filenames have been supplied, return exact distance
-        res = bottleneckDistExact(A, B);
-        //res = bottleneckDistSlow(A, B);
-    }
-    std::cout << std::setprecision(15) << res << std::endl;
-    return 0;
-}
+//     double res;
+//     if (argc >= 4) {
+//         // the third parameter is epsilon,
+//         // return approximate distance (faster)
+//         double approxEpsilon =  atof(argv[3]);
+//         res = bottleneckDistApprox(A, B, approxEpsilon);
+//     } else {
+//         // only filenames have been supplied, return exact distance
+//         res = bottleneckDistExact(A, B);
+//         //res = bottleneckDistSlow(A, B);
+//     }
+//     std::cout << std::setprecision(15) << res << std::endl;
+//     return 0;
+// }
