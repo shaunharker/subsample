@@ -134,7 +134,6 @@ private:
   std::string samples_filename_;
   double delta_;
   double metric_;
-  double approx_;
   std::string subsample_filename_;
   Distance distance_;
   int64_t cohort_size_;
@@ -151,8 +150,8 @@ SubsampleConfig ( int argc, char * argv [] ) {
 
 inline void SubsampleConfig::
 assign ( int argc, char * argv [] ) {
-  if ( argc != 6 ) {
-    std::cout << "Give five arguments: /path/to/sample.json delta p approximation_error /path/to/subsample.json \n";
+  if ( argc != 5 ) {
+    std::cout << "Give four arguments: /path/to/sample.json delta p /path/to/subsample.json \n";
     std::cout << " (Note: the last argument is the output file.)\n";
     throw std::logic_error ( "Bad arguments." );
   }
@@ -161,9 +160,8 @@ assign ( int argc, char * argv [] ) {
   samples_filename_ = argv[1];
   delta_ = std::stod ( argv[2] );
   metric_ = std::stod ( argv[3] );
-  approx_ = std::stod ( argv[4] );
-  subsample_filename_ = argv[5];
-  distance_ = Distance ( metric_, approx_ );
+  subsample_filename_ = argv[4];
+  distance_ = Distance ( metric_, 0 ); // Always initiate subsample with exact distance
   cohort_size_ = 1000;
 
   //std::cout << "Loading samples...\n";
@@ -210,11 +208,6 @@ getDelta ( void ) const {
   return delta_;
 }
 
-inline double SubsampleConfig::
-getApproximationError ( void ) const {
-  return approx_;
-}
-
 inline void SubsampleConfig::
 handleResults ( std::vector<subsample::Point> const& results ) const {
   //std::cout << "There were " << results . size () 
@@ -233,7 +226,6 @@ handleResults ( std::vector<subsample::Point> const& results ) const {
   } else {
     output["p"] = metric_;
   }
-  output["approximation_error"] = approx_;
   output["subsample"] = subsample_indices;
   std::ofstream ( subsample_filename_ ) << output;
 #ifdef SUBSAMPLEDISTANCE_H
@@ -290,14 +282,15 @@ DistanceMatrixConfig ( int argc, char * argv [] ) {
 
 inline void DistanceMatrixConfig::
 assign ( int argc, char * argv [] ) {
-  if ( argc != 3 ) {
-    std::cout << "Give two arguments: /path/to/subsample.json /path/to/distance.txt\n";
+  if ( argc != 4 ) {
+    std::cout << "Give three arguments: distance_approximation /path/to/subsample.json /path/to/distance.txt\n";
     std::cout << " (Note: the second argument is the output file.)\n";
     throw std::logic_error ( "Bad arguments." );
   }
   //std::cout << "Loading subsamples...\n";
-  std::string subsample_filename = argv[1];
-  distance_filename_ = argv[2];
+  approx_ = std::stod ( argv[1] );
+  std::string subsample_filename = argv[2];
+  distance_filename_ = argv[3];
   
   std::ifstream subsample_infile ( subsample_filename );
   json subsamples_json = json::parse ( subsample_infile );
@@ -317,7 +310,6 @@ assign ( int argc, char * argv [] ) {
   } catch ( ... ) {
     metric_ = std::numeric_limits<double>::infinity();
   }
-  approx_ = subsamples_json [ "approximation_error" ];
   for ( int64_t const& i : subsample_array ) {
     subsample::Point p;
     p . id = i;
@@ -343,6 +335,11 @@ getSubsamples ( void ) const {
 inline std::string const& DistanceMatrixConfig::
 getOutputFile ( void ) const {
   return distance_filename_;
+}
+
+inline double DistanceMatrixConfig::
+getApprox ( void ) const {
+  return approx_;
 }
 
 }

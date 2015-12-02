@@ -3,5 +3,5 @@
 ###########
 
 add_subdirectory (geom_bottleneck)
-#add_subdirectory (geom_matching)
+add_subdirectory (geom_matching)
 

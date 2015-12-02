@@ -1,5 +1,5 @@
-#ifndef WASSERSTEINDISTANCE_H
-#define WASSERSTEINDISTANCE_H
+#ifndef WASSERSTEINAPPROXIMATEDISTANCE_H
+#define WASSERSTEINAPPROXIMATEDISTANCE_H
 #include <cmath>
 #include <cstring>
 #include <vector>
@@ -10,9 +10,9 @@
 #include "persistence/approximatedistances/geom_matching/wasserstein/src/wasserstein.cpp"
 
 double 
-WassersteinApproximateDistance( PersistenceDiagram const& diagram_1, 
-                     PersistenceDiagram const& diagram_2,
-                     double p,
+WassersteinApproximateDistance( subsample::PersistenceDiagram const& diagram_1, 
+                     subsample::PersistenceDiagram const& diagram_2,
+                     const double p,
                      const double epsilon );
 
 
@@ -55,7 +55,7 @@ struct WassersteinApproximationWrapper {
 inline double 
 WassersteinApproximateDistance( subsample::PersistenceDiagram const& diagram_1, 
                     subsample::PersistenceDiagram const& diagram_2,
-                    double p,
+                    const double p,
                     const double epsilon ) {
 
     using namespace WassersteinApproximateDistance_wrapper;
