@@ -68,8 +68,7 @@ public:
         if ( approx_ == 0 ) {
           result += std::pow ( WassersteinDistance ( p.pd[i], q.pd[i], p_), p_ );
         } else {
-          //Replace me with actual reference to ApproximateWassersteinDistance
-          result += 10 + approx_;
+          result += std::pow ( WassersteinApproximateDistance ( p.pd[i], q.pd[i], p_, approx_), p_ );
         }
       }
       result = std::pow ( result, 1.0 / p_ );
