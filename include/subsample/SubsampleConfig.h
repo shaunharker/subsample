@@ -20,9 +20,15 @@
 #include "persistence/PersistenceDiagram.h"
 #include "persistence/WassersteinDistance.h"
 #include "persistence/BottleneckDistance.h"
+#include "persistence/BottleneckApproximateDistance.h"
+#include "persistence/WassersteinApproximateDistance.h"
 
 #include "tools/json.hpp"
 using json = nlohmann::json;
+
+
+namespace subsample
+{
 
 class Point {
 public:
@@ -39,6 +45,8 @@ private:
   }
 };
 
+
+
 class Distance {
 public:
   Distance ( void ) {}
@@ -51,8 +59,7 @@ public:
         if ( approx_ == 0 ) {
           result = std::max(result, BottleneckDistance ( p.pd[i], q.pd[i] ) );
         } else {
-          //Replace me with actual reference to ApproximateBottleneckDistance
-          result = 10 + approx_;
+          result = std::max(result, BottleneckApproximateDistance ( p.pd[i], q.pd[i], approx_ ) );
         }
       }
       return result;
@@ -113,14 +120,14 @@ public:
 
   /// getSamples
   ///   Return collection of samples (Points)
-  std::vector<Point> const&
+  std::vector<subsample::Point> const&
   getSamples ( void ) const;
 
   /// handleResults
   ///   Handle the results returned from the main program
   ///   (i.e. produce output from the subsample)
   void
-  handleResults ( std::vector<Point> const& results ) const;
+  handleResults ( std::vector<subsample::Point> const& results ) const;
 
 private:
   int argc_;
@@ -132,7 +139,7 @@ private:
   std::string subsample_filename_;
   Distance distance_;
   int64_t cohort_size_;
-  std::vector<Point> samples_;
+  std::vector<subsample::Point> samples_;
 };
 
 inline SubsampleConfig::
@@ -170,7 +177,7 @@ assign ( int argc, char * argv [] ) {
   std::string basepath = samples_json["path"];
   int64_t id = 0;
   for ( json const& tuple : sample_array ) {
-    Point p;
+    subsample::Point p;
     p . id = id ++;
     for ( std::string const& path : tuple ) {
       p.pd.push_back(PersistenceDiagram(basepath + "/" + path));
@@ -194,7 +201,7 @@ getCohortSize ( void ) const {
   return cohort_size_;
 }
 
-inline std::vector<Point> const& SubsampleConfig::
+inline std::vector<subsample::Point> const& SubsampleConfig::
 getSamples ( void ) const {
   return samples_;
 }
@@ -210,7 +217,7 @@ getApproximationError ( void ) const {
 }
 
 inline void SubsampleConfig::
-handleResults ( std::vector<Point> const& results ) const {
+handleResults ( std::vector<subsample::Point> const& results ) const {
   //std::cout << "There were " << results . size () 
   //          << " points in the subsample.\n";
   std::vector<int64_t> subsample_indices;
@@ -256,7 +263,7 @@ public:
 
   /// getSubsamples
   ///   Return collection of samples (Points)
-  std::vector<Point> const&
+  std::vector<subsample::Point> const&
   getSubsamples ( void ) const;
 
   /// getOutputFile
@@ -271,7 +278,7 @@ private:
   double metric_;
   double approx_;
   Distance distance_;
-  std::vector<Point> subsamples_;
+  std::vector<subsample::Point> subsamples_;
 };
 
 inline DistanceMatrixConfig::
@@ -313,7 +320,7 @@ assign ( int argc, char * argv [] ) {
   }
   approx_ = subsamples_json [ "approximation_error" ];
   for ( int64_t const& i : subsample_array ) {
-    Point p;
+    subsample::Point p;
     p . id = i;
     json tuple = sample_array[i];
     for ( std::string const& path : tuple ) {
@@ -329,7 +336,7 @@ getDistanceFunctor ( void ) const {
   return Distance ( metric_, approx_ );
 }
 
-inline std::vector<Point> const& DistanceMatrixConfig::
+inline std::vector<subsample::Point> const& DistanceMatrixConfig::
 getSubsamples ( void ) const {
   return subsamples_;
 }
@@ -337,6 +344,8 @@ getSubsamples ( void ) const {
 inline std::string const& DistanceMatrixConfig::
 getOutputFile ( void ) const {
   return distance_filename_;
+}
+
 }
 
 #endif

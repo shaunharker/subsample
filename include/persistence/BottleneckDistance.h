@@ -13,8 +13,8 @@
 #include "persistence/PersistenceDiagram.h"
 
 double 
-BottleneckDistance( PersistenceDiagram const& diagram_1, 
-                    PersistenceDiagram const& diagram_2 );
+BottleneckDistance( subsample::PersistenceDiagram const& diagram_1, 
+                    subsample::PersistenceDiagram const& diagram_2 );
 
 
 namespace BottleneckDistance_detail {
@@ -31,8 +31,8 @@ public:
 struct BottleneckProblem {
 
   /* Generators for two persistence diagrams which are going to be compared */
-  std::vector<Generator> Generators1;
-  std::vector<Generator> Generators2;
+  std::vector<subsample::Generator> Generators1;
+  std::vector<subsample::Generator> Generators2;
   /* Number of generators in Generator1 and Generator2 */
   unsigned int  Max_Size;
   /* Edges between all the nodes given by generators of the persistence diagrams */
@@ -50,7 +50,7 @@ struct BottleneckProblem {
   std::vector<int> Layers;
 
   void PrepareEdges( void ){
-    Generator::Distance distance;
+    subsample::Generator::Distance distance;
     /*Set the number of generators */
     Max_Size = Generators1.size() + Generators2.size();
     /*Clear edges */
@@ -61,10 +61,10 @@ struct BottleneckProblem {
         Edges.push_back(Edge(i, j, 0));
     /* Edges between real points */
     unsigned int i = 0;
-    for ( std::vector<Generator>::const_iterator cur1 = Generators1.begin(); 
+    for ( std::vector<subsample::Generator>::const_iterator cur1 = Generators1.begin(); 
           cur1 != Generators1.end(); ++cur1 ) {
       unsigned int j = Max_Size;
-      for ( std::vector<Generator>::const_iterator cur2 = Generators2.begin(); 
+      for ( std::vector<subsample::Generator>::const_iterator cur2 = Generators2.begin(); 
             cur2 != Generators2.end(); ++cur2 ) {
         Edges.push_back(Edge(i,j++, distance(*cur1, *cur2)));
       }
@@ -72,11 +72,11 @@ struct BottleneckProblem {
     }
     /* Edges between real points and their corresponding diagonal points */
     i = 0;
-    for ( std::vector<Generator>::const_iterator cur1 = Generators1.begin(); 
+    for ( std::vector<subsample::Generator>::const_iterator cur1 = Generators1.begin(); 
           cur1 != Generators1.end(); ++cur1, ++i)
       Edges.push_back( Edge( i, Max_Size + Generators2.size() + i, distance . diagonal ( *cur1 ) ) );
     i = Max_Size;
-    for ( std::vector<Generator>::const_iterator cur2 = Generators2.begin(); 
+    for ( std::vector<subsample::Generator>::const_iterator cur2 = Generators2.begin(); 
           cur2 != Generators2.end(); ++cur2, ++i)
       Edges.push_back( Edge( Generators1.size() + (i - Max_Size), i, distance . diagonal ( *cur2 ) ) );
     std::sort(Edges.begin(), Edges.end());
@@ -156,15 +156,15 @@ struct BottleneckProblem {
 } //namespace
 
 inline double 
-BottleneckDistance( PersistenceDiagram const& diagram_1, 
-                    PersistenceDiagram const& diagram_2 ) {
+BottleneckDistance( subsample::PersistenceDiagram const& diagram_1, 
+                    subsample::PersistenceDiagram const& diagram_2 ) {
   using namespace BottleneckDistance_detail;
   BottleneckProblem bp;
   std::vector<int> & Pair = bp.Pair;
   std::vector<int> & Layers = bp.Layers;
   std::vector< std::vector < int > > & Connections = bp.Connections;
-  std::vector<Generator> & Generators1 = bp . Generators1;
-  std::vector<Generator> & Generators2 = bp . Generators2;
+  std::vector<subsample::Generator> & Generators1 = bp . Generators1;
+  std::vector<subsample::Generator> & Generators2 = bp . Generators2;
   unsigned int & Max_Size = bp . Max_Size;
   std::vector<Edge> & Edges = bp . Edges;
   Generators1 . assign ( diagram_1 . begin (), diagram_1 . end () );
