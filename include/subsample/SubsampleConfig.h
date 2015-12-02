@@ -112,11 +112,6 @@ public:
   double
   getDelta ( void ) const;
 
-  /// getApproximation ( void )
-  ///   Return the approximation parameter (for auction algorithms)
-  double
-  getApproximationError ( void ) const;
-
   /// getSamples
   ///   Return collection of samples (Points)
   std::vector<subsample::Point> const&
@@ -262,6 +257,11 @@ public:
   std::string const&
   getOutputFile ( void ) const;
 
+  /// getApproximation ( void )
+  ///   Return the approximation parameter (for auction algorithms)
+  double
+  getApproximationError ( void ) const;
+
 private:
   std::string distance_filename_;
 
@@ -338,7 +338,7 @@ getOutputFile ( void ) const {
 }
 
 inline double DistanceMatrixConfig::
-getApprox ( void ) const {
+getApproximationError ( void ) const {
   return approx_;
 }
 

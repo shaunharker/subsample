@@ -76,7 +76,7 @@ WassersteinApproximateDistance( subsample::PersistenceDiagram const& diagram_1,
 
     double distance;
     distance = wassersteinDist(A, B, p, epsilon, p);
-
+    std::cout << "distance: " << distance << "\n";
     return distance;
 
 }
