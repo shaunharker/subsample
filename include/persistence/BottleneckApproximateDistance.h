@@ -33,18 +33,18 @@ struct BottleneckApproximationWrapper {
     {
         A.clear();
         B.clear();
-        size_t uniqueId {MIN_VALID_ID};
+        size_t lineNumber { 0 };
         for ( std::vector<subsample::Generator>::const_iterator cur = Generators1.begin(); 
           cur != Generators1.end(); ++cur ) {
-            geom_bt::DiagramPoint dpA {cur->birth, cur->death, DiagramPoint::NORMAL, uniqueId++};
-            geom_bt::DiagramPoint dpB {0.5*(cur->birth +cur->death), 0.5 *(cur->birth + cur->death), DiagramPoint::DIAG, uniqueId++};
+            geom_bt::DiagramPoint dpA {cur->birth, cur->death, geom_bt::DiagramPoint::NORMAL, lineNumber++};
+            geom_bt::DiagramPoint dpB {0.5*(cur->birth +cur->death), 0.5 *(cur->birth + cur->death), geom_bt::DiagramPoint::DIAG, lineNumber++};
             A.insert(dpA);
             B.insert(dpB);
         }
         for ( std::vector<subsample::Generator>::const_iterator cur = Generators2.begin(); 
           cur != Generators2.end(); ++cur ) {
-            geom_bt::DiagramPoint dpB {cur->birth, cur->death, DiagramPoint::NORMAL, uniqueId++};
-            geom_bt::DiagramPoint dpA {0.5*(cur->birth +cur->death), 0.5 *(cur->birth + cur->death), DiagramPoint::DIAG, uniqueId++};
+            geom_bt::DiagramPoint dpB {cur->birth, cur->death, geom_bt::DiagramPoint::NORMAL, lineNumber++};
+            geom_bt::DiagramPoint dpA {0.5*(cur->birth +cur->death), 0.5 *(cur->birth + cur->death), geom_bt::DiagramPoint::DIAG, lineNumber++};
             B.insert(dpB);
             A.insert(dpA);
         }
