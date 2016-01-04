@@ -38,8 +38,9 @@ find_package(MPI REQUIRED)
 
 include_directories ( 
   ./include 
-  ./include/persistence/approximatedistances/geom_bottleneck/ann/include
-  ./include/persistence/approximatedistances/geom_matching/wasserstein/src/include
+  ./include/persistence/approximatedistances/geom_bottleneck/bottleneck/include/ANN
+  ./include/persistence/approximatedistances/geom_bottleneck/bottleneck/include
+  ./include/persistence/approximatedistances/geom_matching/wasserstein/include
   /usr/local/include 
   /opt/local/include 
   ${Boost_INCLUDE_DIRS} 

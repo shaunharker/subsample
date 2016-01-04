@@ -1,5 +1,8 @@
 # add the executable
 
+add_subdirectory (ann)
+
+
 set ( LIBS      ${LIBS}
                 libANNshared
                 ${Boost_LIBRARIES} )

@@ -19,26 +19,28 @@
 */
 
 
-#include <iostream>
 #include <iomanip>
-#include <fstream>
-#include <vector>
-#include <algorithm>
-#include <limits>
-#include <random>
+#include <sstream>
+#include <string>
+#include <cctype>
 
-#include "basic_defs.h"
-#include "bound_match.h"
-//#include "test_neighb_oracle.h"
+#include "include/bottleneck.h"
 //#include "test_dist_calc.h"
 
-typedef std::pair<double, std::pair<size_t, size_t>> DistVerticesPair;
+namespace geom_bt {
 
 // return the interval (distMin, distMax) such that: 
 // a) actual bottleneck distance between A and B is contained in the interval
 // b) if the interval is not (0,0), then  (distMax - distMin) / distMin < epsilon 
 std::pair<double, double> bottleneckDistApproxInterval(DiagramPointSet& A, DiagramPointSet& B, const double epsilon)
 {
+    // empty diagrams are not considered as error
+    if (A.empty() and B.empty())
+        return std::make_pair(0.0, 0.0);
+
+    // link diagrams A and B by adding projections
+    addProjections(A, B);
+
     // TODO: think about that!
     // we need one threshold for checking if the distance is 0,
     // another one for the oracle!
@@ -503,64 +505,51 @@ double bottleneckDistSlow(DiagramPointSet& A, DiagramPointSet& B)
     */
 }
 
-bool readDiagramPointSets(const char* fnameA,
-                          const char* fnameB,
-                          DiagramPointSet& A,
-                          DiagramPointSet& B)
+bool readDiagramPointSet(const std::string& fname, std::vector<std::pair<double, double>>& result)
 {
-    std::ifstream fA(fnameA);
-    if (!fA.good()) {
-        std::cerr << "Cannot open file " << fnameA << std::endl;
+    return readDiagramPointSet(fname.c_str(), result);
+}
+
+bool readDiagramPointSet(const char* fname, std::vector<std::pair<double, double>>& result)
+{
+    size_t lineNumber { 0 };
+    result.clear();
+    std::ifstream f(fname);
+    if (!f.good()) {
+        std::cerr << "Cannot open file " << fname << std::endl;
         return false;
     }
-    std::ifstream fB(fnameB);
-    if (!fB.good()) {
-        std::cerr << "Cannot open file " << fnameB << std::endl;
-        return false;
+    std::string line;
+    while(std::getline(f, line)) {
+        lineNumber++;
+        // process comments: remove everything after hash
+        auto hashPos = line.find_first_of("#", 0);
+        if( std::string::npos != hashPos) {
+            line = std::string(line.begin(), line.begin() + hashPos);
+        }
+        if (line.empty()) {
+            continue;
+        }
+         // trim whitespaces 
+        auto whiteSpaceFront = std::find_if_not(line.begin(),line.end(),isspace);
+        auto whiteSpaceBack = std::find_if_not(line.rbegin(),line.rend(),isspace).base();
+        if (whiteSpaceBack <= whiteSpaceFront) {
+            // line consists of spaces only - move to the next line
+            continue;
+        }
+        line = std::string(whiteSpaceFront,whiteSpaceBack);
+        double x, y;
+        std::istringstream iss(line);
+        if (not(iss >> x >> y)) {
+            std::cerr << "Error in file " << fname << ", line number " << lineNumber << ": cannot parse \"" << line << "\"" << std::endl;
+            return false;
+        }
+        result.push_back(std::make_pair(x,y));
     }
-    A.clear();
-    B.clear();
-    Point p;
-    size_t uniqueId {MIN_VALID_ID};
-    while(fA >> p.x >> p.y) {
-        DiagramPoint dpA {p.x, p.y, DiagramPoint::NORMAL, uniqueId++};
-        DiagramPoint dpB {0.5*(p.x +p.y), 0.5 *(p.x +p.y), DiagramPoint::DIAG, uniqueId++};
-        A.insert(dpA);
-        B.insert(dpB);
-    }
-    fA.close();
-    while(fB >> p.x >> p.y) {
-        DiagramPoint dpB {p.x, p.y, DiagramPoint::NORMAL, uniqueId++};
-        DiagramPoint dpA {0.5 * (p.x + p.y), 0.5 * (p.x + p.y), DiagramPoint::DIAG, uniqueId++};
-        B.insert(dpB);
-        A.insert(dpA);
-    }
-    fB.close();
+    f.close();
     return true;
 }
 
-// int main(int argc, char* argv[])
-// {
-//     DiagramPointSet A, B;
-//     if (argc < 3 ) {
-//         std::cerr << "Usage: " << argv[0] << "file1 file2 [relative_error]. Without relative_error calculate the exact distance." << std::endl;
-//         return 1;
-//     }
-//     if (!readDiagramPointSets(argv[1], argv[2], A, B)) {
-//         std::exit(1);
-//     }
 
-//     double res;
-//     if (argc >= 4) {
-//         // the third parameter is epsilon,
-//         // return approximate distance (faster)
-//         double approxEpsilon =  atof(argv[3]);
-//         res = bottleneckDistApprox(A, B, approxEpsilon);
-//     } else {
-//         // only filenames have been supplied, return exact distance
-//         res = bottleneckDistExact(A, B);
-//         //res = bottleneckDistSlow(A, B);
-//     }
-//     std::cout << std::setprecision(15) << res << std::endl;
-//     return 0;
-// }
+
+}

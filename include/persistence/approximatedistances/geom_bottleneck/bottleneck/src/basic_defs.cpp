@@ -1,34 +1,28 @@
 /*
- 
-Copyright (c) 2015, M. Kerber, D. Morozov, A. Nigmetov
-All rights reserved.
+    Copyrigth 2015, D. Morozov, M. Kerber, A. Nigmetov
 
-Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+    This file is part of GeomBottleneck.
 
-1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+    GeomBottleneck is free software: you can redistribute it and/or modify
+    it under the terms of the Lesser GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
 
-2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+    GeomBottleneck is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    Lesser GNU General Public License for more details.
 
-3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- 
-You are under no obligation whatsoever to provide any bug fixes, patches, or
-upgrades to the features, functionality or performance of the source code
-(Enhancements) to anyone; however, if you choose to make your Enhancements
-available either publicly, or directly to copyright holder,
-without imposing a separate written license agreement for such Enhancements,
-then you hereby grant the following license: a  non-exclusive, royalty-free
-perpetual license to install, use, modify, prepare derivative works, incorporate
-into other computer software, distribute, and sublicense such enhancements or
-derivative works thereof, in binary and source code form.
+    You should have received a copy of the Lesser GNU General Public License
+    along with GeomBottleneck.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
 #include <algorithm>
 #include <cfloat>
-#include <set>
-#include "basic_defs.h"
+#include "include/basic_defs.h"
+
+namespace geom_bt {
 
 // Point
 
@@ -73,57 +67,19 @@ double dist(const Point& a, const Point& b)
 // compute l-inf distance between two diagram points
 double distLInf(const DiagramPoint& a, const DiagramPoint& b)
 {
-    if ( DiagramPoint::NORMAL == a.type &&
-         DiagramPoint::NORMAL == b.type ) {
-        // distance between normal points is a usual l-inf distance
-        return std::max(fabs(a.x - b.x), fabs(a.y - b.y));
-    } else if ( DiagramPoint::DIAG == a.type &&
-                DiagramPoint::DIAG == b.type ) {
+    if ( DiagramPoint::DIAG == a.type &&
+         DiagramPoint::DIAG == b.type ) {
         // distance between points on the diagonal is 0
-        return 0;
-    } else {
-        if ( DiagramPoint::DIAG == a.type ) {
-            // real coordinates of a are ( (a.x + a.y)/2, (a.x + a.y)/2 ) 
-            return std::max(fabs(0.5* (a.x + a.y) - b.x), 
-                            fabs(0.5 * (a.x + a.y) - b.y));
-        } else {
-            // real coordinates of b are ( (b.x + b.y)/2, (b.x + b.y)/2 ) 
-            return std::max(fabs(a.x - 0.5 * (b.x + b.y) ), 
-                            fabs(a.y - 0.5 * ( b.y + b.x)));
-        }
-    }
-}
-
-double distLp(const DiagramPoint& a, const DiagramPoint& b, const double p)
-{
-    // infinity: special case
-    if ( std::isinf(p) )
-        return distLInf(a, b);
-
-    // check p
-    assert( p >= 1.0 );
-
-    // avoid calling pow function
-    if ( p == 1.0 ) {
-        if ( a.isNormal() or b.isNormal() ) {
-            // distance between normal points is a usual l-inf distance
-            return fabs(a.getRealX() - b.getRealX()) + fabs(a.getRealY() - b.getRealY());
-        } else 
-            return 0.0;
-    } 
-
-    if ( a.isNormal() or b.isNormal() ) {
-        // distance between normal points is a usual l-inf distance
-        return std::pow(std::pow(fabs(a.getRealX() - b.getRealX()), p) + std::pow(fabs(a.getRealY() - b.getRealY()), p), 1.0/p );
-    } else 
         return 0.0;
+    } 
+    // otherwise distance is a usual l-inf distance
+    return std::max(fabs(a.getRealX() - b.getRealX()), fabs(a.getRealY() - b.getRealY()));
 }
-
 
 bool DiagramPoint::operator==(const DiagramPoint& other) const
 {
-    assert(this->id >= MIN_VALID_ID);
-    assert(other.id >= MIN_VALID_ID);
+    assert(this->id >= MinValidId);
+    assert(other.id >= MinValidId);
     bool areEqual{ this->id == other.id };
     assert(!areEqual or  ((this->x == other.x) and (this->y == other.y) and (this->type == other.type)));
     return areEqual;
@@ -137,9 +93,9 @@ bool DiagramPoint::operator!=(const DiagramPoint& other) const
 std::ostream& operator<<(std::ostream& output, const DiagramPoint p)
 {
     if ( p.type == DiagramPoint::DIAG ) {
-        output << "(" << p.x << ", " << p.y << ", " <<  0.5 * (p.x + p.y) << ", "  << p.id <<", " << p.projId << " DIAG )";
+        output << "(" << p.x << ", " << p.y << ", " <<  0.5 * (p.x + p.y) << ", "  << p.id << " DIAG )";
     } else {
-        output << "(" << p.x << ", " << p.y << ", " << p.id <<", " << p.projId << " NORMAL)";
+        output << "(" << p.x << ", " << p.y << ", " << p.id << " NORMAL)";
     }
     return output;
 }
@@ -154,79 +110,29 @@ std::ostream& operator<<(std::ostream& output, const DiagramPointSet& ps)
     return output;
 }
 
-DiagramPoint::DiagramPoint(double xx, double yy, Type ttype, size_t uid, size_t _projId) : 
+DiagramPoint::DiagramPoint(double xx, double yy, Type ttype, IdType uid) : 
     x(xx),
     y(yy),
     type(ttype),
-    id(uid),
-    projId(_projId)
+    id(uid)
 {
-    if ( yy < xx )
-        throw "Point is below the diagonal";
+    //if ( xx < 0 )
+        //throw "Negative x coordinate";
+    //if ( yy < 0)
+        //throw "Negative y coordinate";
+    //if ( yy < xx )
+        //throw "Point is below the diagonal";
     if ( yy == xx and ttype != DiagramPoint::DIAG)
         throw "Point on the main diagonal must have DIAG type";
 
 }
-
-
-DiagramPoint::DiagramPoint(double xx, double yy, Type ttype, size_t uid) : 
-    x(xx),
-    y(yy),
-    type(ttype),
-    id(uid),
-    projId(MIN_VALID_ID)
-{
-    if ( yy < xx )
-        throw "Point is below the diagonal";
-    if ( yy == xx and ttype != DiagramPoint::DIAG)
-        throw "Point on the main diagonal must have DIAG type";
-
-}
-
-/*
-DiagramPoint::DiagramPoint(double xx, double yy) : 
-    x(xx),
-    y(yy), 
-    type(NORMAL)
-{
-    if ( xx < 0 )
-        throw "Negative x coordinate";
-    if ( yy < 0)
-        throw "Negative y coordinate";
-    if ( yy <= xx )
-        throw "Point is below the diagonal";
-}
-*/
 
 void DiagramPointSet::insert(const DiagramPoint p)
 {
     points.insert(p);
-}
-
-Point DiagramPoint::getOrdinaryPoint() const
-{
-    if (DiagramPoint::NORMAL == type)
-        return Point(x, y);
-    else if (DiagramPoint::DIAG == type)
-        return Point(0.5 * ( x + y), 0.5 * (x+y) );
-    else
-        assert(false);
-}
-
-double DiagramPoint::getRealX() const
-{
-    if (DiagramPoint::NORMAL == type)
-        return x;
-    else 
-        return 0.5 * ( x + y);
-}
-
-double DiagramPoint::getRealY() const
-{
-    if (DiagramPoint::NORMAL == type)
-        return y;
-    else 
-        return 0.5 * ( x + y);
+    if (p.id > maxId) {
+        maxId = p.id + 1;
+    }
 }
 
 // erase should be called only for the element of the set
@@ -271,21 +177,54 @@ bool DiagramPointSet::hasElement(const DiagramPoint& p) const
     return points.find(p) != points.end();
 }
 
-bool DiagramPointSet::operator==(const DiagramPointSet& other) const
+
+void DiagramPointSet::removeDiagonalPoints() 
 {
-    if (size() != other.size())
-        return false;
+    if (isLinked) {
+        auto ptIter = points.begin();
+        while(ptIter != points.end()) {
+            if (ptIter->isDiagonal()) {
+                ptIter = points.erase(ptIter);
+            } else {
+                ptIter++;
+            }
+        }
+        isLinked = false;
+    }
+}
 
-    std::set<DiagramPoint, DiagramPoint::LexicographicCmp>      dgm1(this->cbegin(), this->cend()),
-                                                                dgm2(other.cbegin(), other.cend());
 
-    for (auto& p : other.points)
-        if (dgm1.find(p) == dgm1.end())
-            return false;
+// preprocess diagrams A and B by adding projections onto diagonal of points of
+// A to B and vice versa. NB: ids of points will be changed!
+void addProjections(DiagramPointSet& A, DiagramPointSet& B)
+{
 
-    for (auto& p : points)
-        if (dgm2.find(p) == dgm2.end())
-            return false;
+    IdType uniqueId {MinValidId + 1};
+    DiagramPointSet newA, newB;
+    
+    // copy normal points from A to newA
+    // add projections to newB
+    for(auto& pA : A) {
+        if (pA.isNormal()) {
+            DiagramPoint dpA {pA.getRealX(), pA.getRealY(), DiagramPoint::NORMAL, uniqueId++};
+            DiagramPoint dpB {0.5*(pA.getRealX() +pA.getRealY()), 0.5 *(pA.getRealX() +pA.getRealY()), DiagramPoint::DIAG, uniqueId++};
+            newA.insert(dpA);
+            newB.insert(dpB);
+        }
+    }
 
-    return true;
+    for(auto& pB : B) {
+        if (pB.isNormal()) {
+            DiagramPoint dpB {pB.getRealX(), pB.getRealY(), DiagramPoint::NORMAL, uniqueId++};
+            DiagramPoint dpA {0.5*(pB.getRealX() +pB.getRealY()), 0.5 *(pB.getRealX() +pB.getRealY()), DiagramPoint::DIAG, uniqueId++};
+            newB.insert(dpB);
+            newA.insert(dpA);
+        }
+    }
+   
+    A = newA;
+    B = newB;
+    A.isLinked = true;
+    B.isLinked = true;
+}
 }

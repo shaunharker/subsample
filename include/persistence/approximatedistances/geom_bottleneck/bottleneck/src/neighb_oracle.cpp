@@ -20,9 +20,10 @@
 
 
 #include <algorithm>
-#include "neighb_oracle.h"
-#include "def_debug.h"
+#include "include/neighb_oracle.h"
+#include "include/def_debug.h"
 
+namespace geom_bt {
 /*static void printDebug(//bool isDebug, std::string s)*/
 //{
 //#ifdef DEBUG_NEIGHBOUR_ORACLE
@@ -122,6 +123,9 @@ NeighbOracleAnn::NeighbOracleAnn(const DiagramPointSet& S, const double rr, cons
     annQueryPoint = annAllocPt(annDim);
     annIndices = new ANNidx[annK];
     annDistances = new ANNdist[annK];
+    annPoints = nullptr;
+    lo = annAllocPt(annDim);
+    hi = annAllocPt(annDim);
     // create kd tree
     kdTree = nullptr;
     rebuild(S, rr);
@@ -147,6 +151,9 @@ void NeighbOracleAnn::rebuild(const DiagramPointSet& S, double rr)
             if (pit->type == DiagramPoint::DIAG) {
                 diagonalPoints.insert(*pit);
             }
+        }
+        if (annPoints) {
+            annDeallocPts(annPoints);
         }
         annPoints = annAllocPts(annNumPoints, annDim);
         auto annPointsPtr = *annPoints;
@@ -237,10 +244,8 @@ void NeighbOracleAnn::getAllNeighbours(const DiagramPoint& q, std::vector<Diagra
     size_t diagOffset = result.size();
     // create the query rectangle
     // centered at q of radius r
-    ANNpoint lo = annAllocPt(annDim);
     lo[0] = q.getRealX() - r;
     lo[1] = q.getRealY() - r;
-    ANNpoint hi = annAllocPt(annDim);
     hi[0] = q.getRealX() + r;
     hi[1] = q.getRealY() + r;
     ANNorthRect annRect { annDim, lo, hi };
@@ -263,4 +268,11 @@ NeighbOracleAnn::~NeighbOracleAnn()
     delete [] annIndices;
     delete [] annDistances;
     delete kdTree;
+    annDeallocPt(annQueryPoint);
+    annDeallocPt(lo);
+    annDeallocPt(hi);
+    if (annPoints) {
+        annDeallocPts(annPoints);
+    }
+}
 }

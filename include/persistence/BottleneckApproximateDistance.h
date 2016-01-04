@@ -10,8 +10,8 @@
 
 #include <vector>
 #include "persistence/PersistenceDiagram.h"
-#include "persistence/approximatedistances/geom_bottleneck/bottleneck/src/basic_defs.h"
-#include "persistence/approximatedistances/geom_bottleneck/bottleneck/src/bottleneck.cpp"
+#include "persistence/approximatedistances/geom_bottleneck/bottleneck/src/include/basic_defs.h"
+#include "persistence/approximatedistances/geom_bottleneck/bottleneck/src/include/bottleneck.h"
 
 double 
 BottleneckApproximateDistance( subsample::PersistenceDiagram const& diagram_1, 
@@ -28,23 +28,23 @@ struct BottleneckApproximationWrapper {
     std::vector<subsample::Generator> Generators2;
 
     /* Read the generators into the approximate algorithm class. */
-    bool populateDiagramPointSets(DiagramPointSet& A,
-                              DiagramPointSet& B)
+    bool populateDiagramPointSets(geom_bt::DiagramPointSet& A,
+                              geom_bt::DiagramPointSet& B)
     {
         A.clear();
         B.clear();
         size_t uniqueId {MIN_VALID_ID};
         for ( std::vector<subsample::Generator>::const_iterator cur = Generators1.begin(); 
           cur != Generators1.end(); ++cur ) {
-            DiagramPoint dpA {cur->birth, cur->death, DiagramPoint::NORMAL, uniqueId++};
-            DiagramPoint dpB {0.5*(cur->birth +cur->death), 0.5 *(cur->birth + cur->death), DiagramPoint::DIAG, uniqueId++};
+            geom_bt::DiagramPoint dpA {cur->birth, cur->death, DiagramPoint::NORMAL, uniqueId++};
+            geom_bt::DiagramPoint dpB {0.5*(cur->birth +cur->death), 0.5 *(cur->birth + cur->death), DiagramPoint::DIAG, uniqueId++};
             A.insert(dpA);
             B.insert(dpB);
         }
         for ( std::vector<subsample::Generator>::const_iterator cur = Generators2.begin(); 
           cur != Generators2.end(); ++cur ) {
-            DiagramPoint dpB {cur->birth, cur->death, DiagramPoint::NORMAL, uniqueId++};
-            DiagramPoint dpA {0.5*(cur->birth +cur->death), 0.5 *(cur->birth + cur->death), DiagramPoint::DIAG, uniqueId++};
+            geom_bt::DiagramPoint dpB {cur->birth, cur->death, DiagramPoint::NORMAL, uniqueId++};
+            geom_bt::DiagramPoint dpA {0.5*(cur->birth +cur->death), 0.5 *(cur->birth + cur->death), DiagramPoint::DIAG, uniqueId++};
             B.insert(dpB);
             A.insert(dpA);
         }
@@ -80,10 +80,10 @@ BottleneckApproximateDistance( subsample::PersistenceDiagram const& diagram_1,
     if (epsilon > 0) {
         // the third parameter is epsilon,
         // return approximate distance (faster)
-        distance = bottleneckDistApprox(A, B, epsilon);
+        distance = geom_bt::bottleneckDistApprox(A, B, epsilon);
     } else {
         // only filenames have been supplied, return exact distance
-        distance = bottleneckDistExact(A, B);
+        distance = geom_bt::bottleneckDistExact(A, B);
         //res = bottleneckDistSlow(A, B);
     }
     return distance;
