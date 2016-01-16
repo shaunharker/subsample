@@ -61,7 +61,7 @@ public:
     double getEpsilon(void) const { return epsilon; }
     double getWassersteinDistance(void);
     static constexpr double epsilonCommonRatio { 5 }; // next epsilon = current epsilon / epsilonCommonRatio
-    static constexpr int maxIterNum { 25 }; // maximal number of iterations of epsilon-scaling
+    static constexpr int maxIterNum { 99 }; // maximal number of iterations of epsilon-scaling
 private:
     // private data
     std::vector<DiagramPoint> bidders, items;

@@ -1,6 +1,6 @@
 # add the executable
 
-set ( LIBS ${LIBS} ${Boost_LIBRARIES} ${MPI_LIBRARIES} libbottleneck libANN)
+set ( LIBS ${LIBS} ${Boost_LIBRARIES} ${MPI_LIBRARIES} libbottleneck libANN libwasserstein )
 
 add_executable ( ComputeSubsample ComputeSubsample.cpp )
 target_link_libraries ( ComputeSubsample ${LIBS} )

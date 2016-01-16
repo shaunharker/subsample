@@ -72,7 +72,6 @@ public:
         }
       }
       result = std::pow ( result, 1.0 / p_ );
-      //std::cout << "Distance = " << result << "\n";
       return result;
     }
   }

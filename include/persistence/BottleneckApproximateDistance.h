@@ -32,6 +32,7 @@ struct BottleneckApproximationWrapper {
     {
         A.clear();
         B.clear();
+        
         /* Read in generators from Generators1 to A */
         for ( std::vector<subsample::Generator>::const_iterator cur = Generators1.begin(); 
           cur != Generators1.end(); ++cur ) {
@@ -69,17 +70,8 @@ BottleneckApproximateDistance( subsample::PersistenceDiagram const& diagram_1,
         return -1;
     }
 
-
     double distance;
-    if (epsilon > 0) {
-        // the third parameter is epsilon,
-        // return approximate distance (faster)
-        distance = geom_bt::bottleneckDistApprox(A, B, epsilon);
-    } else {
-        // only filenames have been supplied, return exact distance
-        distance = geom_bt::bottleneckDistExact(A, B);
-        //res = bottleneckDistSlow(A, B);
-    }
+    distance = geom_bt::bottleneckDistApprox(A, B, epsilon);
     return distance;
 
 }
