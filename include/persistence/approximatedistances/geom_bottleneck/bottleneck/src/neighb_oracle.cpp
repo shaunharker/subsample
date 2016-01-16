@@ -20,8 +20,8 @@
 
 
 #include <algorithm>
-#include "include/neighb_oracle.h"
-#include "include/def_debug.h"
+#include "neighb_oracle.h"
+#include "def_debug.h"
 
 namespace geom_bt {
 /*static void printDebug(//bool isDebug, std::string s)*/

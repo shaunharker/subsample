@@ -25,8 +25,8 @@ derivative works thereof, in binary and source code form.
 
  */
 
-#ifndef BASIC_DEFS_H
-#define BASIC_DEFS_H
+#ifndef BASIC_DEFS_WS_H
+#define BASIC_DEFS_WS_H
 
 #include <vector>
 #include <math.h>

@@ -30,9 +30,9 @@ derivative works thereof, in binary and source code form.
 #include <functional>
 #include <iterator>
 
-#include "include/def_debug.h"
-#include "include/auction_runner.h"
-#include "include/wasserstein.h"
+#include "def_debug.h"
+#include "auction_runner.h"
+#include "wasserstein.h"
 
 namespace geom_ws {
 

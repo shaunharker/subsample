@@ -20,7 +20,7 @@ along with GeomBottleneck.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <iostream>
 #include <assert.h>
-#include "include/bound_match.h"
+#include "bound_match.h"
 
 namespace geom_bt {
 /*static void printDebug(//bool isDebug, std::string s)*/

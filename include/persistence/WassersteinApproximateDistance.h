@@ -6,8 +6,7 @@
 #include <algorithm>
 
 #include "persistence/PersistenceDiagram.h"
-#include "persistence/approximatedistances/geom_matching/wasserstein/src/include/basic_defs.h"
-#include "persistence/approximatedistances/geom_matching/wasserstein/src/include/wasserstein.h"
+#include "persistence/approximatedistances/geom_matching/wasserstein/include/wasserstein.h"
 
 double 
 WassersteinApproximateDistance( subsample::PersistenceDiagram const& diagram_1, 
@@ -24,41 +23,22 @@ struct WassersteinApproximationWrapper {
     std::vector<subsample::Generator> Generators2;
 
     /* Read the generators into the approximate algorithm class. */
-    bool populateDiagramPointSets(geom_ws::DiagramPointSet& A,
-                              geom_ws::DiagramPointSet& B)
+        bool populateDiagramPointSets(std::vector<std::pair<double, double>>& A,
+                              std::vector<std::pair<double, double>>& B)
     {
-        
-      A.clear();
-      B.clear();
-
-      size_t uniqueId = geom_ws::MIN_VALID_ID;
-      size_t projId;
-      for ( auto const& gen : Generators1 ) {
-        double x = gen . birth;
-        double y = gen . death;
-        // normal point, its projection will be added next, so +1
-        projId = uniqueId+1;
-        geom_ws::DiagramPoint dpA {x, y, DiagramPoint::NORMAL, uniqueId++, projId};
-        // diagonal point, its parent has been added, so -1
-        projId = uniqueId-1;
-        geom_ws::DiagramPoint dpB {x, y, DiagramPoint::DIAG, uniqueId++, projId};
-        A.insert(dpA);
-        B.insert(dpB);
-      }
-      for ( auto const& gen : Generators2 ) {
-        double x = gen . birth;
-        double y = gen . death;
-        // normal point, its projection will be added next, so +1
-        projId = uniqueId+1;
-        geom_ws::DiagramPoint dpB {x, y, DiagramPoint::NORMAL, uniqueId++, projId};
-        // diagonal point, its parent has been added, so -1
-        projId = uniqueId-1;
-        geom_ws::DiagramPoint dpA {x, y, DiagramPoint::DIAG, uniqueId++, projId};
-        B.insert(dpB);
-        A.insert(dpA);
-      }
-
-      return true;
+        A.clear();
+        B.clear();
+        /* Read in generators from Generators1 to A */
+        for ( std::vector<subsample::Generator>::const_iterator cur = Generators1.begin(); 
+          cur != Generators1.end(); ++cur ) {
+            A.push_back(std::make_pair(cur->birth, cur->death));
+        }
+        /* Read in generators from Generators2 to B */
+        for ( std::vector<subsample::Generator>::const_iterator cur = Generators2.begin(); 
+          cur != Generators2.end(); ++cur ) {
+            B.push_back(std::make_pair(cur->birth, cur->death));
+        }
+        return true;
     }  
 
 };
@@ -81,7 +61,7 @@ WassersteinApproximateDistance( subsample::PersistenceDiagram const& diagram_1,
     Generators1 . assign ( diagram_1 . begin (), diagram_1 . end () );
     Generators2 . assign ( diagram_2 . begin (), diagram_2 . end () );
   
-    DiagramPointSet A, B;
+    std::vector<std::pair<double, double>> A, B;
     if (!ww.populateDiagramPointSets(A, B)) {
         std::cout << "Could not convert PersistenceDiagrams to DiagramPointSets.\n";
         return -1;

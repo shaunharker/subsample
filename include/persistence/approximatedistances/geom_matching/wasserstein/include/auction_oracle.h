@@ -34,7 +34,7 @@ derivative works thereof, in binary and source code form.
 #include <set>
 #include <list>
 
-#include "basic_defs.h"
+#include "basic_defs_ws.h"
 #include "dnn/geometry/euclidean-fixed.h"
 #include "dnn/local/kd-tree.h"
 

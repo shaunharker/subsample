@@ -20,7 +20,7 @@
 
 #include <algorithm>
 #include <cfloat>
-#include "include/basic_defs.h"
+#include "basic_defs_bt.h"
 
 namespace geom_bt {
 

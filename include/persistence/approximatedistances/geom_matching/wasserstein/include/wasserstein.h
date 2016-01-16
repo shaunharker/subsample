@@ -33,7 +33,7 @@ derivative works thereof, in binary and source code form.
 #include <map>
 #include <math.h>
 
-#include "basic_defs.h"
+#include "basic_defs_ws.h"
 
 namespace geom_ws {
 

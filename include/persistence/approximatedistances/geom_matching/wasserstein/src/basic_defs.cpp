@@ -28,7 +28,7 @@ derivative works thereof, in binary and source code form.
 #include <algorithm>
 #include <cfloat>
 #include <set>
-#include "include/basic_defs.h"
+#include "basic_defs_ws.h"
 
 namespace geom_ws {
 // Point

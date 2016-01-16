@@ -24,7 +24,7 @@
 #include <string>
 #include <cctype>
 
-#include "include/bottleneck.h"
+#include "bottleneck.h"
 //#include "test_dist_calc.h"
 
 namespace geom_bt {
