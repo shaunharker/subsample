@@ -6,19 +6,22 @@ sed 's|REPLACEME|'${SHELL_DIR}'|g' data/sample.json > ./sample.json
 
 ./trial.sh 1.0 1.0 0
 ./trial.sh 10.0 1.0 0
-./trial.sh 1.0 inf 0
-./trial.sh 10.0 inf 0
 ./trial.sh 1.0 1.0 0.01
 ./trial.sh 10.0 1.0 0.01
-./trial.sh 1.0 inf 0.01
-./trial.sh 10.0 inf 0.01
-./trial.sh 1.0 1.0 0.05
-./trial.sh 10.0 1.0 0.05
-./trial.sh 1.0 inf 0.05
-./trial.sh 10.0 inf 0.05
 ./trial.sh 1.0 1.0 0.1
 ./trial.sh 10.0 1.0 0.1
+
+./trial.sh 1.0 2.0 0
+./trial.sh 10.0 2.0 0
+./trial.sh 1.0 2.0 0.01
+./trial.sh 10.0 2.0 0.01
+./trial.sh 1.0 2.0 0.1
+./trial.sh 10.0 2.0 0.1
+
+./trial.sh 1.0 inf 0
+./trial.sh 10.0 inf 0
+./trial.sh 1.0 inf 0.01
+./trial.sh 10.0 inf 0.01
 ./trial.sh 1.0 inf 0.1
 ./trial.sh 10.0 inf 0.1
-
 

@@ -29,17 +29,13 @@ struct WassersteinApproximationWrapper {
         A.clear();
         B.clear();
         /* Read in generators from Generators1 to A */
-        std::cout << "pairs A: \n";
         for ( std::vector<subsample::Generator>::const_iterator cur = Generators1.begin(); 
           cur != Generators1.end(); ++cur ) {
-            std::cout << "(" << cur->birth << ", " << cur->death << ")\n";
             A.push_back(std::make_pair(cur->birth, cur->death));
         }
         /* Read in generators from Generators2 to B */
-        std::cout << "pairs B: \n";
         for ( std::vector<subsample::Generator>::const_iterator cur = Generators2.begin(); 
           cur != Generators2.end(); ++cur ) {
-            std::cout << "(" << cur->birth << ", " << cur->death << ")\n";
             B.push_back(std::make_pair(cur->birth, cur->death));
         }
         return true;
@@ -73,7 +69,6 @@ WassersteinApproximateDistance( subsample::PersistenceDiagram const& diagram_1,
 
     double distance;
     distance = geom_ws::wassersteinDist(A, B, p, epsilon);
-    std::cout << "distance (epsilon=" << epsilon << "): " << distance << "\n";
     return distance;
 
 }
