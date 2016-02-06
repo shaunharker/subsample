@@ -329,9 +329,11 @@ assign ( int argc, char * argv [] ) {
 
 
   // Initialize distance filter
+  std::cout << "Initializing distance filter...\n";
   int64_t N;
   N = subsamples_ . size ();
   distance_filter_ . resize ( (N * N - N) / 2 , 1);
+  std::cout << "Distance filter resized. \n";
   distance_filter_[ distance_filter_.size() - 1 ] = 1;
   // Load distance filter if applicable
   if ( argc == 5 ){
