@@ -293,7 +293,7 @@ assign ( int argc, char * argv [] ) {
     std::cout << " (Note: the fourth argument is the optional path to a distance filter.)\n";
     throw std::logic_error ( "Bad arguments." );
   }
-  //std::cout << "Loading subsamples...\n";
+  std::cout << "Loading subsamples...\n";
   approx_ = std::stod ( argv[1] );
   std::string subsample_filename = argv[2];
   distance_filename_ = argv[3];
