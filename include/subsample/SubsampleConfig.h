@@ -333,6 +333,7 @@ assign ( int argc, char * argv [] ) {
   int64_t N;
   N = subsamples_ . size ();
   distance_filter_ . resize ( (N * N - N) / 2 , 1);
+  std::cout << "Distance filter size: " << distance_filter_.size() << "\n";
   distance_filter_[ distance_filter_.size() - 1 ] = 1;
   // Load distance filter if applicable
   std::cout << "No. of arguments: " << argc << "\n";
