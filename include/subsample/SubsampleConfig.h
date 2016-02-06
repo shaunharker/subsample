@@ -337,7 +337,7 @@ assign ( int argc, char * argv [] ) {
   // Load distance filter if applicable
   if ( argc == 5 ){
 
-    std::cout << "Loading distance filter. \n"
+    std::cout << "Loading distance filter. \n";
 
     int i;
     i = 0;
