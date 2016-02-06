@@ -261,6 +261,11 @@ public:
   double
   getApproximationError ( void ) const;
 
+  /// getDistanceFilter ( void )
+  ///   Return the distance filter
+  std::vector<int> const&
+  getDistanceFilter ( void ) const;
+
 private:
   std::string distance_filename_;
 
@@ -269,6 +274,8 @@ private:
   double approx_;
   Distance distance_;
   std::vector<subsample::Point> subsamples_;
+
+  std::vector<int> distance_filter_;
 };
 
 inline DistanceMatrixConfig::
@@ -281,9 +288,9 @@ DistanceMatrixConfig ( int argc, char * argv [] ) {
 
 inline void DistanceMatrixConfig::
 assign ( int argc, char * argv [] ) {
-  if ( argc != 4 ) {
-    std::cout << "Give three arguments: distance_approximation /path/to/subsample.json /path/to/distance.txt\n";
-    std::cout << " (Note: the second argument is the output file.)\n";
+  if ( argc < 4 ) {
+    std::cout << "Give at least three arguments: distance_approximation /path/to/subsample.json /path/to/distance.txt /path/to/distance_filter.txt\n";
+    std::cout << " (Note: the fourth argument is the optional path to a distance filter.)\n";
     throw std::logic_error ( "Bad arguments." );
   }
   //std::cout << "Loading subsamples...\n";
@@ -318,7 +325,38 @@ assign ( int argc, char * argv [] ) {
     }
     subsamples_.push_back(p);
   }
-  //std::cout << "Finished loading subsamples.\n";
+  std::cout << "Finished loading subsamples.\n";
+
+
+  // Initialize distance filter
+  int64_t N;
+  N = subsamples_ . size ();
+  distance_filter_ . resize ( (N * N - N) / 2 , 1);
+  distance_filter_[ distance_filter_.size() - 1 ] = 1;
+  // Load distance filter if applicable
+  if ( argc == 5 ){
+
+    int i;
+    i = 0;
+    std::ifstream infile ( argv[4] );
+    if (not infile . good ()) { 
+      std::cout << "DistanceMatrixConfig::assign. Distance filter file not found. \n";
+      throw std::runtime_error("DistanceMatrixConfig::assign. Distance filter file not found.");
+    }
+    std::string entry;
+    while ( std::getline ( infile, entry, ' ' ) ) {
+      std::stringstream ss ( entry );
+      ss >> distance_filter_[i++];
+      if ( ss . fail () ) { 
+        throw std::string("DistanceMatrixConfig::assign. Distance filter unexpected entry: ") + entry;
+      }
+    }
+    infile . close ();
+
+  }
+  std::cout << "Distance filter loaded. Size: " << distance_filter_ . size() << ". First entry: " << distance_filter_[0] << ".\n";
+
+
 }
 
 inline Distance DistanceMatrixConfig::
@@ -339,6 +377,11 @@ getOutputFile ( void ) const {
 inline double DistanceMatrixConfig::
 getApproximationError ( void ) const {
   return approx_;
+}
+
+inline std::vector<int> const& DistanceMatrixConfig::
+getDistanceFilter ( void ) const {
+  return distance_filter_;
 }
 
 }
