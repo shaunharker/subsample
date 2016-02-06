@@ -333,10 +333,11 @@ assign ( int argc, char * argv [] ) {
   int64_t N;
   N = subsamples_ . size ();
   distance_filter_ . resize ( (N * N - N) / 2 , 1);
-  std::cout << "Distance filter resized. \n";
   distance_filter_[ distance_filter_.size() - 1 ] = 1;
   // Load distance filter if applicable
   if ( argc == 5 ){
+
+    std::cout << "Loading distance filter. \n"
 
     int i;
     i = 0;
@@ -348,11 +349,13 @@ assign ( int argc, char * argv [] ) {
     std::string entry;
     while ( std::getline ( infile, entry, ' ' ) ) {
       std::stringstream ss ( entry );
+      std::cout << " " << entry;
       ss >> distance_filter_[i++];
       if ( ss . fail () ) { 
         throw std::string("DistanceMatrixConfig::assign. Distance filter unexpected entry: ") + entry;
       }
     }
+    std::cout << "\n";
     infile . close ();
 
   }
