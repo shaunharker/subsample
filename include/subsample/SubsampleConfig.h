@@ -335,6 +335,7 @@ assign ( int argc, char * argv [] ) {
   distance_filter_ . resize ( (N * N - N) / 2 , 1);
   distance_filter_[ distance_filter_.size() - 1 ] = 1;
   // Load distance filter if applicable
+  std::cout << "No. of arguments: " << argc << "\n";
   if ( argc == 5 ){
 
     std::cout << "Loading distance filter. \n";
