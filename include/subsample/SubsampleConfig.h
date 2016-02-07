@@ -293,7 +293,7 @@ assign ( int argc, char * argv [] ) {
     std::cout << " (Note: the fourth argument is the optional path to a distance filter.)\n";
     throw std::logic_error ( "Bad arguments." );
   }
-  std::cout << "Loading subsamples...\n";
+  //std::cout << "Loading subsamples...\n";
   approx_ = std::stod ( argv[1] );
   std::string subsample_filename = argv[2];
   distance_filename_ = argv[3];
@@ -325,22 +325,22 @@ assign ( int argc, char * argv [] ) {
     }
     subsamples_.push_back(p);
   }
-  std::cout << "Finished loading subsamples.\n";
+  //std::cout << "Finished loading subsamples.\n";
 
 
   // Initialize distance filter
-  std::cout << "Initializing distance filter...\n";
+  //std::cout << "Initializing distance filter...\n";
   int64_t N;
   N = subsamples_ . size ();
-  std::cout << "Subsample size: " << subsamples_ . size() << "\n";
+  //std::cout << "Subsample size: " << subsamples_ . size() << "\n";
   distance_filter_ . resize ( (N * N - N) / 2 , 1);
-  std::cout << "Distance filter size: " << distance_filter_.size() << "\n";
+  //std::cout << "Distance filter size: " << distance_filter_.size() << "\n";
   distance_filter_[ distance_filter_.size() - 1 ] = 1;
   // Load distance filter if applicable
-  std::cout << "No. of arguments: " << argc << "\n";
+  //std::cout << "No. of arguments: " << argc << "\n";
   if ( argc == 5 ){
 
-    std::cout << "Loading distance filter. \n";
+    //std::cout << "Loading distance filter. \n";
 
     int i;
     i = 0;
@@ -352,17 +352,15 @@ assign ( int argc, char * argv [] ) {
     std::string entry;
     while ( std::getline ( infile, entry, ' ' ) ) {
       std::stringstream ss ( entry );
-      std::cout << " " << entry;
       ss >> distance_filter_[i++];
       if ( ss . fail () ) { 
         throw std::string("DistanceMatrixConfig::assign. Distance filter unexpected entry: ") + entry;
       }
     }
-    std::cout << "\n";
     infile . close ();
 
   }
-  std::cout << "Distance filter loaded. Size: " << distance_filter_ . size() << ". First entry: " << distance_filter_[0] << ".\n";
+  //std::cout << "Distance filter loaded. Size: " << distance_filter_ . size() << ". First entry: " << distance_filter_[0] << ".\n";
 
 
 }

@@ -44,7 +44,7 @@ initialize ( void ) {
   N_ = subsamples_ . size ();
   last_job_ = N_ * N_;
   results_ . resize ( (N_ * N_ - N_) / 2 );
-  std::cout << "Result size: " << results_ . size() << ".\n";
+  //std::cout << "Result size: " << results_ . size() << ".\n";
   distance_filter_ = config_ . getDistanceFilter ();
 }
 
@@ -58,13 +58,13 @@ prepare ( Message & job ) {
     j = job_num_ % N_;
     if ( i < j ) break;
   }
-  std::cout << "prepare. preparing job (" << i << ", " << j << ")\n";
-  std::cout << "index " << result_index_ << ": " << distance_filter_[result_index_] << ".\n";
+  //std::cout << "prepare. preparing job (" << i << ", " << j << ")\n";
+  //std::cout << "index " << result_index_ << ": " << distance_filter_[result_index_] << ".\n";
   job << result_index_ ++;
   job << subsamples_[i];
   job << subsamples_[j];
   job << distance_filter_[result_index_ - 1];
-  std::cout << "preparing complete.\n";
+  //std::cout << "preparing complete.\n";
   return 0;
 }
 
@@ -77,36 +77,36 @@ work ( Message & result, const Message & job ) const {
   job >> id;
   job >> x;
   job >> y;
-  std::cout << "working index: " << id << "\n";
+  //std::cout << "working index: " << id << "\n";
   job >> distance_filter;
-  std::cout << id << ":distance filter: " << distance_filter << "\n";
+  //std::cout << id << ":distance filter: " << distance_filter << "\n";
   result << id;
   if ( distance_filter == 0 ) {
     result << 0.0;
-    std::cout << id << ": result set to zero.\n";
+    //std::cout << id << ": result set to zero.\n";
   }
   else {
     result << distance_ ( x, y );
-    std::cout << id << ": computed real distance.\n";
+    //std::cout << id << ": computed real distance.\n";
   }
-  std::cout << id << ": working complete.\n";
+  //std::cout << id << ": working complete.\n";
 }
 
 void ComputeMatrixProcess::
 accept ( const Message &result ) {
-  std::cout << "accept.\n";
+  //std::cout << "accept.\n";
   int64_t id;
   double distance;
   result >> id;
   result >> distance;
-  std::cout << "accepting result " << id << " " << distance << "\n";
+  //std::cout << "accepting result " << id << " " << distance << "\n";
   results_ [ id ] = distance;
-  std::cout << "accepted.\n";
+  //std::cout << "accepted.\n";
 }
 
 void ComputeMatrixProcess::
 finalize ( void ) {
-  std::cout << "finalize.\n";
+  //std::cout << "finalize.\n";
   std::string filename = config_ . getOutputFile ();
   std::ofstream outfile ( filename );
   if ( not outfile ) throw std::runtime_error ( "Invalid output filename " + filename );
