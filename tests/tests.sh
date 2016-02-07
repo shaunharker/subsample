@@ -19,12 +19,12 @@ sed 's|REPLACEME|'${SHELL_DIR}'|g' data/filter_10.0_inf.txt > ./filter_10.0_inf.
 # ./trial.sh 1.0 2.0 0.1
 # ./trial.sh 10.0 2.0 0.1
 
-# ./trial.sh 1.0 "inf" 0
-# ./trial.sh 10.0 "inf" 0
-# ./trial.sh 1.0 "inf" 0.01
-# ./trial.sh 10.0 "inf" 0.01
-# ./trial.sh 1.0 "inf" 0.1
-# ./trial.sh 10.0 "inf" 0.1
+./trial.sh 1.0 inf 0
+./trial.sh 10.0 inf 0
+./trial.sh 1.0 inf 0.01
+./trial.sh 10.0 inf 0.01
+./trial.sh 1.0 inf 0.1
+./trial.sh 10.0 inf 0.1
 
-./trial.sh 10.0 "inf" 0 filter_10.0_inf.txt
+./trial.sh 10.0 inf 0 filter_10.0_inf.txt
 
