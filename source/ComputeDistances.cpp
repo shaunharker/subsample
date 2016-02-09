@@ -4,7 +4,7 @@
 #include <vector>
 #include "cluster-delegator.hpp" 
 #include "subsample/SubsampleConfig.h" // Defines class Point, class Distance
-
+#include <mpi.h>
 
 class ComputeMatrixProcess : public Coordinator_Worker_Process {
 public:
@@ -44,8 +44,9 @@ initialize ( void ) {
   N_ = subsamples_ . size ();
   last_job_ = N_ * N_;
   results_ . resize ( (N_ * N_ - N_) / 2 );
-  //std::cout << "Result size: " << results_ . size() << ".\n";
+  std::cout << "Result size: " << results_ . size() << ".\n";
   distance_filter_ = config_ . getDistanceFilter ();
+  std::cout << "Filter size: " << distance_filter_ . size() << ".\n";
 }
 
 int  ComputeMatrixProcess::
@@ -58,19 +59,21 @@ prepare ( Message & job ) {
     j = job_num_ % N_;
     if ( i < j ) break;
   }
-  //std::cout << "prepare. preparing job (" << i << ", " << j << ")\n";
-  //std::cout << "index " << result_index_ << ": " << distance_filter_[result_index_] << ".\n";
+  //std::cout << "prepare. preparing job (" << i << ", " << j << "), index " << result_index_ << ": " << distance_filter_[result_index_] << ".\n";
   job << result_index_ ++;
   job << subsamples_[i];
   job << subsamples_[j];
   job << distance_filter_[result_index_ - 1];
+  if ( distance_filter_[result_index_ - 1] == 1 ) {
+    std::cout << result_index_ - 1 << ": (" << i << "," << j << ")\n";
+  }
   //std::cout << "preparing complete.\n";
   return 0;
 }
 
 void ComputeMatrixProcess::
 work ( Message & result, const Message & job ) const {
-  std::cout << "working...\n";
+  //std::cout << "working...\n";
   int64_t id;
   int distance_filter;
   subsample::Point x, y;
@@ -79,6 +82,7 @@ work ( Message & result, const Message & job ) const {
   job >> y;
   //std::cout << "working index: " << id << "\n";
   job >> distance_filter;
+
   //std::cout << id << ":distance filter: " << distance_filter << "\n";
   result << id;
   if ( distance_filter == 0 ) {
@@ -86,8 +90,9 @@ work ( Message & result, const Message & job ) const {
     //std::cout << id << ": result set to zero.\n";
   }
   else {
-    result << distance_ ( x, y );
-    //std::cout << id << ": computed real distance.\n";
+    std::cout << id << ": computing real distance.\n";
+    result << distance_ ( x, y, id );
+    std::cout << id << ": computed real distance.\n";
   }
   //std::cout << id << ": working complete.\n";
 }
@@ -99,7 +104,9 @@ accept ( const Message &result ) {
   double distance;
   result >> id;
   result >> distance;
-  //std::cout << "accepting result " << id << " " << distance << "\n";
+  if ( distance_filter_ [ id ] == 1 ) {
+    std::cout << id << ": accepting distance=" << distance << "\n";
+  }
   results_ [ id ] = distance;
   //std::cout << "accepted.\n";
 }
@@ -108,6 +115,7 @@ void ComputeMatrixProcess::
 finalize ( void ) {
   //std::cout << "finalize.\n";
   std::string filename = config_ . getOutputFile ();
+  std::cout << "Writing distance computations to: " << filename << "\n";
   std::ofstream outfile ( filename );
   if ( not outfile ) throw std::runtime_error ( "Invalid output filename " + filename );
   for ( int64_t i = 0; i < results_ . size (); ++ i ) {

@@ -27,7 +27,7 @@ public:
   SubsampleDistance ( void ) {}
   SubsampleDistance ( Distance const& distance ) : distance_ ( distance ) {}
   double compute ( Point const& p, Point const& q ) const {
-    return distance_ ( p, q );
+    return distance_ ( p, q, 0 );
   }
   double operator () ( Point const& p, Point const& q ) {
     //std::cout << " () Looking for point pair (" << p << ", " << q << ")\n";

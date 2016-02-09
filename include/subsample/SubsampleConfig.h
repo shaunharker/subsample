@@ -51,14 +51,16 @@ class Distance {
 public:
   Distance ( void ) {}
   Distance ( double p, double approx ) : p_(p), approx_(approx) {}
-  double operator () ( Point const& p, Point const& q ) const {
+  double operator () ( Point const& p, Point const& q, int idx ) const {
     uint64_t N = p . pd . size ();
     double result = 0.0;
     if ( std::isinf(p_) ) {
       for ( uint64_t i = 0; i < N; ++ i ) {
         if ( approx_ == 0 ) {
-          result = std::max(result, BottleneckDistance ( p.pd[i], q.pd[i] ) );
+          std::cout << idx << ": Computing bottleneck distance.\n";
+	  result = std::max(result, BottleneckDistance ( p.pd[i], q.pd[i] ) );
         } else {
+          std::cout << idx << ": Computing approximate bottleneck distance, approx=" << approx_ << ".\n";
           result = std::max(result, BottleneckApproximateDistance ( p.pd[i], q.pd[i], approx_ ) );
         }
       }
