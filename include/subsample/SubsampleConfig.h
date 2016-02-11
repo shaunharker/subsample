@@ -51,16 +51,14 @@ class Distance {
 public:
   Distance ( void ) {}
   Distance ( double p, double approx ) : p_(p), approx_(approx) {}
-  double operator () ( Point const& p, Point const& q, int idx ) const {
+  double operator () ( Point const& p, Point const& q ) const {
     uint64_t N = p . pd . size ();
     double result = 0.0;
     if ( std::isinf(p_) ) {
       for ( uint64_t i = 0; i < N; ++ i ) {
         if ( approx_ == 0 ) {
-          std::cout << idx << ": Computing bottleneck distance.\n";
-	  result = std::max(result, BottleneckDistance ( p.pd[i], q.pd[i] ) );
+	        result = std::max(result, BottleneckDistance ( p.pd[i], q.pd[i] ) );
         } else {
-          std::cout << idx << ": Computing approximate bottleneck distance, approx=" << approx_ << ".\n";
           result = std::max(result, BottleneckApproximateDistance ( p.pd[i], q.pd[i], approx_ ) );
         }
       }
@@ -167,6 +165,7 @@ assign ( int argc, char * argv [] ) {
   sample_infile . close ();
 
   json sample_array = samples_json["sample"];
+
   std::string basepath = samples_json["path"];
   int64_t id = 0;
   for ( json const& tuple : sample_array ) {
@@ -313,6 +312,10 @@ assign ( int argc, char * argv [] ) {
   json sample_array = samples_json["sample"];
   std::string basepath = samples_json["path"];
   json subsample_array = subsamples_json["subsample"];
+  if ( sample_array.size() < subsample_array.size() ) {
+    std::cout << "Number of subsamples larger than number of samples.\n";
+    throw std::runtime_error("Number of subsamples larger than number of samples.");
+  }
   try { 
     metric_ = subsamples_json [ "p" ];
   } catch ( ... ) {
@@ -334,36 +337,29 @@ assign ( int argc, char * argv [] ) {
   //std::cout << "Initializing distance filter...\n";
   int64_t N;
   N = subsamples_ . size ();
-  //std::cout << "Subsample size: " << subsamples_ . size() << "\n";
-  distance_filter_ . resize ( (N * N - N) / 2 , 1);
-  //std::cout << "Distance filter size: " << distance_filter_.size() << "\n";
-  distance_filter_[ distance_filter_.size() - 1 ] = 1;
-  // Load distance filter if applicable
-  //std::cout << "No. of arguments: " << argc << "\n";
   if ( argc == 5 ){
 
-    //std::cout << "Loading distance filter. \n";
-
-    int i;
-    i = 0;
-    std::ifstream infile ( argv[4] );
-    if (not infile . good ()) { 
+    std::ifstream distfile ( argv[4] );
+    if (not distfile . good ()) { 
       std::cout << "DistanceMatrixConfig::assign. Distance filter file not found. \n";
       throw std::runtime_error("DistanceMatrixConfig::assign. Distance filter file not found.");
     }
-    std::string entry;
-    while ( std::getline ( infile, entry, ' ' ) ) {
-      std::stringstream ss ( entry );
-      ss >> distance_filter_[i++];
-      if ( ss . fail () ) { 
-        throw std::string("DistanceMatrixConfig::assign. Distance filter unexpected entry: ") + entry;
-      }
+    int value;
+    while ( distfile >> value ) {
+      distance_filter_ . push_back ( value );
     }
-    infile . close ();
+    distfile . close ();
 
   }
-  //std::cout << "Distance filter loaded. Size: " << distance_filter_ . size() << ". First entry: " << distance_filter_[0] << ".\n";
+  else {
 
+    // Put the default 1-baesd filter in here with the size of the subsample
+    int64_t N;
+    N = subsamples_ . size ();
+    //std::cout << "Subsample size: " << subsamples_ . size() << "\n";
+    distance_filter_ . resize ( (N * N - N) / 2 , 1);
+
+  }
 
 }
 

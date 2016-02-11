@@ -162,7 +162,7 @@ BottleneckDistance( subsample::PersistenceDiagram const& diagram_1,
   BottleneckProblem bp;
   std::vector<int> & Pair = bp.Pair;
   std::vector<int> & Layers = bp.Layers;
-  std::vector< std::vector < int > > & Connections = bp.Connections;
+  std::vector< std::vector < int > > & Connections = bp . Connections;
   std::vector<subsample::Generator> & Generators1 = bp . Generators1;
   std::vector<subsample::Generator> & Generators2 = bp . Generators2;
   unsigned int & Max_Size = bp . Max_Size;
@@ -171,8 +171,9 @@ BottleneckDistance( subsample::PersistenceDiagram const& diagram_1,
   Generators2 . assign ( diagram_2 . begin (), diagram_2 . end () );
   /* If both diagrams are empty the distance is 0 */
   if( Generators1.size() == 0 &&  Generators2.size() == 0 ) return 0;
-  bp.PrepareEdges ();
 
+  bp.PrepareEdges ();
+  
   /* Clear the pairing */
   Pair.clear( );
   Pair.assign( 2*Max_Size, -1);

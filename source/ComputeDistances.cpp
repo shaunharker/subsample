@@ -40,13 +40,16 @@ void ComputeMatrixProcess::
 initialize ( void ) {
   subsamples_ = config_ . getSubsamples ();
   job_num_ = 0;
-  result_index_ = 0;
+  result_index_ = -1;
   N_ = subsamples_ . size ();
+
   last_job_ = N_ * N_;
   results_ . resize ( (N_ * N_ - N_) / 2 );
-  std::cout << "Result size: " << results_ . size() << ".\n";
   distance_filter_ = config_ . getDistanceFilter ();
-  std::cout << "Filter size: " << distance_filter_ . size() << ".\n";
+  if ( results_ . size() != distance_filter_ . size() ) {
+    std::cout << "Distance filter size(" << distance_filter_ . size() << ") does not match number of subsamples (" << results_ . size() << ").\n";
+    throw std::runtime_error ( "Invalid distance filter size." );
+  }
 }
 
 int  ComputeMatrixProcess::
@@ -57,16 +60,17 @@ prepare ( Message & job ) {
     if ( ++ job_num_ >= last_job_ ) return 1;
     i = job_num_ / N_;
     j = job_num_ % N_;
-    if ( i < j ) break;
+    if ( (i < j) ) {
+      result_index_ ++;
+      if ( distance_filter_[result_index_] == 1 ) break;
+    }
   }
   //std::cout << "prepare. preparing job (" << i << ", " << j << "), index " << result_index_ << ": " << distance_filter_[result_index_] << ".\n";
-  job << result_index_ ++;
+  job << result_index_;
   job << subsamples_[i];
   job << subsamples_[j];
-  job << distance_filter_[result_index_ - 1];
-  if ( distance_filter_[result_index_ - 1] == 1 ) {
-    std::cout << result_index_ - 1 << ": (" << i << "," << j << ")\n";
-  }
+  job << distance_filter_[result_index_];
+  //std::cout << result_index_ << ": Prepared job (" << i << "," << j << ")\n";
   //std::cout << "preparing complete.\n";
   return 0;
 }
@@ -83,16 +87,12 @@ work ( Message & result, const Message & job ) const {
   //std::cout << "working index: " << id << "\n";
   job >> distance_filter;
 
-  //std::cout << id << ":distance filter: " << distance_filter << "\n";
   result << id;
   if ( distance_filter == 0 ) {
     result << 0.0;
-    //std::cout << id << ": result set to zero.\n";
   }
   else {
-    std::cout << id << ": computing real distance.\n";
-    result << distance_ ( x, y, id );
-    std::cout << id << ": computed real distance.\n";
+    result << distance_ ( x, y );
   }
   //std::cout << id << ": working complete.\n";
 }
@@ -104,9 +104,6 @@ accept ( const Message &result ) {
   double distance;
   result >> id;
   result >> distance;
-  if ( distance_filter_ [ id ] == 1 ) {
-    std::cout << id << ": accepting distance=" << distance << "\n";
-  }
   results_ [ id ] = distance;
   //std::cout << "accepted.\n";
 }
@@ -115,7 +112,7 @@ void ComputeMatrixProcess::
 finalize ( void ) {
   //std::cout << "finalize.\n";
   std::string filename = config_ . getOutputFile ();
-  std::cout << "Writing distance computations to: " << filename << "\n";
+  //std::cout << "Writing distance computations to: " << filename << "\n";
   std::ofstream outfile ( filename );
   if ( not outfile ) throw std::runtime_error ( "Invalid output filename " + filename );
   for ( int64_t i = 0; i < results_ . size (); ++ i ) {
