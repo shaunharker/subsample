@@ -7,8 +7,8 @@
 #include "PersistenceDiagram.h"
 
 double 
-WassersteinDistance( PersistenceDiagram const& diagram_1, 
-                     PersistenceDiagram const& diagram_2,
+WassersteinDistance( subsample::PersistenceDiagram const& diagram_1, 
+                     subsample::PersistenceDiagram const& diagram_2,
                      double p );
 
 
@@ -142,11 +142,11 @@ namespace WassersteinDistance_detail {
 }
 
 inline double 
-WassersteinDistance( PersistenceDiagram const& diagram_1, 
-                     PersistenceDiagram const& diagram_2,
+WassersteinDistance( subsample::PersistenceDiagram const& diagram_1, 
+                     subsample::PersistenceDiagram const& diagram_2,
                      double p ) {
   using namespace WassersteinDistance_detail;
-  Generator::Distance distance; 
+  subsample::Generator::Distance distance; 
   // Distance matrix the generators in diagram_1 and diagram_2 
   double* distanceMatrix;
   // Distance matrix has (diagram_1.size +  diagram_2.size())^2 elements 

@@ -1,4 +1,10 @@
-ComputeDistanceMatrix
 .DS_Store
 *.o
-
+/build
+tests/data/
+tests/distance*
+tests/subsample*
+tests/sample.json
+tests/filter*
+bin/ComputeSubsample
+bin/ComputeDistances

@@ -20,6 +20,7 @@
 
 int64_t global_distance_count = 0;
 
+
 template < class Point, class Distance >
 class SubsampleDistance {
 public:

@@ -20,6 +20,9 @@
 #include <boost/serialization/base_object.hpp>
 #include <boost/serialization/vector.hpp>
 
+namespace subsample
+{
+
 int64_t generator_distance_count = 0;
 struct Generator {
   double birth;
@@ -80,10 +83,12 @@ public:
   using Base::const_iterator;
   using Base::operator[];
   void load ( std::string const& filename ) {
+
     clear ();
     std::ifstream infile ( filename );
-    if ( not infile . good () ) {
-      throw std::runtime_error("PersistenceDiagram::load. File not found: " + filename );
+    if (not infile . good ()) { 
+      std::cout << "PersistenceDiagram::load. File not found. \n";
+      throw std::runtime_error("PersistenceDiagram::load. File not found.");
     }
     std::string line;
     while ( std::getline ( infile, line ) ) {
@@ -98,6 +103,7 @@ public:
     }
     infile . close ();
     // Replace -1's with something sensible
+
     double max_entry = 0;
     for ( int i = 0; i < size (); ++ i ) {
       max_entry = std::max ( (*this)[i].birth, max_entry );
@@ -120,5 +126,7 @@ public:
    // for ( int i = 0; i < )
   }
 };
+
+}
 
 #endif

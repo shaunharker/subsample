@@ -16,6 +16,7 @@
 
 #include "delegator/delegator.h"
 
+
 template < class T, class D >
 class SubsampleProcess : public Coordinator_Worker_Process {
 public:
@@ -39,7 +40,7 @@ private:
   boost::shared_ptr<boost::thread> thread_ptr;
   mutable int64_t time_delay_;
   int64_t cohort_size_;
-  SubsampleConfig config_;
+  subsample::SubsampleConfig config_;
 };
 
 template < class T, class D >

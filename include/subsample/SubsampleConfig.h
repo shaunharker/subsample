@@ -20,9 +20,15 @@
 #include "persistence/PersistenceDiagram.h"
 #include "persistence/WassersteinDistance.h"
 #include "persistence/BottleneckDistance.h"
+#include "persistence/BottleneckApproximateDistance.h"
+#include "persistence/WassersteinApproximateDistance.h"
 
 #include "tools/json.hpp"
 using json = nlohmann::json;
+
+
+namespace subsample
+{
 
 class Point {
 public:
@@ -39,29 +45,39 @@ private:
   }
 };
 
+
+
 class Distance {
 public:
   Distance ( void ) {}
-  Distance ( double p ) : p_(p) {}
+  Distance ( double p, double approx ) : p_(p), approx_(approx) {}
   double operator () ( Point const& p, Point const& q ) const {
     uint64_t N = p . pd . size ();
     double result = 0.0;
     if ( std::isinf(p_) ) {
       for ( uint64_t i = 0; i < N; ++ i ) {
-        result = std::max(result, BottleneckDistance ( p.pd[i], q.pd[i] ) );
+        if ( approx_ == 0 ) {
+	        result = std::max(result, BottleneckDistance ( p.pd[i], q.pd[i] ) );
+        } else {
+          result = std::max(result, BottleneckApproximateDistance ( p.pd[i], q.pd[i], approx_ ) );
+        }
       }
       return result;
     } else {
       for ( uint64_t i = 0; i < N; ++ i ) {
-        result += std::pow ( WassersteinDistance ( p.pd[i], q.pd[i], p_), p_ );
+        if ( approx_ == 0 ) {
+          result += std::pow ( WassersteinDistance ( p.pd[i], q.pd[i], p_), p_ );
+        } else {
+          result += std::pow ( WassersteinApproximateDistance ( p.pd[i], q.pd[i], p_, approx_), p_ );
+        }
       }
       result = std::pow ( result, 1.0 / p_ );
-      //std::cout << "Distance = " << result << "\n";
       return result;
     }
   }
 private:
   double p_;
+  double approx_;
 };
 
 
@@ -97,14 +113,14 @@ public:
 
   /// getSamples
   ///   Return collection of samples (Points)
-  std::vector<Point> const&
+  std::vector<subsample::Point> const&
   getSamples ( void ) const;
 
   /// handleResults
   ///   Handle the results returned from the main program
   ///   (i.e. produce output from the subsample)
   void
-  handleResults ( std::vector<Point> const& results ) const;
+  handleResults ( std::vector<subsample::Point> const& results ) const;
 
 private:
   int argc_;
@@ -115,7 +131,7 @@ private:
   std::string subsample_filename_;
   Distance distance_;
   int64_t cohort_size_;
-  std::vector<Point> samples_;
+  std::vector<subsample::Point> samples_;
 };
 
 inline SubsampleConfig::
@@ -139,7 +155,7 @@ assign ( int argc, char * argv [] ) {
   delta_ = std::stod ( argv[2] );
   metric_ = std::stod ( argv[3] );
   subsample_filename_ = argv[4];
-  distance_ = Distance ( metric_ );
+  distance_ = Distance ( metric_, 0 ); // Always initiate subsample with exact distance
   cohort_size_ = 1000;
 
   //std::cout << "Loading samples...\n";
@@ -149,10 +165,11 @@ assign ( int argc, char * argv [] ) {
   sample_infile . close ();
 
   json sample_array = samples_json["sample"];
+
   std::string basepath = samples_json["path"];
   int64_t id = 0;
   for ( json const& tuple : sample_array ) {
-    Point p;
+    subsample::Point p;
     p . id = id ++;
     for ( std::string const& path : tuple ) {
       p.pd.push_back(PersistenceDiagram(basepath + "/" + path));
@@ -176,7 +193,7 @@ getCohortSize ( void ) const {
   return cohort_size_;
 }
 
-inline std::vector<Point> const& SubsampleConfig::
+inline std::vector<subsample::Point> const& SubsampleConfig::
 getSamples ( void ) const {
   return samples_;
 }
@@ -187,7 +204,7 @@ getDelta ( void ) const {
 }
 
 inline void SubsampleConfig::
-handleResults ( std::vector<Point> const& results ) const {
+handleResults ( std::vector<subsample::Point> const& results ) const {
   //std::cout << "There were " << results . size () 
   //          << " points in the subsample.\n";
   std::vector<int64_t> subsample_indices;
@@ -232,7 +249,7 @@ public:
 
   /// getSubsamples
   ///   Return collection of samples (Points)
-  std::vector<Point> const&
+  std::vector<subsample::Point> const&
   getSubsamples ( void ) const;
 
   /// getOutputFile
@@ -240,13 +257,26 @@ public:
   std::string const&
   getOutputFile ( void ) const;
 
+  /// getApproximation ( void )
+  ///   Return the approximation parameter (for auction algorithms)
+  double
+  getApproximationError ( void ) const;
+
+  /// getDistanceFilter ( void )
+  ///   Return the distance filter
+  std::vector<int> const&
+  getDistanceFilter ( void ) const;
+
 private:
   std::string distance_filename_;
 
   double delta_;
   double metric_;
+  double approx_;
   Distance distance_;
-  std::vector<Point> subsamples_;
+  std::vector<subsample::Point> subsamples_;
+
+  std::vector<int> distance_filter_;
 };
 
 inline DistanceMatrixConfig::
@@ -259,14 +289,15 @@ DistanceMatrixConfig ( int argc, char * argv [] ) {
 
 inline void DistanceMatrixConfig::
 assign ( int argc, char * argv [] ) {
-  if ( argc != 3 ) {
-    std::cout << "Give two arguments: /path/to/subsample.json /path/to/distance.txt\n";
-    std::cout << " (Note: the second argument is the output file.)\n";
+  if ( argc < 4 ) {
+    std::cout << "Give at least three arguments: distance_approximation /path/to/subsample.json /path/to/distance.txt /path/to/distance_filter.txt\n";
+    std::cout << " (Note: the fourth argument is the optional path to a distance filter.)\n";
     throw std::logic_error ( "Bad arguments." );
   }
   //std::cout << "Loading subsamples...\n";
-  std::string subsample_filename = argv[1];
-  distance_filename_ = argv[2];
+  approx_ = std::stod ( argv[1] );
+  std::string subsample_filename = argv[2];
+  distance_filename_ = argv[3];
   
   std::ifstream subsample_infile ( subsample_filename );
   json subsamples_json = json::parse ( subsample_infile );
@@ -281,13 +312,17 @@ assign ( int argc, char * argv [] ) {
   json sample_array = samples_json["sample"];
   std::string basepath = samples_json["path"];
   json subsample_array = subsamples_json["subsample"];
+  if ( sample_array.size() < subsample_array.size() ) {
+    std::cout << "Number of subsamples larger than number of samples.\n";
+    throw std::runtime_error("Number of subsamples larger than number of samples.");
+  }
   try { 
     metric_ = subsamples_json [ "p" ];
   } catch ( ... ) {
     metric_ = std::numeric_limits<double>::infinity();
   }
   for ( int64_t const& i : subsample_array ) {
-    Point p;
+    subsample::Point p;
     p . id = i;
     json tuple = sample_array[i];
     for ( std::string const& path : tuple ) {
@@ -296,14 +331,44 @@ assign ( int argc, char * argv [] ) {
     subsamples_.push_back(p);
   }
   //std::cout << "Finished loading subsamples.\n";
+
+
+  // Initialize distance filter
+  //std::cout << "Initializing distance filter...\n";
+  int64_t N;
+  N = subsamples_ . size ();
+  if ( argc == 5 ){
+
+    std::ifstream distfile ( argv[4] );
+    if (not distfile . good ()) { 
+      std::cout << "DistanceMatrixConfig::assign. Distance filter file not found. \n";
+      throw std::runtime_error("DistanceMatrixConfig::assign. Distance filter file not found.");
+    }
+    int value;
+    while ( distfile >> value ) {
+      distance_filter_ . push_back ( value );
+    }
+    distfile . close ();
+
+  }
+  else {
+
+    // Put the default 1-baesd filter in here with the size of the subsample
+    int64_t N;
+    N = subsamples_ . size ();
+    //std::cout << "Subsample size: " << subsamples_ . size() << "\n";
+    distance_filter_ . resize ( (N * N - N) / 2 , 1);
+
+  }
+
 }
 
 inline Distance DistanceMatrixConfig::
 getDistanceFunctor ( void ) const {
-  return Distance ( metric_ );
+  return Distance ( metric_, approx_ );
 }
 
-inline std::vector<Point> const& DistanceMatrixConfig::
+inline std::vector<subsample::Point> const& DistanceMatrixConfig::
 getSubsamples ( void ) const {
   return subsamples_;
 }
@@ -311,6 +376,18 @@ getSubsamples ( void ) const {
 inline std::string const& DistanceMatrixConfig::
 getOutputFile ( void ) const {
   return distance_filename_;
+}
+
+inline double DistanceMatrixConfig::
+getApproximationError ( void ) const {
+  return approx_;
+}
+
+inline std::vector<int> const& DistanceMatrixConfig::
+getDistanceFilter ( void ) const {
+  return distance_filter_;
+}
+
 }
 
 #endif
