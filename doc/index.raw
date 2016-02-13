@@ -64,6 +64,6 @@ The input to the distance program is the output from the subsample program. The 
 ```bash
 error /path/to/subsample.json /path/to/distance.txt /path/to/distance_filter.txt
 ```
-where the first is a nonnegative number giving the relative error for computing the approximate distance between the persistence diagrams, the second a path to the subsample (which contains a path to the original sample), the third path is the location the distance matrix is to be stored, and the fourth is an optional path to a filter for the distance matrix computations. If supplied, this distance matrix filter should be a sequence in {0,1} that is the same size as the expected output of /path/to/distance.txt. If not supplied, all pairwise distances will be computed.
+where the first is a nonnegative number giving the relative error for computing the approximate distance between the persistence diagrams (supply 0.0 for exact distance computation), the second a path to the subsample (which contains a path to the original sample), the third path is the location the distance matrix is to be stored, and the fourth is an optional path to a filter for the distance matrix computations. If supplied, this distance matrix filter should be a sequence in {0,1} that is the same size as the expected output of /path/to/distance.txt. If not supplied, all pairwise distances will be computed.
 
 
