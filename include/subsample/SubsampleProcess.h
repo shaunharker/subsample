@@ -8,6 +8,7 @@
 #include "geometry/MetricTree.h"
 #include <exception>
 #include <stdexcept>
+#include <numeric>
 #include "boost/foreach.hpp"
 #include "boost/shared_ptr.hpp"
 #include "boost/thread/thread.hpp"
@@ -40,6 +41,7 @@ private:
   mutable int64_t time_delay_;
   int64_t cohort_size_;
   SubsampleConfig config_;
+  std::vector<int64_t> nearest_; // index of nearest subsample
 };
 
 template < class T, class D >
@@ -103,11 +105,30 @@ private:
   double delta_;
 };
 
+template < class T, class D >
+class NearestNeighborFunctor {
+public:
+  typedef typename MetricTree<T,D>::iterator ReturnType;
+  typedef typename MetricTree<T,D>::NearestException Exception;
+  NearestNeighborFunctor ( MetricTree<T,D> * mt, 
+                      std::vector<T> const& samples) 
+    : mt_(mt), samples_(samples) {}
+  ReturnType operator () ( int64_t i ) { 
+    return mt_ -> nearest ( samples_ [ i ] ); 
+  }
+  ReturnType operator () ( Exception & e ) { 
+    return mt_ -> nearest ( e ); 
+  }
+private:
+  MetricTree<T,D> * mt_;
+  std::vector<T> const& samples_;
+};
 
 template < class T, class D >
 class SubsampleThread {
 public:
   SubsampleThread ( MetricTree<T,D> * mt,
+                    std::vector<int64_t> * nearest,
                     std::vector<T> const& samples, 
                     double delta, 
                     std::stack<int64_t> * ready, 
@@ -116,7 +137,7 @@ public:
                     std::stack<std::pair<int64_t,std::pair<T,T > > > * work_items,
                     boost::shared_ptr<D> distance, 
                     int64_t cohort_size ) 
-    : mt_(mt), samples_(samples), delta_(delta), 
+    : mt_(mt), nearest_(nearest), samples_(samples), delta_(delta), 
       ready_(ready), mutex_(mutex), all_done_(all_done), 
       work_items_(work_items), distance_(distance), cohort_size_(cohort_size) {}
   void operator () ( void );
@@ -126,6 +147,7 @@ public:
              FunctionObject & F );
 private:
   MetricTree<T,D> * mt_;
+  std::vector<int64_t> * nearest_;
   double delta_;
   std::vector<T> const& samples_;
   std::stack<int64_t> * ready_;
@@ -242,6 +264,18 @@ operator () ( void ) {
       parallel ( &results, arguments, functor );
     }
   }
+  // Compute nearest neighbors
+  uint64_t NumSamples = samples_ . size ();
+  std::vector<int64_t> arguments(NumSamples);
+  std::iota (std::begin(arguments), std::end(arguments), 0);
+  NearestNeighborFunctor<T,D> functor ( mt_, samples_ );
+  std::vector<iterator> results;
+  parallel ( &results, arguments, functor );
+  (*nearest_) . resize ( NumSamples );
+  for ( int64_t i = 0; i < NumSamples; ++ i ) {
+    (*nearest_)[i] = results[i] -> id;
+  }
+  // Finish
   mutex_ -> lock ();
   //std::cout << "All done! \n";
   * all_done_ = true;
@@ -361,7 +395,7 @@ initialize ( void ) {
   delta_   = config_ . getDelta ();
   mt_ . assign ( distance_ );
   thread_ptr . reset ( new boost::thread 
-    ( SubsampleThread<T,D> ( &mt_, samples_, delta_, &ready_, &mutex_, 
+    ( SubsampleThread<T,D> ( &mt_, &nearest_, samples_, delta_, &ready_, &mutex_, 
                              &all_done_, &work_items_, distance_, cohort_size_ ) ) );
 }
 
@@ -451,7 +485,7 @@ finalize ( void ) {
   for ( T const& p : mt_ ) {
     results . push_back ( p );
   }
-  config_ . handleResults ( results );
+  config_ . handleResults ( results, nearest_ );
 }
 
 #endif

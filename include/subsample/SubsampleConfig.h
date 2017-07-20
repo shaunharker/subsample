@@ -104,7 +104,8 @@ public:
   ///   Handle the results returned from the main program
   ///   (i.e. produce output from the subsample)
   void
-  handleResults ( std::vector<Point> const& results ) const;
+  handleResults ( std::vector<Point> const& results, 
+                  std::vector<int64_t> const& nearest ) const;
 
 private:
   int argc_;
@@ -187,7 +188,8 @@ getDelta ( void ) const {
 }
 
 inline void SubsampleConfig::
-handleResults ( std::vector<Point> const& results ) const {
+handleResults ( std::vector<Point> const& results,
+                std::vector<int64_t> const& nearest ) const {
   //std::cout << "There were " << results . size () 
   //          << " points in the subsample.\n";
   std::vector<int64_t> subsample_indices;
@@ -205,6 +207,7 @@ handleResults ( std::vector<Point> const& results ) const {
     output["p"] = metric_;
   }
   output["subsample"] = subsample_indices;
+  output["nearest"] = nearest; // <-- ADDED LINE
   std::ofstream ( subsample_filename_ ) << output;
 #ifdef SUBSAMPLEDISTANCE_H
   //std::cout << "Distance calculations = " << global_distance_count << "\n";
