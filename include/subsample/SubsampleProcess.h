@@ -273,7 +273,7 @@ operator () ( void ) {
   parallel ( &results, arguments, functor );
   (*nearest_) . resize ( NumSamples );
   for ( int64_t i = 0; i < NumSamples; ++ i ) {
-    (*nearest_)[i] = results[i] -> id;
+    (*nearest_)[samples_[i].id] = results[i] -> id;
   }
   // Finish
   mutex_ -> lock ();
